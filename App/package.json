@@ -2,8 +2,11 @@
   "name": "the-docs",
   "version": "0.0.0",
   "description": "TheDocs",
-  "main": "server.js",
+  "main": "app.js",
   "author": {
     "name": "Programming"
+  },
+  "dependencies": {
+    "electron": "^1.7.9"
   }
 }
