@@ -1,0 +1,9 @@
+{
+  "name": "the-docs",
+  "version": "0.0.0",
+  "description": "TheDocs",
+  "main": "server.js",
+  "author": {
+    "name": "Programming"
+  }
+}
