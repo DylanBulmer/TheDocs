@@ -1,0 +1,11 @@
+﻿{
+  "port": 1337,
+  "url": "127.0.0.1",
+  "secret": "abcABC123!@#/pattern/xyzXYZ890*()/no/well/maybe",
+  "mysql": {
+    "host": "localhost",
+    "database": "website",
+    "user": "website",
+    "password": "password"
+  }
+}

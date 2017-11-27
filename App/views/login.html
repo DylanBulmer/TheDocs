@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>The Docs</title>
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <style>
+        * {
+            text-align: center;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            cursor: default;
+        }
+
+        input[type=password] {
+            padding: 5px;
+            width: calc(100% - 50px);
+            border: 0;
+            border-radius: 5px 0 0 5px;
+            margin: 10px -2px;
+            color: #333;
+            cursor: text;
+            text-align: left;
+        }
+
+        input[type=text] {
+            padding: 5px;
+            width: calc(100% - 18px);
+            border: 0;
+            border-radius: 5px;
+            color: #333;
+            cursor: text;
+            text-align: left;
+        }
+
+        button {
+            padding: 5px;
+            width: calc(40px - 10px);
+            border: 0;
+            border-radius: 0 5px 5px 0;
+            margin: 10px -2px;
+            cursor: pointer;
+            background-color: #333;
+        }
+
+        span > i {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body style="background-color: #1177FF;">
+    <a href="./index.html"><img src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 10px; left: 10px;" /></a>
+
+    <form id="form" style="display: inline-block;" onsubmit="event.preventDefault(); submition();">
+        <span>Please enter your credentials</span><br>
+        <input type="text" placeholder="username">
+        <input type="password" placeholder="password">
+        <button id="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button><br>
+        <span id="msg"></span>
+    </form>
+
+    <script>
+        let form = document.getElementById('form');
+        form.style.marginTop = "calc(50vh - " + form.getBoundingClientRect()['height'] / 2 + "px)";
+
+        let msg = document.getElementById('msg');
+
+        var submition = function () {
+            let host = document.getElementById('url').value;
+
+            // do ajax stuff to check for server...
+            if (host != "") {
+
+                // send request
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        result = JSON.parse(this.responseText)
+                        if (result.host == host && result.check == true) {
+                            msg.innerHTML = "Connected!";
+                        } else {
+                            msg.innerHTML = "Almost there...<br>Please verify the entered URL/IPv4";
+                        }
+                    } else {
+                        switch (this.readyState) {
+                            case 0:
+                                msg.innerHTML = " An error occured in the app";
+                                break;
+                            case 1:
+                            case 2:
+                                msg.innerHTML = 'Connecting <i class="fa fa-cog fa-spin fa-fw"></i>';
+                                break;
+                            case 3:
+                                msg.innerHTML = 'Loading data <i class="fa fa-cog fa-spin fa-fw"></i>';
+                                break;
+                            case 4:
+                                switch (this.status) {
+                                    case 0:
+                                        msg.innerHTML = 'The entered URL is invalid!';
+                                        break;
+                                    case 200:
+                                        msg.innerHTML = 'Connected!';
+                                        break;
+                                    case 403:
+                                        msg.innerHTML = 'That page is forbiden!';
+                                        break;
+                                    case 404:
+                                        msg.innerHTML = '404 - Page not found!';
+                                        break;
+                                }
+                                break;
+                        }
+                    }
+                };
+                if (host.substring(0, 7) != "http://" || host.substring(0, 8) != "https://") {
+                    xhttp.open("POST", "http://" + host + ":1337", true);
+                } else {
+                    xhttp.open("POST", host + ":1337", true);
+                }
+                xhttp.send();
+            } else {
+                msg.innerHTML = 'Please enter a URL or IPv4 address';
+            }
+            return false;
+        }
+
+    </script>
+</body>
+</html>
