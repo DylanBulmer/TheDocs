@@ -1,11 +1,18 @@
 'use strict';
 var express = require('express');
 var app = express();
-var mysql = require('mysql');
+var bodyParser = require('body-parser');
 
 // Settings
 var data = require('./config.json');
 var port = data.port;
+
+//MySQL Setup
+var database = require('./modules/database');
+var db = new database(data.mysql);
+
+// Make app use things
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     // Send nothing
@@ -14,8 +21,15 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     res.send({
-        'host': data.url,
+        'host': data.host,
         'check': true
+    });
+});
+
+app.post('/login', function (req, res) {
+    let { username, password } = req.body;
+    db.login(username, password, function (data) {
+        res.json(data);
     });
 });
 
@@ -24,37 +38,13 @@ app.listen(port, function () {
 });
 
 // Database Functions
+db.connect();
 
-var DBisConnected = false;
-var db;
+// Classes
 
-function handleDisconnect() {
-    db = mysql.createConnection(data.mysql);
-
-    db.connect(function (err) {
-        if (err) {
-            DBisConnected = false;
-            console.log("MySQL ERROR: " + err.code);
-            setTimeout(handleDisconnect, 2000);
-        } else {
-            if (data.mysql.database == "") {
-                console.log("Please enter a database in the config.json file!");
-            } else {
-                console.log("MySQL Connection Established");
-                DBisConnected = true;
-            }
-        }
-
-        db.on('error', function (err) {
-            console.log('MySQL Error: ', err);
-            if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-                DBisConnected = false;
-                handleDisconnect();
-            } else {
-                throw err;
-            }
-        });
-    });
-}
-
-handleDisconnect();
+var User = class User {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+};

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -13,74 +13,74 @@
             cursor: default;
         }
 
-        input[type=password] {
+        input {
             padding: 5px;
-            width: calc(100% - 50px);
-            border: 0;
-            border-radius: 5px 0 0 5px;
-            margin: 10px -2px;
-            color: #333;
-            cursor: text;
-            text-align: left;
-        }
-
-        input[type=text] {
-            padding: 5px;
-            width: calc(100% - 18px);
+            width: calc(100% - 10px);
             border: 0;
             border-radius: 5px;
             color: #333;
             cursor: text;
-            text-align: left;
+            margin: 5px 0;
         }
 
         button {
             padding: 5px;
-            width: calc(40px - 10px);
+            width: calc(50% - 10px);
             border: 0;
-            border-radius: 0 5px 5px 0;
-            margin: 10px -2px;
+            border-radius: 5px;
+            margin: 5px 0;
             cursor: pointer;
             background-color: #333;
+            float: right;
         }
 
         span > i {
             vertical-align: middle;
+        }
+
+        #msg {
+            display: inline-block;
+            width: 100%;
         }
     </style>
 </head>
 <body style="background-color: #1177FF;">
     <a href="./index.html"><img src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 10px; left: 10px;" /></a>
 
-    <form id="form" style="display: inline-block;" onsubmit="event.preventDefault(); submition();">
-        <span>Please enter your credentials</span><br>
-        <input type="text" placeholder="username">
-        <input type="password" placeholder="password">
+    <form id="form" style="display: inline-block; width: 250px;" onsubmit="event.preventDefault(); submition();">
+        <span>Log into The Docs!</span><br>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
         <button id="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button><br>
         <span id="msg"></span>
     </form>
 
     <script>
         let form = document.getElementById('form');
+        let Store = require('../modules/store');
+        let store = new Store({ configName: 'user-preferences' });
+
         form.style.marginTop = "calc(50vh - " + form.getBoundingClientRect()['height'] / 2 + "px)";
 
         let msg = document.getElementById('msg');
 
         var submition = function () {
-            let host = document.getElementById('url').value;
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
 
             // do ajax stuff to check for server...
-            if (host != "") {
-
-                // send request
+            if (username != "" && password != "") {
+                // create request
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         result = JSON.parse(this.responseText)
-                        if (result.host == host && result.check == true) {
-                            msg.innerHTML = "Connected!";
+                        if (result.err) {
+                            msg.innerHTML = result.err;
                         } else {
-                            msg.innerHTML = "Almost there...<br>Please verify the entered URL/IPv4";
+                            msg.innerHTML = "Logged In!";
+                            console.log(result.result);
+                            window.location.href = __dirname + "/app.html";
                         }
                     } else {
                         switch (this.readyState) {
@@ -89,7 +89,7 @@
                                 break;
                             case 1:
                             case 2:
-                                msg.innerHTML = 'Connecting <i class="fa fa-cog fa-spin fa-fw"></i>';
+                                msg.innerHTML = 'Logging in <i class="fa fa-cog fa-spin fa-fw"></i>';
                                 break;
                             case 3:
                                 msg.innerHTML = 'Loading data <i class="fa fa-cog fa-spin fa-fw"></i>';
@@ -97,10 +97,10 @@
                             case 4:
                                 switch (this.status) {
                                     case 0:
-                                        msg.innerHTML = 'The entered URL is invalid!';
+                                        msg.innerHTML = 'An error has occured!';
                                         break;
                                     case 200:
-                                        msg.innerHTML = 'Connected!';
+                                        msg.innerHTML = 'Done!';
                                         break;
                                     case 403:
                                         msg.innerHTML = 'That page is forbiden!';
@@ -113,14 +113,11 @@
                         }
                     }
                 };
-                if (host.substring(0, 7) != "http://" || host.substring(0, 8) != "https://") {
-                    xhttp.open("POST", "http://" + host + ":1337", true);
-                } else {
-                    xhttp.open("POST", host + ":1337", true);
-                }
-                xhttp.send();
+                xhttp.open("POST", store.get('host') + "/login", true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                xhttp.send(JSON.stringify({ username: username, password: password }));
             } else {
-                msg.innerHTML = 'Please enter a URL or IPv4 address';
+                msg.innerHTML = 'Please enter your username and password!';
             }
             return false;
         }

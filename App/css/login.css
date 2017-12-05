@@ -1,0 +1,37 @@
+* {
+    text-align: center;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    cursor: default;
+}
+
+input {
+    padding: 5px;
+    width: calc(100% - 10px);
+    border: 0;
+    border-radius: 5px;
+    color: #333;
+    cursor: text;
+    margin: 5px 0;
+}
+
+button {
+    padding: 5px;
+    width: calc(50% - 10px);
+    border: 0;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    background-color: #333;
+    float: right;
+}
+
+span > i {
+    vertical-align: middle;
+}
+
+#msg {
+    display: inline-block;
+    width: 100%;
+}

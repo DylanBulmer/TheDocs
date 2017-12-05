@@ -5,7 +5,8 @@
     <Name>App</Name>
     <RootNamespace>TheDocs</RootNamespace>
     <NodeExePath>E:\Projects\Visual Studio\TheDocs\App\node_modules\electron\dist\electron.exe</NodeExePath>
-    <NodeExeArguments> --inspect-brk</NodeExeArguments>
+    <NodeExeArguments>
+    </NodeExeArguments>
     <DebuggerPort>9229</DebuggerPort>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -33,19 +34,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="modules\store.js" />
+    <Content Include="css\app.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\login.css" />
     <Content Include="image\TheDocsLogoSmall.png" />
     <Content Include="image\TheDocsLogoSmall.svg" />
     <Content Include="image\TheDocsLogoSmall_White.png" />
     <Content Include="image\TheDocsLogoSmall_White.svg" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="views\app.html" />
     <Content Include="views\index.html" />
     <Content Include="views\login.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
     <Folder Include="image\" />
+    <Folder Include="modules\" />
     <Folder Include="views\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

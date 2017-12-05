@@ -1,6 +1,7 @@
 ﻿{
   "port": 1337,
   "url": "127.0.0.1",
+  "host": "localhost",
   "secret": "abcABC123!@#/pattern/xyzXYZ890*()/no/well/maybe",
   "mysql": {
     "host": "localhost",

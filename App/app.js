@@ -6,6 +6,7 @@ const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
+const Store = require('./modules/store');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,8 +14,15 @@ let mainWindow;
 let views = __dirname + "/views/";
 
 function createWindow() {
+    const store = new Store({
+        configName: 'user-preferences',
+        defaults: {
+            windowBounds: { width: 800, height: 600 }
+        }
+    });
     // Create the browser window.
-    mainWindow = new BrowserWindow({ width: 800, height: 600 });
+    let { width, height } = store.get('windowBounds');
+    mainWindow = new BrowserWindow({ width, height });
 
     // and load the index.html of the app.
     mainWindow.loadURL(url.format({
@@ -25,6 +33,11 @@ function createWindow() {
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
+
+    mainWindow.on('resize', function () {
+        let b = mainWindow.getBounds();
+        store.set('windowBounds', { width: b.width, height: b.height });
+    })
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {

@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    border: 0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    cursor: default;
+}
+
+body {
+    background-color: #FFFFFF;
+}
+
+topbar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1177ff;
+    color: #ffffff;
+    height: 3em;
+    width: 100%;
+}
+
+topbar > span {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    height: calc(100% - 10px);
+    line-height: calc(200% + 5px);
+}
+
+topbar > span > a {
+    height: calc(100% - 20px);
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #555;
+    border-radius: 5px;
+    line-height: 1em;
+    margin-left: 15px;
+}
+
+aside {
+    display: block;
+    position: fixed;
+    top: 3em;
+    left: 0;
+    background-color: #1177ff;
+    color: #ffffff;
+    height: calc(100vh - 3em);
+    width: 250px;
+}
+
+aside > .search {
+    width: calc(100% - 20px);
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: text;
+}
+
+aside > tabs {
+    display: block;
+    width: 100%;
+}
+
+aside > tabs > tab {
+    display: block;
+    width: calc(100% - 20px);
+    height: calc(3em - 1px);
+    margin: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+aside tab.wrapper {
+    border: 0;
+    border-left: 5px solid #fff;
+    width: calc(100% - 5px);
+    height: 3em;
+    margin: 0;
+    position: absolute;
+    left: 0;
+}
+
+aside tab > h3 {
+    color: #fff;
+}
+
+aside tab > p {
+    color: #ccc;
+}
+
+content {
+    display: block;
+    position: absolute;
+    top: 3em;
+    right: 0;
+    width: calc(100% - 270px);
+    padding: 10px;
+}
+
+content h1 {
+    color: #333;
+}
+
+content p {
+    color: #555;
+}
+
+.add-button {
+    width: calc(100% - 20px);
+    height: 2em;
+    border-radius: 5px;
+    position: absolute;
+    display: block;
+    background-color: #eee;
+    bottom: 10px;
+    left: 10px;
+    text-align: center;
+    color: #333;
+    line-height: 2em;
+}
+
+a {
+    cursor: pointer;
+}
