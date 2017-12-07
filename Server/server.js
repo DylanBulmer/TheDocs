@@ -14,11 +14,6 @@ var db = new database(data.mysql);
 // Make app use things
 app.use(bodyParser.json());
 
-app.get('/', function (req, res) {
-    // Send nothing
-    res.send();
-});
-
 app.post('/', function (req, res) {
     res.send({
         'host': data.host,
@@ -29,6 +24,20 @@ app.post('/', function (req, res) {
 app.post('/login', function (req, res) {
     let { username, password } = req.body;
     db.login(username, password, function (data) {
+        res.json(data);
+    });
+});
+
+app.post('/register', function (req, res) {
+    let profile = req.body;
+    db.register(profile, function (data) {
+        res.json(data);
+    });
+});
+
+app.get('/search', function (req, res) {
+    let keyword = req.query.key;
+    db.searchKeyword(keyword, function (data) {
         res.json(data);
     });
 });

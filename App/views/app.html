@@ -4,33 +4,126 @@
     <meta charset="UTF-8">
     <title>The Docs</title>
     <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/markdown.css" />
 </head>
 <body>
     <topbar>
-        <img src="../image/TheDocsLogoSmall_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 46px;" />
+        <img src="../image/TheDocsLogoSmall_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 46px; cursor: pointer;"  onclick="viewPage('c_main')" />
         <span>
-            <span style="vertical-align: middle;">Welcome Person!</span>
+            <span style="vertical-align: middle;">Welcome [name]!</span>
             <a>Logout</a>
         </span>
     </topbar>
     <aside>
-        <input type="text" class="search" placeholder="Search..."/>
-        <tabs>
+        <input type="text" class="search" id="liveSearch" placeholder="Search The Docs"/>
+        <!-- Add in an <ol> of suggestions positioned right below the input box -->
+        <tabs id="dump">
             <tab class="wrapper"></tab>
             <tab>
-                <h3>No problems yet!</h3>
+                <h3>No documents yet!</h3>
                 <p>Create a new one!</p>
             </tab>
         </tabs>
-        <a class="add-button">
-            Create new problem
+        <a class="add-button" onclick="viewPage('c_new')">
+            Document a problem!
         </a>
     </aside>
-    <content>
-        <h1>Welcome to The Docs!</h1><br>
+    <content id="c_main"> <!-- Landing page for app -->
+        <h1>Welcome to The Docs!</h1>
+        <br>
         <p>This application allows you to document any problem for any project you may be a part of!</p>
-        <p>To start using the application, please create your first problem with the button in the bottom, left-hand side!</p>
+        <p>To start using the application, please create your first document with the button in the bottom, left-hand corner!</p>
     </content>
+    <content id="c_new"> <!-- New document page -->
+        <input style="width: calc(100% - 20px); height: 2em; font-size: 2em; font-weight: bold;" class="field" placeholder="New Document" id="n_title"/><br />
+        <span class="desc" style="width: calc(100% - 20px)">By [name] on [date] at [time]</span><br />
+        <span class="desc">Description:</span>
+        <textarea rows="2" class="field" placeholder="Short description of the problem you encountered." id="n_desc"></textarea><br />
+        <span class="desc">Helpful URL:</span>
+        <input class="field" placeholder="https://example.com/forum/1234/artical-of-solution" id="n_url"/><br />
+        <span class="desc">Keywords:</span>
+        <input class="field" placeholder="Please seperate with commas ','" id="n_keywords" /><br />
+        <span class="desc">Solution:</span>
+        <textarea rows="15" class="field" placeholder="Detailed description of how you solved the problem you encountered. If you supplied a URL, explain how it helped you." id="n_solution"></textarea><br />
+        Use markdown to style your documentation! <a onclick="viewPage('c_pre')">Preview</a>
+    </content>
+    <content id="c_pre"> <!-- New document preview page -->
+        <span style="width: calc(100% - 20px); height: 2em; font-size: 2em; font-weight: bold;" class="field" id="p_title"></span><br />
+        <span class="desc" style="width: calc(100% - 20px)">By [name] on [date] at [time]</span><br />
+        <span class="desc">Description:</span>
+        <span class="field" id="p_desc"></span><br />
+        <span class="desc">Helpful URL:</span>
+        <span class="field" id="p_url"></span><br />
+        <span class="desc">Keywords:</span>
+        <span class="field" id="p_keywords"></span><br />
+        <span class="desc">Solution:</span>
+        <span class="field" id="p_solution"></span><br />
+        <a onclick="viewPage('c_new')">Edit</a>
+    </content>
+    <script> // Live search script
+        var Store = require('../modules/store');
+        var store = new Store({ configName: 'user-preferences' });
+
+        document.getElementById("liveSearch").addEventListener("keyup", function liveSearch() {
+            let keyword = document.getElementById("liveSearch").value;
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let dump = document.getElementById("dump");
+                    let result = JSON.parse(this.responseText);
+
+                    dump.innerHTML = "";
+                    console.log(result.length);
+                    if (result.length == 0) {
+                        let tab = document.createElement("tab");
+                        tab.style.textAlign = "center";
+                        tab.innerHTML = "<h3>No documents found!</h3><p>Create a new one!</p>";
+                        dump.appendChild(tab);
+                    } else {
+                        // Add wrapper
+                        let tab = document.createElement("tab");
+                        tab.setAttribute("class", "wrapper");
+                        dump.appendChild(tab);
+                        // Add all results
+                        for (i = 0; i < result.length; i++) {
+                            tab = document.createElement("tab");
+                            tab.innerHTML = JSON.stringify(result[i]);
+                            dump.appendChild(tab);
+                        }
+                    }
+                }
+            }
+            xhttp.open("GET", store.get("url") + "/search?key=" + keyword, true);
+            xhttp.send();
+        });
+    </script>
+    <script> // This script changes pages
+        var md = require('markdown-it')();
+
+        var cpage = "c_main";
+        var viewPage = function viewPage(page) {
+            document.getElementById(cpage).style.display = "none";
+            document.getElementById(page).style.display = "block";
+            cpage = page;
+
+            if (page == "c_pre") { // Updating preview page
+                let title = document.getElementById("p_title");
+                let desc = document.getElementById("p_desc");
+                let url = document.getElementById("p_url");
+                let keywords = document.getElementById("p_keywords");
+                let solution = document.getElementById("p_solution");
+
+                title.innerHTML = document.getElementById("n_title").value;
+                desc.innerHTML = document.getElementById("n_desc").value;
+                url.innerHTML = document.getElementById("n_url").value;
+                keywords.innerHTML = document.getElementById("n_keywords").value;
+                solution.innerHTML = md.render(document.getElementById("n_solution").value);
+            }
+        }
+
+        viewPage(cpage);
+    </script>
 </body>
 </html>

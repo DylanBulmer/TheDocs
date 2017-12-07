@@ -7,6 +7,7 @@
     "name": "Programming"
   },
   "dependencies": {
-    "electron": "^1.7.9"
+    "electron": "^1.7.9",
+    "markdown-it": "^8.4.0"
   }
 }

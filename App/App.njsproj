@@ -38,6 +38,10 @@
     <Content Include="css\app.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\login.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\markdown.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="image\TheDocsLogoSmall.png" />
     <Content Include="image\TheDocsLogoSmall.svg" />
     <Content Include="image\TheDocsLogoSmall_White.png" />
@@ -46,6 +50,7 @@
     <Content Include="README.md" />
     <Content Include="views\app.html" />
     <Content Include="views\index.html" />
+    <Content Include="views\register.html" />
     <Content Include="views\login.html" />
   </ItemGroup>
   <ItemGroup>

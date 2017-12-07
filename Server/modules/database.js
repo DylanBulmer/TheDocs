@@ -1,5 +1,6 @@
 var bcrypt = require('bcrypt');
 var mysql = require('mysql');
+var settings = require("../config.json");
 
 module.exports = class database {
     constructor(data) {
@@ -44,6 +45,7 @@ module.exports = class database {
         let user;
         this.db.query("SELECT * FROM users", function (err, result) {
             if (err) throw err;
+            console.log("User is connecting");
             for (let i = 0; i < result.length; i++) {
                 if (result[i].username == username || result[i].email == username) {
                     // Tests to see if passwords match
@@ -75,5 +77,56 @@ module.exports = class database {
         });
     }
 
-    // Search metheod - use socket.io for live search?
+    // Register User
+    register(profile, callback) {
+        let user;
+        let db = this.db;
+        console.log(profile);
+        this.db.query("SELECT * FROM users", function (err, result) {
+            if (err) throw err;
+            if (settings.code != profile.code) {
+                return callback({
+                    "err": "Invailid Registration Code!"
+                });
+            } else {
+                for (let i = 0; i < result.length; i++) {
+                    if (result[i].username == profile.username) {
+                        return callback({
+                            "err": "That username is already in use!"
+                        });
+                    } else if (result[i].email == profile.email) {
+                        return callback({
+                            "err": "That email is already in use!"
+                        });
+                    }
+                }
+                bcrypt.hash(profile.password, 10, function (err, hash) {
+                    db.query("INSERT INTO users (name_first, name_last, username, email, password) VALUES ('" + profile.fname + "', '" + profile.lname + "', '" + profile.username + "', '" + profile.email + "', '" + hash + "' )")
+                });
+                return callback({
+                    "result": profile,
+                    "err": ""
+                });
+            }
+        });
+    }
+
+    // Search method used with AJAX
+    searchKeyword(key, callback) {
+        this.db.query("SELECT * FROM keywords WHERE keyword LIKE '%" + key + "%'", function (err, rows, fields) {
+            if (err) throw err;
+            var data = [];
+            for (let i = 0; i < rows.length; i++) {
+                data.push(rows[i]);
+            }
+            callback(data);
+        });
+    }
+
+    createProblem() {
+        //do stuff
+    }
 }
+
+// Document Table
+// CREATE TABLE 'documents' ('id' INT(10) NOT NULL AUTO_INCREMENT,'user_id' INT(4) ZEROFILL NOT NULL,'title' VARCHAR(225) NOT NULL,'url' VARCHAR(255) NULL,'description' VARCHAR(255) NOT NULL, 'solution' BLOB NOT NULL, PRIMARY KEY ('id'), UNIQUE INDEX 'id_UNIQUE'('id' ASC));

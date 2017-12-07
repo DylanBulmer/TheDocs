@@ -54,7 +54,7 @@
 
         let msg = document.getElementById('msg');
 
-        var submition = function () {
+        var submition = function submition() {
             let host = document.getElementById('url').value;
 
             // do ajax stuff to check for server...
@@ -103,10 +103,12 @@
                     }
                 };
                 if (host.substring(0, 7) != "http://" || host.substring(0, 8) != "https://") {
-                    store.set("host", "http://" + host + ":1337");
+                    store.set("host", host);
+                    store.set("url", "http://" + host + ":1337");
                     xhttp.open("POST", "http://" + host + ":1337", true);
                 } else {
-                    store.set("host", host + ":1337");
+                    store.set("host", host);
+                    store.set("url", host + ":1337");
                     xhttp.open("POST", host + ":1337", true);
                 }
                 xhttp.send();
@@ -114,6 +116,12 @@
                 msg.innerHTML = 'Please enter a URL or IPv4 address';
             }
             return false;
+        }
+
+        // Autologin if URL is set.
+        if (store.get('url')) {
+            let host = document.getElementById('url');
+            host.value = store.get("host");
         }
 
     </script>

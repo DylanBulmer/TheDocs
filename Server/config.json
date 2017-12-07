@@ -3,10 +3,11 @@
   "url": "127.0.0.1",
   "host": "localhost",
   "secret": "abcABC123!@#/pattern/xyzXYZ890*()/no/well/maybe",
+  "code": "1234567890",
   "mysql": {
     "host": "localhost",
-    "database": "website",
-    "user": "website",
+    "database": "thedocs",
+    "user": "thedocs",
     "password": "password"
   }
 }

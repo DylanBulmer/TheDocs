@@ -11,12 +11,17 @@
     <a href="./index.html"><img src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 10px; left: 10px;" /></a>
 
     <form id="form" style="display: inline-block; width: 250px;" onsubmit="event.preventDefault(); submition();">
-        <span>Log into The Docs!</span><br>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
+        <span>Resister To The Docs!</span><br>
+        <input type="text" id="fname" placeholder="First Name" style="display: inline-block; width: calc(50% - 13px);" required>
+        <input type="text" id="lname" placeholder="Last Name" style="display: inline-block; width: calc(50% - 13px);" required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirm_password" placeholder="Confirm Password" required>
+        <input type="text" id="code" placeholder="Registration Code" required>
         <button id="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button><br>
         <span id="msg"></span>
-        <span style="text-align: right; width: 100%; display: block;">Not a user? Resister <a href="register.html">here</a>!</span>
+        <span style="text-align: right; width: 100%; display: block;">Already a user? Login <a href="login.html">here</a>!</span>
     </form>
 
     <script>
@@ -30,10 +35,15 @@
 
         var submition = function () {
             let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
+            let cpassword = document.getElementById('confirm_password').value;
+            let fname = document.getElementById('fname').value;
+            let lname = document.getElementById('lname').value;
+            let code = document.getElementById('code').value;
 
             // do ajax stuff to check for server...
-            if (username != "" && password != "") {
+            if (password == cpassword) {
                 // create request
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
@@ -53,7 +63,7 @@
                                 break;
                             case 1:
                             case 2:
-                                msg.innerHTML = 'Logging in <i class="fa fa-cog fa-spin fa-fw"></i>';
+                                msg.innerHTML = 'Registering <i class="fa fa-cog fa-spin fa-fw"></i>';
                                 break;
                             case 3:
                                 msg.innerHTML = 'Loading data <i class="fa fa-cog fa-spin fa-fw"></i>';
@@ -77,9 +87,18 @@
                         }
                     }
                 };
-                xhttp.open("POST", store.get('url') + "/login", true);
+                xhttp.open("POST", store.get('url') + "/register", true);
                 xhttp.setRequestHeader("Content-Type", "application/json");
-                xhttp.send(JSON.stringify({ username: username, password: password }));
+                xhttp.send(JSON.stringify(
+                    {
+                        username: username,
+                        email: email,
+                        fname: fname,
+                        lname: lname,
+                        password: password,
+                        code: code,
+                    }
+                ));
             } else {
                 msg.innerHTML = 'Please enter your username and password!';
             }

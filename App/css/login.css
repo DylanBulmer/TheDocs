@@ -1,9 +1,10 @@
 * {
     text-align: center;
     color: #fff;
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    cursor: default;
+}
+
+body {
+    background-color: #1177FF;
 }
 
 input {
