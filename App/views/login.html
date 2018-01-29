@@ -38,12 +38,12 @@
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
-                        result = JSON.parse(this.responseText)
+                        result = JSON.parse(this.responseText);
                         if (result.err) {
                             msg.innerHTML = result.err;
                         } else {
                             msg.innerHTML = "Logged In!";
-                            console.log(result.result);
+                            store.setUser(result.result);
                             window.location.href = __dirname + "/app.html";
                         }
                     } else {

@@ -5,6 +5,66 @@
     cursor: default;
 }
 
-a {
+a, select {
     cursor: pointer;
+}
+
+input, textarea {
+    cursor: text;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline-color: #555;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.custom-dropdown select {
+    background-color: #555;
+    color: #fff;
+    font-size: inherit;
+    padding: 0.25em .5em;
+    padding-right: 2.5em;	
+    border: 0;
+    margin: 0;
+    border-radius: 3px;
+    text-indent: 0.01px;
+    /*Hiding the select arrow for chrome*/
+    -webkit-appearance:none;
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+    content: "\25BC";
+    color: #fff;
+    height: 1em;
+    font-size: .625em;
+    line-height: 1;
+    right: 1.2em;
+    top: 50%;
+    margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+    width: 2em;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0 3px 3px 0;
+    background-color: rgba(0,0,0,.2);
+}
+
+.custom-dropdown select option:disabled {
+    color: #ccc;
 }

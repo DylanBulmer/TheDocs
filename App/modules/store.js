@@ -19,6 +19,26 @@ class Store {
         this.data[key] = val;
         fs.writeFileSync(this.path, JSON.stringify(this.data));
     }
+
+    setUser(data) {
+        console.log(data);
+        this.data['logged_in'] = true;
+        this.data['user'] = {
+            username: data.username,
+            name: {
+                first: data.name_first,
+                last: data.name_last
+            },
+            id: data.id
+        };
+        fs.writeFileSync(this.path, JSON.stringify(this.data));
+    }
+
+    removeUser() {
+        this.data['logged_in'] = false;
+        this.data['user'] = {};
+        fs.writeFileSync(this.path, JSON.stringify(this.data));
+    }
     
     parseDataFile(filePath, defaults) {
         try {

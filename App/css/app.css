@@ -44,15 +44,19 @@ aside {
     color: #ffffff;
     height: calc(100vh - 3em);
     width: 250px;
+    overflow-y: auto;
 }
 
 aside > .search {
     width: calc(100% - 20px);
-    margin: 5px;
+    margin: 0 5px 5px 5px;
     padding: 5px;
     border-radius: 5px;
     cursor: text;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 aside > tabs {
@@ -60,42 +64,54 @@ aside > tabs {
     width: 100%;
 }
 
-aside > tabs > tab {
+aside > tabs > tab, info {
     display: block;
-    width: calc(100% - 20px);
-    height: calc(3em - 20px);
-    padding: 10px;
+    position: relative;
+    width: calc(100% - 30px);
+    padding: 0;
+    left: 20px;
+    padding-bottom: 5px;
+    margin: 5px 0;
+    background: linear-gradient( to left, transparent 0%, #fff, transparent 100% ) left bottom no-repeat;
+    background-size: 80% 1px;
+    background-position: center bottom;
 }
 
-aside > tabs > tab:after {
+aside > tabs > tab:before {
     content: "";
     display: block;
-    margin: 0 auto;
-    width: 75%;
-    height: 10px;
-    border-bottom: 1px solid #FFFFFF;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    height: calc( 3em + 10px );
+    width: 100%;
+    background: linear-gradient(to right, transparent 80%, #1177ff );
 }
 
 aside tab.wrapper {
     border: 0;
     border-left: 5px solid #fff;
-    width: calc(100% - 5px);
+    width: calc(100% - 35px);
     height: 3em;
     margin: 0;
     position: absolute;
     left: 0;
+    background: transparent;
+    transition-duration: 0.5s;
 }
 
-aside tab.wrapper:after {
+aside tab.wrapper:before {
     display: none;
 }
 
-aside tab > h3 {
+aside tab > h3, info > h3 {
     color: #fff;
 }
 
-aside tab > p {
+aside tab > p, info > p {
     color: #ccc;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 content {
@@ -106,13 +122,6 @@ content {
     width: calc(100% - 270px);
     padding: 10px;
     background-color: #fff;
-}
-
-content h1 {
-    color: #333;
-}
-
-content p {
     color: #555;
 }
 
@@ -120,7 +129,7 @@ content p {
     width: calc(100% - 20px);
     height: 2em;
     border-radius: 5px;
-    position: absolute;
+    position: sticky;
     display: block;
     background-color: #eee;
     bottom: 10px;
@@ -139,10 +148,29 @@ content p {
     resize: none;
 }
 
+.field:focus {
+    width: calc(100% - 147px);
+}
+
 .desc {
     display: inline-block;
     width: 100px;
     padding: 10px;
     margin: 5px 0;
     vertical-align: text-top;
+}
+
+.p_btn {
+    display: inline-block;
+    padding: 5px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+    float: right;
+    margin: 5px;
+}
+
+input.new {
+    padding: 0.25em 0.5em;
+    font-size: 1em;
 }

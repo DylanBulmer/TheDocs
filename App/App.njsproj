@@ -5,8 +5,7 @@
     <Name>App</Name>
     <RootNamespace>TheDocs</RootNamespace>
     <NodeExePath>E:\Projects\Visual Studio\TheDocs\App\node_modules\electron\dist\electron.exe</NodeExePath>
-    <NodeExeArguments>
-    </NodeExeArguments>
+    <NodeExeArguments>--inspect-brk</NodeExeArguments>
     <DebuggerPort>9229</DebuggerPort>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -19,7 +18,7 @@
     <StartupFile>app.js</StartupFile>
     <SearchPath>
     </SearchPath>
-    <WorkingDirectory>.</WorkingDirectory>
+    <WorkingDirectory>E:\Projects\Visual Studio\TheDocs\App</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
@@ -34,18 +33,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="js\pageViewer.js" />
+    <Compile Include="js\submit.js" />
     <Compile Include="modules\store.js" />
     <Content Include="css\app.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\hljs.css" />
     <Content Include="css\login.css" />
     <Content Include="css\main.css" />
     <Content Include="css\markdown.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <Content Include="image\TheDocsLogoSmall.png" />
     <Content Include="image\TheDocsLogoSmall.svg" />
     <Content Include="image\TheDocsLogoSmall_White.png" />
     <Content Include="image\TheDocsLogoSmall_White.svg" />
+    <Content Include="js\liveSearch.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\app.html" />
@@ -55,7 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
+    <Folder Include="fonts\" />
     <Folder Include="image\" />
+    <Folder Include="js\" />
     <Folder Include="modules\" />
     <Folder Include="views\" />
   </ItemGroup>
