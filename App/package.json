@@ -7,7 +7,7 @@
   "repository": "https://github.com/DylanBulmer/TheDocs",
   "license": "CC0-1.0",
   "dependencies": {
-    "electron": "^1.7.9",
+    "electron": "^1.8.1",
     "electron-updater": "^2.20.1",
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.4.0"
