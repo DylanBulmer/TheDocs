@@ -9,6 +9,32 @@ const Store = require('./modules/store');
 let mainWindow;
 let views = __dirname + "/views/";
 
+// Auto check for updates every 5 minutes
+setInterval(() => {
+    autoUpdater.checkForUpdates()
+}, (5 * 60 * 1000))
+
+// Ask user to quit and restart after update has been downloaded
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+    const dialogOpts = {
+        type: 'info',
+        buttons: ['Restart', 'Later'],
+        title: 'Application Update',
+        message: process.platform === 'win32' ? releaseNotes : releaseName,
+        detail: 'An update has been downloaded! Restart the application to apply the updates.'
+    }
+
+    dialog.showMessageBox(dialogOpts, (response) => {
+        if (response === 0) autoUpdater.quitAndInstall();
+    });
+});
+
+// Report errors
+autoUpdater.on('error', message => {
+    console.error('There was a problem updating the application')
+    console.error(message)
+});
+
 function createWindow() {
     const store = new Store({
         configName: 'user-preferences',

@@ -1,16 +1,21 @@
 {
   "name": "the-docs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "TheDocs is an open source program that allows you to document problems that you run into on everyday tasks, development project, even a chemical procedure.",
   "main": "app.js",
   "author": "DylanBulmer",
   "repository": "https://github.com/DylanBulmer/TheDocs",
-  "license": "CC0-1.0",
+  "url": "https://github.com/DylanBulmer/TheDocs/issues",
+  "email": "piggahbro@gmail.com",
+  "license": "CC-BY-SA-4.0",
   "dependencies": {
-    "electron": "^1.8.1",
     "electron-updater": "^2.20.1",
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.4.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^19.55.3",
+    "electron": "^1.8.1"
   },
   "build": {
     "publish": [
@@ -31,5 +36,8 @@
     "nsis": {
       "perMachine": true
     }
+  },
+  "scripts": {
+    "publish": "build --win -p always"
   }
 }
