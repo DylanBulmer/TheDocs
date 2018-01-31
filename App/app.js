@@ -1,18 +1,22 @@
-const { app, autoUpdater, dialog, BrowserWindow } = require('electron');
+'use strict';
+const { app, dialog, BrowserWindow } = require('electron');
+const autoUpdater = require("electron-updater").autoUpdater;
 
 const path = require('path');
 const url = require('url');
 const Store = require('./modules/store');
+
+const isDev = require('electron-is-dev');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let views = __dirname + "/views/";
 
-// Auto check for updates every 5 minutes
-setInterval(() => {
-    autoUpdater.checkForUpdates()
-}, (5 * 60 * 1000))
+// Change the path if in development
+if (isDev) {
+    autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml');
+}
 
 // Ask user to quit and restart after update has been downloaded
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
@@ -53,7 +57,7 @@ function createWindow() {
     }));
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools();
 
     mainWindow.on('resize', function () {
         let b = mainWindow.getBounds();
@@ -72,7 +76,18 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+    // Create new window
+    createWindow();
+
+    // Auto check for updates every 5 minutes
+    setInterval(() => {
+        autoUpdater.checkForUpdates()
+    }, (5 * 60 * 1000))
+
+    // Check now
+    autoUpdater.checkForUpdates();
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

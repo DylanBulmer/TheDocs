@@ -44,6 +44,7 @@
     <Content Include="css\markdown.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="dev-app-update.yml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fontawesome-webfont.ttf" />

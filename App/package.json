@@ -1,6 +1,6 @@
 {
   "name": "the-docs",
-  "version": "0.1.0",
+  "version": "0.1.1-beta",
   "description": "TheDocs is an open source program that allows you to document problems that you run into on everyday tasks, development project, even a chemical procedure.",
   "main": "app.js",
   "author": "DylanBulmer",
@@ -9,6 +9,7 @@
   "email": "piggahbro@gmail.com",
   "license": "CC-BY-SA-4.0",
   "dependencies": {
+    "electron-is-dev": "^0.3.0",
     "electron-updater": "^2.20.1",
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.4.0"
@@ -33,8 +34,21 @@
         "dmg"
       ]
     },
-    "nsis": {
-      "perMachine": true
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
     }
   },
   "scripts": {
