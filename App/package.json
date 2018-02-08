@@ -1,9 +1,10 @@
 {
   "name": "the-docs",
-  "version": "0.1.1-beta",
+  "version": "0.1.2-beta",
   "description": "TheDocs is an open source program that allows you to document problems that you run into on everyday tasks, development project, even a chemical procedure.",
   "main": "app.js",
-  "author": "DylanBulmer",
+  "author": "Dylan Bulmer",
+  "os": [ "Windows", "Mac OS" ],
   "repository": "https://github.com/DylanBulmer/TheDocs",
   "url": "https://github.com/DylanBulmer/TheDocs/issues",
   "email": "piggahbro@gmail.com",
@@ -27,6 +28,7 @@
       }
     ],
     "appId": "com.github.dylanbulmer.thedocs",
+    "productName": "The Docs",
     "mac": {
       "category": "public.app-category.Reference",
       "target": [
@@ -52,6 +54,7 @@
     }
   },
   "scripts": {
-    "publish": "build --win -p always"
+    "publish": "build --win -p always",
+    "build": "build --win"
   }
 }

@@ -14,7 +14,7 @@
         <img src="../image/TheDocsLogoSmall_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 46px; cursor: pointer;"  onclick="viewPage('c_main')" />
         <span>
             <span style="vertical-align: middle;">Welcome <span class="fname"></span>!</span>
-            <a>Logout</a>
+            <a onclick="logout()">Logout</a>
         </span>
     </topbar>
     <aside>
@@ -104,6 +104,12 @@
         let lnames = document.getElementsByClassName('lname');
         for (i = 0; i < lnames.length; i++) {
             lnames[i].innerText = user.name.last
+        }
+
+        // Logout handler
+        var logout = function logout() {
+            store.removeUser();
+            window.location.href = "login.html";
         }
     </script>
     <script src="../js/liveSearch.js"></script>

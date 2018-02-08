@@ -36,6 +36,8 @@
     <Compile Include="js\pageViewer.js" />
     <Compile Include="js\submit.js" />
     <Compile Include="modules\store.js" />
+    <Content Include="build\icon.ico" />
+    <Content Include="build\icon.icns" />
     <Content Include="css\app.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\hljs.css" />
@@ -69,6 +71,7 @@
     <Folder Include="image\" />
     <Folder Include="js\" />
     <Folder Include="modules\" />
+    <Folder Include="build\" />
     <Folder Include="views\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
