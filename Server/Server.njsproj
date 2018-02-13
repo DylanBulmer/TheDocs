@@ -36,6 +36,8 @@
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="start.bat" />
+    <Content Include="start.sh" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="modules\" />

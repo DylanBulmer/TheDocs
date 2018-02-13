@@ -2,8 +2,8 @@
   "port": 1337,
   "url": "127.0.0.1",
   "host": "localhost",
-  "secret": "abcABC123!@#/pattern/xyzXYZ890*()/no/well/maybe",
-  "code": "1234567890",
+  "secret": "secret_key",
+  "code": "1234",
   "mysql": {
     "host": "localhost",
     "database": "thedocs",

@@ -2,7 +2,7 @@ var bcrypt = require('bcrypt');
 var mysql = require('mysql');
 var settings = require("../config.json");
 
-module.exports = class database {
+class database {
     constructor() {
         this.data = settings.mysql;
         this.isConnected = false;
@@ -23,9 +23,10 @@ module.exports = class database {
                 if (self.data.database == "") {
                     console.log("Please enter a database in the config.json file!");
                 } else {
+                    console.log();
                     console.log("MySQL Connection Established");
                     self.isConnected = true;
-                    // add table testing
+                    self.verifyDataBase();
                 }
             }
 
@@ -38,6 +39,45 @@ module.exports = class database {
                     throw err;
                 }
             });
+        });
+    }
+
+    verifyDataBase() {
+        // POST: Checks to see if everything is set up correctly
+        console.log();
+        console.log("Checking tables...");
+        console.log();
+        this.db.query("CREATE TABLE IF NOT EXISTS `users` (`id` int(4) NOT NULL AUTO_INCREMENT,`username` varchar(20) NOT NULL,`password` varchar(255) NOT NULL,`email` varchar(254) NOT NULL,`name_first` varchar(50) NOT NULL,`name_last` varchar(45) NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`),UNIQUE KEY `username_UNIQUE` (`username`),UNIQUE KEY `email_UNIQUE` (`email`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;", (err, result) => {
+            if (err) {
+                console.log(err.message);
+                console.log("CREATE TABLE 'Users' ........ Failed");
+            } else {
+                console.log("TABLE 'Users' .......... Good");
+            }
+        });
+        this.db.query("CREATE TABLE IF NOT EXISTS `projects` (`id` int(4) NOT NULL AUTO_INCREMENT,`name` varchar(50) NOT NULL DEFAULT 'Unnamed Project',PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;", (err, result) => {
+            if (err) {
+                console.log(err.message);
+                console.log("CREATE TABLE 'Projects' ..... Failed");
+            } else {
+                console.log("TABLE 'Projects' ....... Good");
+            }
+        });
+        this.db.query("CREATE TABLE IF NOT EXISTS `keywords` (`id` int(20) NOT NULL AUTO_INCREMENT,`keyword` varchar(50) NOT NULL,`doc_id` int(10) unsigned NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;", (err, result) => {
+            if (err) {
+                console.log(err.message);
+                console.log("CREATE TABLE 'Keywords' ..... Failed");
+            } else {
+                console.log("TABLE 'Keywords' ....... Good");
+            }
+        });
+        this.db.query("CREATE TABLE IF NOT EXISTS `documents` (`id` int(10) NOT NULL AUTO_INCREMENT,`user_id` int(4) NOT NULL,`project_id` int(4) NOT NULL,`title` varchar(60) NOT NULL,`url` varchar(255) DEFAULT NULL,`description` varchar(255) NOT NULL,`solution` blob NOT NULL,`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;", (err, result) => {
+            if (err) {
+                console.log(err.message);
+                console.log("CREATE TABLE 'Documents' .... Failed");
+            } else {
+                console.log("TABLE 'Documents' ...... Good");
+            }
         });
     }
 
@@ -285,3 +325,8 @@ module.exports = class database {
 
 // Document Table
 // CREATE TABLE 'documents' ('id' INT(10) NOT NULL AUTO_INCREMENT,'user_id' INT(4) ZEROFILL NOT NULL,'title' VARCHAR(225) NOT NULL,'url' VARCHAR(255) NULL,'description' VARCHAR(255) NOT NULL, 'solution' BLOB NOT NULL, PRIMARY KEY ('id'), UNIQUE INDEX 'id_UNIQUE'('id' ASC));
+// CREATE TABLE IF NOT EXISTS `documents` (`id` int(10) NOT NULL AUTO_INCREMENT,`user_id` int(4) NOT NULL,`project_id` int(4) NOT NULL,`title` varchar(60) NOT NULL,`url` varchar(255) DEFAULT NULL,`description` varchar(255) NOT NULL,`solution` blob NOT NULL,`created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+// CREATE TABLE IF NOT EXISTS `keywords` (`id` int(20) NOT NULL AUTO_INCREMENT,`keyword` varchar(50) NOT NULL,`doc_id` int(10) unsigned NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+// CREATE TABLE IF NOT EXISTS `projects` (`id` int(4) NOT NULL AUTO_INCREMENT,`name` varchar(50) NOT NULL DEFAULT 'Unnamed Project',PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+// CREATE TABLE IF NOT EXISTS `users` (`id` int(4) NOT NULL AUTO_INCREMENT,`username` varchar(20) NOT NULL,`password` varchar(255) NOT NULL,`email` varchar(254) NOT NULL,`name_first` varchar(50) NOT NULL,`name_last` varchar(45) NOT NULL,PRIMARY KEY (`id`),UNIQUE KEY `id_UNIQUE` (`id`),UNIQUE KEY `username_UNIQUE` (`username`),UNIQUE KEY `email_UNIQUE` (`email`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+module.exports = new database();

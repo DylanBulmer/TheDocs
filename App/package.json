@@ -54,7 +54,8 @@
     }
   },
   "scripts": {
-    "publish": "build --win -p always",
-    "build": "build --win"
+    "publish-win": "build --win -p always",
+    "build-win": "build --win",
+    "build-mac": "build --mac"
   }
 }

@@ -8,19 +8,21 @@ var data = require('./config.json');
 var port = data.port;
 
 //MySQL Setup
-var database = require('./modules/database');
-var db = new database();
+var db = require('./modules/database');
 
-// Make app use things
+// Make the server use things
 app.use(bodyParser.json());
 
+// Verify a connection
 app.post('/', function (req, res) {
     res.send({
+        'url': data.url,
         'host': data.host,
         'check': true
     });
 });
 
+// Login to the docs
 app.post('/login', function (req, res) {
     let { username, password } = req.body;
     db.login(username, password, function (data) {
@@ -28,6 +30,7 @@ app.post('/login', function (req, res) {
     });
 });
 
+// Register a user
 app.post('/register', function (req, res) {
     let profile = req.body;
     db.register(profile, function (data) {
@@ -35,6 +38,7 @@ app.post('/register', function (req, res) {
     });
 });
 
+// Serach the docs
 app.get('/search', function (req, res) {
     let keyword = req.query.key;
     db.searchKeyword(keyword, function (data) {
@@ -42,6 +46,7 @@ app.get('/search', function (req, res) {
     });
 });
 
+// Create a new doc
 app.post('/new', function (req, res) {
     let doc = req.body;
 
@@ -89,12 +94,14 @@ app.post('/new', function (req, res) {
     }
 });
 
+// Get projects
 app.get('/projects', function (req, res) {
     db.getProjects(function (projects) {
         res.json(projects);
     });
 });
 
+// Get a doc by it's ID
 app.post('/doc', function (req, res) {
     let post = req.body;
     db.getDoc(post.id, function (doc) {
@@ -103,8 +110,8 @@ app.post('/doc', function (req, res) {
 });
 
 app.listen(port, function () {
-    console.log('TheDocs Server running on '+port+'!')
-});
+    console.log('TheDocs Server running on ' + port + '!')
 
-// Database Functions
-db.connect();
+    // Connect to database after the app starts running
+    db.connect();
+});
