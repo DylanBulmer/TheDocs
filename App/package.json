@@ -4,20 +4,23 @@
   "description": "Solve problems from past experiences",
   "main": "app.js",
   "author": "Dylan Bulmer",
-  "os": [ "Windows", "Mac OS" ],
+  "os": [
+    "Windows",
+    "Mac OS"
+  ],
   "repository": "https://github.com/DylanBulmer/TheDocs",
   "url": "https://github.com/DylanBulmer/TheDocs/issues",
   "email": "piggahbro@gmail.com",
   "license": "CC-BY-SA-4.0",
   "dependencies": {
     "electron-is-dev": "^0.3.0",
-    "electron-updater": "^2.20.1",
+    "electron-updater": "^2.20.2",
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.4.0"
   },
   "devDependencies": {
-    "electron-builder": "^19.55.3",
-    "electron": "^1.8.1"
+    "electron": "1.8.2",
+    "electron-builder": "^19.56.2"
   },
   "build": {
     "publish": [
@@ -39,7 +42,11 @@
     "win": {
       "target": [
         {
-          "target": [ "nsis", "msi", "appx" ],
+          "target": [
+            "nsis",
+            "msi",
+            "appx"
+          ],
           "arch": [
             "x64",
             "ia32"
