@@ -1,7 +1,7 @@
 {
   "name": "the-docs",
-  "version": "0.1.2-beta",
-  "description": "TheDocs is an open source program that allows you to document problems that you run into on everyday tasks, development project, even a chemical procedure.",
+  "version": "0.1.3-beta",
+  "description": "Solve problems from past experiences",
   "main": "app.js",
   "author": "Dylan Bulmer",
   "os": [ "Windows", "Mac OS" ],
@@ -39,7 +39,7 @@
     "win": {
       "target": [
         {
-          "target": "nsis",
+          "target": [ "nsis", "msi", "appx" ],
           "arch": [
             "x64",
             "ia32"

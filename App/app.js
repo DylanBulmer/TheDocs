@@ -79,16 +79,16 @@ function createWindow() {
 app.on('ready', () => {
     app.setAppUserModelId('com.github.dylanbulmer.thedocs');
 
-    // Create new window
-    createWindow();
-
-    // Auto check for updates every 5 minutes
+    // Auto check for updates every 10 minutes
     setInterval(() => {
         autoUpdater.checkForUpdates()
-    }, (5 * 60 * 1000))
+    }, (10 * 60 * 1000));
 
     // Check now
     autoUpdater.checkForUpdates();
+
+    // Create new window
+    createWindow();
 });
 
 // Quit when all windows are closed.

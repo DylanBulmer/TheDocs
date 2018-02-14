@@ -1,14 +1,28 @@
 {
   "name": "server",
-  "version": "0.0.0",
+  "version": "0.1.1-beta",
   "description": "Server",
   "main": "server.js",
-  "author": {
-    "name": "Programming"
-  },
+  "author": "Dylan Bulmer",
+  "os": [
+    "Windows",
+    "Mac OS"
+  ],
+  "repository": "https://github.com/DylanBulmer/TheDocs",
+  "url": "https://github.com/DylanBulmer/TheDocs/issues",
+  "email": "piggahbro@gmail.com",
+  "license": "CC-BY-SA-4.0",
   "dependencies": {
     "bcrypt": "^1.0.3",
     "express": "^4.16.2",
     "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "nexe": "^2.0.0-rc.24"
+  },
+  "scripts": {
+    "buildNode": "node build",
+    "build": "nexe server.js --build",
+    "help": "nexe --help"
   }
 }

@@ -1,6 +1,5 @@
 'use strict';
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
 
 // Settings
@@ -11,6 +10,7 @@ var port = data.port;
 var db = require('./modules/database');
 
 // Make the server use things
+var app = express();
 app.use(bodyParser.json());
 
 // Verify a connection

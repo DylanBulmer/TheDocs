@@ -29,6 +29,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="build.js" />
     <Compile Include="modules\database.js" />
     <Compile Include="server.js" />
     <Content Include="config.json">

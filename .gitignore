@@ -263,3 +263,5 @@ __pycache__/
 # Dist Directory
 App/dist/
 App/dev-app-update.yml
+*.zip
+/Server-v0.1.1-beta
