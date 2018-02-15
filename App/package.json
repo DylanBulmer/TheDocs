@@ -32,21 +32,13 @@
     ],
     "appId": "com.github.dylanbulmer.thedocs",
     "productName": "The Docs",
-    "mac": {
-      "category": "public.app-category.Reference",
-      "target": [
-        "zip",
-        "dmg"
-      ]
-    },
     "win": {
       "target": [
         {
-          "target": [
-            "nsis",
-            "msi",
-            "appx"
-          ],
+          "target": "appx"
+        },
+        {
+          "target": "nsis",
           "arch": [
             "x64",
             "ia32"
@@ -63,6 +55,7 @@
   "scripts": {
     "publish-win": "build --win -p always",
     "build-win": "build --win",
-    "build-mac": "build --mac"
+    "build-mac": "build --mac",
+    "build-linux": "build --linux"
   }
 }
