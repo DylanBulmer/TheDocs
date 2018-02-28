@@ -1,12 +1,13 @@
 {
-  "name": "server",
+  "name": "thedocs-server",
   "version": "0.1.1-beta",
-  "description": "Server",
+  "description": "Server for The Docs",
   "main": "server.js",
   "author": "Dylan Bulmer",
   "os": [
-    "Windows",
-    "Mac OS"
+    "win32",
+    "macOS",
+    "linux"
   ],
   "repository": "https://github.com/DylanBulmer/TheDocs",
   "url": "https://github.com/DylanBulmer/TheDocs/issues",
@@ -15,14 +16,13 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "express": "^4.16.2",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "pug": "^2.0.0-rc.4"
   },
   "devDependencies": {
-    "nexe": "^2.0.0-rc.24"
+    "nexe": "^2.0.0-rc.26"
   },
   "scripts": {
-    "buildNode": "node build",
-    "build": "nexe server.js --build",
-    "help": "nexe --help"
+    "build": "nexe server.js"
   }
 }

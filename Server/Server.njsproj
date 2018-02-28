@@ -31,17 +31,30 @@
   <ItemGroup>
     <Compile Include="build.js" />
     <Compile Include="modules\database.js" />
+    <Compile Include="public\js\pageViewer.js" />
     <Compile Include="server.js" />
+    <Compile Include="start.js" />
     <Content Include="config.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\image\TheDocsLogoSmall.png" />
+    <Content Include="public\image\TheDocsLogoSmall.svg" />
+    <Content Include="public\image\TheDocsLogoSmall_White.png" />
+    <Content Include="public\image\TheDocsLogoSmall_White.svg" />
     <Content Include="package.json" />
+    <Content Include="public\css\main.css" />
     <Content Include="README.md" />
     <Content Include="start.bat" />
     <Content Include="start.sh" />
+    <Content Include="views\admin.pug" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="public\image\" />
     <Folder Include="modules\" />
+    <Folder Include="public\" />
+    <Folder Include="public\css\" />
+    <Folder Include="public\js\" />
+    <Folder Include="views\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

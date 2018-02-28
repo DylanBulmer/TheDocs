@@ -1,0 +1,20 @@
+html
+    head
+        title Admin
+        link(rel="stylesheet" href="/css/main.css")
+    body
+        topbar
+            img(src="/image/TheDocsLogoSmall_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 46px; cursor: pointer;")
+            span
+                span(style="vertical-align: middle;")= 'Welcome, ' + user + '!'
+                    span(class="fname")
+                a(href="/logout" style="text-decoration: none;") Logout
+        aside
+            tabs
+                tab.wrapper
+                tab
+                    h3 Status
+                tab
+                    h3 General
+                tab
+                    h3 MySQL

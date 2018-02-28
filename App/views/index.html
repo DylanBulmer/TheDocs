@@ -41,6 +41,7 @@
     <form id="form" style="display: inline-block;" onsubmit="event.preventDefault(); submition();">
         <span>Please enter the URL of your server!</span><br>
         <input id="url" type="text" placeholder="http://example.com">
+        <input id="port" type="text" placeholder="(optional)" value="1337">
         <button id="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button><br>
         <span id="msg"></span>
     </form>
@@ -56,6 +57,7 @@
 
         var submition = function submition() {
             let host = document.getElementById('url').value;
+            let port = document.getElementById('port').value;
 
             // do ajax stuff to check for server...
             if (host != "") {
@@ -104,12 +106,22 @@
                 };
                 if (host.substring(0, 7) != "http://" || host.substring(0, 8) != "https://") {
                     store.set("host", host);
-                    store.set("url", "http://" + host + ":1337");
-                    xhttp.open("POST", "http://" + host + ":1337", true);
+                    if (!port) {
+                        store.set("url", "http://" + host);
+                        xhttp.open("POST", "http://" + host, true);
+                    } else {
+                        store.set("url", "http://" + host + ":" + port);
+                        xhttp.open("POST", "http://" + host + ":" + port, true);
+                    }
                 } else {
                     store.set("host", host);
-                    store.set("url", host + ":1337");
-                    xhttp.open("POST", host + ":1337", true);
+                    if (!port) {
+                        store.set("url", host);
+                        xhttp.open("POST", host, true);
+                    } else {
+                        store.set("url", host + ":1337");
+                        xhttp.open("POST", host + ":1337", true);
+                    }
                 }
                 xhttp.send();
             } else {

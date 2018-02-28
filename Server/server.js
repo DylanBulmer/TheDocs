@@ -1,23 +1,29 @@
 'use strict';
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const mysql = require('mysql');
+const path = require('path');
 
 // Settings
-var data = require('./config.json');
-var port = data.port;
+const settings = require("./config.json");
+const port = settings.port;
 
 //MySQL Setup
-var db = require('./modules/database');
+const db = require('./modules/database.js');
 
 // Make the server use things
-var app = express();
+const app = express();
 app.use(bodyParser.json());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Verify a connection
 app.post('/', function (req, res) {
     res.send({
-        'url': data.url,
-        'host': data.host,
+        'url': settings.url,
+        'host': settings.host,
         'check': true
     });
 });
@@ -107,6 +113,10 @@ app.post('/doc', function (req, res) {
     db.getDoc(post.id, function (doc) {
         res.json(doc);
     });
+});
+
+app.get('/admin', (req, res) => {
+    res.render('admin', {user: 'Test User'});
 });
 
 app.listen(port, function () {
