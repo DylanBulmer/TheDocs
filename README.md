@@ -10,7 +10,7 @@ Once registration has been completed you will be brought to the heart of the app
 
 ## Server Setup
 
-**Before doing anything with the server, make sure that node.js is installed! You can download it here: (https://nodejs.org/en/download/)[https://nodejs.org/en/download/]**
+**Before doing anything with the server, make sure that node.js is installed! You can download it here: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)**
 
 For Server setup, go under releases and download the latest server zip. Inside the package you will find the following files: `start.bat`, `start.sh`, `config.json`, and then the server script and the rest of the server's contents.
 
