@@ -15,14 +15,19 @@
   "license": "CC-BY-SA-4.0",
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "escape-string-regexp": "^1.0.5",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
     "pug": "^2.0.0-rc.4"
   },
   "devDependencies": {
-    "nexe": "^2.0.0-rc.26"
+    "pkg": "^4.3.0"
+  },
+  "pkg": {
+    "scripts": "public/**/*",
+    "assets": "views/*"
   },
   "scripts": {
-    "build": "nexe server.js"
+    "build": "pkg server.js --targets node8-win-x64"
   }
 }

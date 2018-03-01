@@ -4,6 +4,12 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const path = require('path');
+const pug = require('pug');
+
+// Require Web views and sources
+const admin = path.join(__dirname, '/views/admin.pug');
+const css = path.join(__dirname, '/public/css/main.css');
+const img = path.join(__dirname, '/public/image/TheDocsLogoSmall_White.svg');
 
 // Settings
 const settings = require("./config.json");
@@ -116,12 +122,18 @@ app.post('/doc', function (req, res) {
 });
 
 app.get('/admin', (req, res) => {
-    res.render('admin', {user: 'Test User'});
+    res.render(admin, { user: 'Test User' });
 });
 
 app.listen(port, function () {
-    console.log('TheDocs Server running on ' + port + '!')
+    console.log('TheDocs Server running on ' + port + '!');
 
-    // Connect to database after the app starts running
-    db.connect();
+    if (settings.firstTime == true) {
+        console.log('');
+        console.log('Please go to http://localhost:1337/admin to setup the server!');
+        console.log('');
+    } else {
+        // Connect to database after the app starts running
+        db.connect();
+    }
 });

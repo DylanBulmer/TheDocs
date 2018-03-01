@@ -29,11 +29,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="build.js" />
     <Compile Include="modules\database.js" />
     <Compile Include="public\js\pageViewer.js" />
     <Compile Include="server.js" />
-    <Compile Include="start.js" />
     <Content Include="config.json">
       <SubType>Code</SubType>
     </Content>
