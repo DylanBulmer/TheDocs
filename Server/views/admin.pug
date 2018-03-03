@@ -2,9 +2,10 @@ html
     head
         title Admin
         link(rel="stylesheet" href="/css/main.css")
+        link(rel="stylesheet" href="/css/markdown.css")
     body
         topbar
-            img(src="/image/TheDocsLogoSmall_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 46px; cursor: pointer;")
+            img(src="/image/TheDocsLogoNew_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 23.33px; cursor: pointer;")
             span
                 span(style="vertical-align: middle;")= 'Welcome, ' + user + '!'
                     span(class="fname")
@@ -20,6 +21,7 @@ html
                     h3 MySQL
         content
             h1 The Docs
-            p Running on port [port]
-            p MySQL: [Connected : Disconnected]
-            p Number of users: [users]
+            p= 'Running on port ' + data.port
+            blockquote
+                p!= '<b>MySQL:</b> ' + ((data.mysql.connection) ? 'Connected' : 'Disconnected')
+                p= 'Number of users: ' + data.mysql.users

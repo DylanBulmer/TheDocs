@@ -10,8 +10,11 @@
     "linux"
   ],
   "repository": "https://github.com/DylanBulmer/TheDocs",
-  "url": "https://github.com/DylanBulmer/TheDocs/issues",
-  "email": "piggahbro@gmail.com",
+  "bugs": {
+    "url": "https://github.com/DylanBulmer/TheDocs/issues",
+    "email": "piggahbro@gmail.com"
+  },
+  "url": "https://dylanbulmer.github.io/TheDocs/",
   "license": "CC-BY-SA-4.0",
   "dependencies": {
     "bcrypt": "^1.0.3",

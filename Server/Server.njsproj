@@ -30,11 +30,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="modules\database.js" />
+    <Compile Include="modules\store.js" />
     <Compile Include="public\js\pageViewer.js" />
     <Compile Include="server.js" />
     <Content Include="config.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\css\markdown.css" />
+    <Content Include="public\image\TheDocsLogo.png" />
+    <Content Include="public\image\TheDocsLogo.svg" />
+    <Content Include="public\image\TheDocsLogoNew_White.png" />
     <Content Include="public\image\TheDocsLogoSmall.png" />
     <Content Include="public\image\TheDocsLogoSmall.svg" />
     <Content Include="public\image\TheDocsLogoSmall_White.png" />

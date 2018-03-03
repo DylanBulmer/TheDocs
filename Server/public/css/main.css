@@ -36,6 +36,7 @@ input:focus, textarea:focus, select:focus {
 	text-indent: 0.01px;
 	/*Hiding the select arrow for chrome*/
 	-webkit-appearance: none;
+	-moz-appearance: none;
 }
 
 .custom-dropdown::before,
@@ -57,12 +58,13 @@ input:focus, textarea:focus, select:focus {
 }
 
 .custom-dropdown::before { /*  Custom dropdown arrow cover */
-	width: 2em;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	border-radius: 0 3px 3px 0;
-	background-color: rgba(0,0,0,.2);
+    width: 2em;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0 3px 3px 0;
+    background-color: #222222;
+    background-color: rgba(0,0,0,0.2);
 }
 
 .custom-dropdown select option:disabled {
@@ -167,4 +169,15 @@ aside tab > h3, info > h3 {
 	color: #fff;
 	line-height: 51px;
 	text-align: center;
+}
+
+content {
+    display: block;
+    position: absolute;
+    top: 3em;
+    right: 0;
+    width: calc(100% - 270px);
+    padding: 10px;
+    background-color: #fff;
+    color: #555;
 }

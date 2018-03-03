@@ -5,11 +5,13 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql');
 const path = require('path');
 const pug = require('pug');
+const store = require('./modules/store');
 
-// Require Web views and sources
+// Require Web views and sources to get packaged
 const admin = path.join(__dirname, '/views/admin.pug');
 const css = path.join(__dirname, '/public/css/main.css');
-const img = path.join(__dirname, '/public/image/TheDocsLogoSmall_White.svg');
+const cssMD = path.join(__dirname, '/public/css/markdown.css');
+const img = path.join(__dirname, '/public/image/TheDocsLogoNew_White.svg');
 
 // Settings
 const settings = require("./config.json");
@@ -71,7 +73,7 @@ app.post('/new', function (req, res) {
         db.createDocument(doc, keys, function callback(data) {
             res.json(data);
         });
-    }
+    };
 
     // Check for project
     if (doc['project_id'].new) {
@@ -79,7 +81,7 @@ app.post('/new', function (req, res) {
             let test = true;
             if (result.length > 0) {
                 for (let i = 0; i < result.length; i++) {
-                    if (result[i].name == doc['project_id'].new) {
+                    if (result[i].name === doc['project_id'].new) {
                         doc.project_id = result[i].id;
                         test = false;
                     }
@@ -122,13 +124,43 @@ app.post('/doc', function (req, res) {
 });
 
 app.get('/admin', (req, res) => {
-    res.render(admin, { user: 'Test User' });
+    let users;
+
+    let p = db.getNumUsers().then(data => {
+        users = data;
+    });
+
+    Promise.all([p]).then(() => {
+        res.render(admin, {
+            user: 'Test User',
+            data: {
+                port: settings.port,
+                mysql: {
+                    connection: db.isConnected,
+                    users: (db.isConnected) ? users : 'N/A'
+                }
+            }
+        });
+    });
+});
+
+app.post('/admin', (req, res) => {
+    res.render(admin, {
+        user: 'Test User',
+        data: {
+            port: settings.port,
+            mysql: {
+                connection: db.isConnected,
+                users: (db.isConnected) ? db.getNumUsers((data) => { console.log(data); return data}) : 'N/A'
+            }
+        }
+    });
 });
 
 app.listen(port, function () {
     console.log('TheDocs Server running on ' + port + '!');
 
-    if (settings.firstTime == true) {
+    if (settings.firstTime === true) {
         console.log('');
         console.log('Please go to http://localhost:1337/admin to setup the server!');
         console.log('');

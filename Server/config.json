@@ -4,7 +4,7 @@
   "host": "localhost",
   "secret": "secret_key",
   "code": "1234",
-  "firstTime": true,
+  "firstTime": false,
   "mysql": {
     "host": "localhost",
     "database": "thedocs",

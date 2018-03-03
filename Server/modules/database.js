@@ -20,7 +20,7 @@ class database {
                 console.log("MySQL ERROR: " + err.code);
                 setTimeout(self.connect, 2000);
             } else {
-                if (self.data.database == "") {
+                if (self.data.database === "") {
                     console.log("Please enter a database in the config.json file!");
                 } else {
                     console.log();
@@ -88,12 +88,12 @@ class database {
             if (err) throw err;
             console.log("User is connecting");
             for (let i = 0; i < result.length; i++) {
-                if (result[i].username == username || result[i].email == username) {
+                if (result[i].username === username || result[i].email === username) {
                     // Tests to see if passwords match
                     bcrypt.compare(password, result[i].password, function (err, pass) {
                         if (pass) {
                             user = result[i];
-                            if (user != null) {
+                            if (user !== null) {
                                 // Logging
                                 let date = new Date();
                                 console.log("User: " + result[i].username + " logged in at " + date);
@@ -109,7 +109,7 @@ class database {
                             });
                         }
                     });
-                } else if (i == result.length - 1) {
+                } else if (i === result.length - 1) {
                     return callback({
                         "err": "Invaild Username/Email"
                     });
@@ -125,17 +125,17 @@ class database {
         console.log(profile);
         this.db.query("SELECT * FROM users", function (err, result) {
             if (err) throw err;
-            if (settings.code != profile.code) {
+            if (settings.code !== profile.code) {
                 return callback({
                     "err": "Invailid Registration Code!"
                 });
             } else {
                 for (let i = 0; i < result.length; i++) {
-                    if (result[i].username == profile.username) {
+                    if (result[i].username === profile.username) {
                         return callback({
                             "err": "That username is already in use!"
                         });
-                    } else if (result[i].email == profile.email) {
+                    } else if (result[i].email === profile.email) {
                         return callback({
                             "err": "That email is already in use!"
                         });
@@ -164,23 +164,23 @@ class database {
             if (rows.length > 0) {
                 for (let i = 0; i < rows.length; i++) {
                     self.getDoc(rows[i].doc_id, function (doc) {
-                        if (data.length == 0) {
+                        if (data.length === 0) {
                             rows[i]['title'] = doc.title;
                             data.push(rows[i]);
                         } else {
                             for (let d = 0; d < data.length; d++) {
-                                if (data[d].doc_id == rows[i].doc_id) {
-                                    if (data[d].keyword != rows[i].keyword) {
+                                if (data[d].doc_id === rows[i].doc_id) {
+                                    if (data[d].keyword !== rows[i].keyword) {
                                         data[d].keyword += ', ' + rows[i].keyword;
                                     }
-                                } else if (d == (data.length - 1)) {
+                                } else if (d === data.length - 1) {
                                     rows[i]['title'] = doc.title;
                                     data.push(rows[i]);
                                 }
                             }
                         }
 
-                        if (i == (rows.length - 1)) {
+                        if (i === rows.length - 1) {
                             callback(data);
                         }
                     });
@@ -208,7 +208,7 @@ class database {
                 docID = results.insertId;
 
                 // Add doc_id to all keywords
-                let keys = []
+                let keys = [];
                 for (let i = 0; i < keywords.length; i++) {
                     keys.push([keywords[i], docID]);
                 }
@@ -266,7 +266,7 @@ class database {
 
     // Get doc by ID
     getDoc(id, callback) {
-        let self = this
+        let self = this;
         // Get Doc
         this.db.query("SELECT * FROM documents WHERE id=" + id, function (err, rows, fields) {
             if (err) throw err;
@@ -319,6 +319,18 @@ class database {
             }
 
             callback(keys);
+        });
+    }
+
+    async getNumUsers() {
+        return new Promise(resolve => {
+            if (this.isConnected) {
+                this.db.query("SELECT id FROM users", function (err, rows, fields) {
+                    resolve(rows.length);
+                });
+            } else {
+                resolve(0);
+            }
         });
     }
 }

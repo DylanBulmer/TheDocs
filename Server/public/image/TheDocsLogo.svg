@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="372.11874"
+   height="69.515625"
+   viewBox="0 0 98.456416 18.392677"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="TheDocsLogo.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:export-filename="E:\Documents\TheDocsLogo.png"
+   inkscape:export-xdpi="99.430885"
+   inkscape:export-ydpi="99.430885">
+  <defs
+     id="defs2">
+    <font
+       horiz-adv-x="64"
+       id="font1374"
+       inkscape:label="font 1"
+       horiz-origin-x="0"
+       horiz-origin-y="0"
+       vert-origin-x="45"
+       vert-origin-y="90"
+       vert-adv-y="90">
+      <font-face
+         units-per-em="1024"
+         id="font-face1376"
+         font-family="SVGFont 1" />
+      <missing-glyph
+         d="M0,0h1000v1024h-1000z"
+         id="missing-glyph1378" />
+    </font>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="-7.4810767"
+     inkscape:cy="290.85726"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-26.842806,-90.129837)">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1366"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;image-rendering:optimizeQuality"
+       transform="scale(0.26458333)"
+       inkscape:export-xdpi="52.477409"
+       inkscape:export-ydpi="52.477409"><flowRegion
+         id="flowRegion1368"><rect
+           id="rect1370"
+           width="562.85712"
+           height="205.71428"
+           x="100"
+           y="322.51968" /></flowRegion><flowPara
+         id="flowPara1372"
+         style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:96px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1377ff;fill-opacity:1"><flowSpan
+   style="letter-spacing:-10px;fill:#1377ff;fill-opacity:1"
+   id="flowSpan2102">T</flowSpan><flowSpan
+   style="letter-spacing:-33.60000229px;fill:#1377ff;fill-opacity:1"
+   id="flowSpan1380">H</flowSpan>E <flowSpan
+   style="letter-spacing:-26px;fill:#1377ff;fill-opacity:1"
+   id="flowSpan2104">DO</flowSpan><flowSpan
+   id="flowSpan2118"
+   style="letter-spacing:-9px;fill:#1377ff;fill-opacity:1">C</flowSpan>S</flowPara></flowRoot>  </g>
+</svg>
