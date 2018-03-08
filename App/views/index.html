@@ -38,9 +38,9 @@
 <body style="background-color: #1177FF;">
     <img src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 10px; left: 10px;" />
 
-    <form id="form" style="display: inline-block;" onsubmit="event.preventDefault(); submition();">
+    <form id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();">
         <span>Please enter the URL of your server!</span><br>
-        <input id="url" type="text" placeholder="http://example.com">
+        <input id="url" type="text" placeholder="http://example.com" style="width: calc(100% - 20px); border-radius: 5px;">
         <input id="port" type="text" placeholder="(optional)" value="1337">
         <button id="btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></button><br>
         <span id="msg"></span>
@@ -60,7 +60,7 @@
             let port = document.getElementById('port').value;
 
             // do ajax stuff to check for server...
-            if (host != "") {
+            if (host != "") { 
 
                 // send request
                 let xhttp = new XMLHttpRequest();
@@ -110,6 +110,7 @@
                         store.set("url", "http://" + host);
                         xhttp.open("POST", "http://" + host, true);
                     } else {
+                        store.set("port", port)
                         store.set("url", "http://" + host + ":" + port);
                         xhttp.open("POST", "http://" + host + ":" + port, true);
                     }
@@ -125,7 +126,7 @@
                 }
                 xhttp.send();
             } else {
-                msg.innerHTML = 'Please enter a URL or IPv4 address';
+                msg.innerHTML = 'Please enter a Domian name or IPv4 address';
             }
             return false;
         }

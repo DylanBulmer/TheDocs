@@ -18,19 +18,35 @@
         </span>
     </topbar>
     <aside>
-        <input type="text" class="search" id="liveSearch" placeholder="Search The Docs!"/>
+        <span>
+            <input type="text" class="search" id="liveSearch" placeholder="Search The Docs!"/>
+        </span>
         <!-- Add in an <ol> of suggestions positioned right below the input box -->
         <tabs id="dump"></tabs>
         <a class="add-button" onclick="viewPage('c_new')">
             Document a problem!
         </a>
     </aside>
-    <content id="c_main"> <!-- Landing page for app -->
+    <content id="c_main">
+        <!-- Landing page for app -->
         <h1>Welcome to The Docs!</h1>
+        <br />
+        <p>
+            This application helps build a knowledge base of issues run into during: the development process, experiments, and other scenarios. To do this, The Docs allows you to publish documents
+            that allows others to find and learn from past experiences.
+        </p>
+        <br />
+        <h2>How to create a document!</h2>
         <br>
-        <p>This application allows you to document any problem for any project you may be a part of!</p>
-        <p>To start using the application, please create your first document with the button in the bottom, left-hand corner!</p><br>
-        <h1>Search The Docs!</h1>
+        <p>
+            On the bottom of the left column, there is a button labeled "Document a Problem!" When you click this button you will pop up with a form that looks identical to a published document.
+            When filling out the form, you will want to make sure the information you are providing is meaningful and will make sense to another user that will be reading your document. In the document
+            you must give: a title that summarizes the issue you have run into, <i>a recommended max is 3-5 words</i>; the project you are working on (if the project is not listed, you can add it in); a description
+            describing the issue you ran into; a URL you found helpful (optional but recommended); some keywords that describe the issues, for example <code>NodeJS, Function, Async</code> this allows the reader
+            to search and understand what your solution is covering; lastly, a detailed solution that clearly describes how to solve the issue.
+        </p>
+        <br />
+        <h2>Search The Docs!</h2>
         <br>
         <p>
             To search, use terms that apply to what you are looking for. This program uses a keyword system to easily find a solution to your issue, but this can only work if you
@@ -39,7 +55,7 @@
     </content>
     <content id="c_doc"> <!-- Document page -->
         <h1 style="width: calc(100% - 20px);" class="field" id="d_title"></h1><br />
-        <span class="desc" style="width: calc(100% - 20px)">By <span id="d_name"></span> on [date] at [time]</span><br />
+        <span class="desc" style="width: calc(100% - 20px)">By <span id="d_name"></span> on <span id="d_date"></span></span><br />
         <span class="desc" style="width: calc(100% - 20px)">This issue was found in <span id="d_project" style="font-weight: bold;"></span></span><br />
         <span class="desc">Description:</span><span class="field" id="d_desc"></span><br />
         <span class="desc">Helpful URL:</span><span class="field" id="d_url"></span><br />
@@ -48,7 +64,7 @@
     </content>
     <content id="c_new"> <!-- New document page -->
         <input style="width: calc(100% - 20px); height: 2em; font-size: 2em; font-weight: bold;" class="field" placeholder="New Document" id="n_title" autofocus/><br />
-        <span class="desc" style="width: calc(100% - 20px)">By <span class="fname"></span> <span class="lname"></span> on [date] at [time]</span><br />
+        <span class="desc" style="width: calc(100% - 20px)">By <span class="fname"></span> <span class="lname"></span> on <span id="n_date"></span></span><br />
         <span class="desc" style="width: calc(100% - 20px)">
             This issue was found in 
             <span class="custom-dropdown">
@@ -77,7 +93,7 @@
     </content>
     <content id="c_pre"> <!-- New document preview page -->
         <h1 style="width: calc(100% - 20px);" class="field" id="p_title"></h1><br />
-        <span class="desc" style="width: calc(100% - 20px)">By <span class="fname"></span> <span class="lname"></span> on [date] at [time]</span><br />
+        <span class="desc" style="width: calc(100% - 20px)">By <span class="fname"></span> <span class="lname"></span> on <span id="p_date"></span></span><br />
         <span class="desc" style="width: calc(100% - 20px)">This issue was found in <span id="p_project" style="font-weight: bold;"></span></span><br />
         <span class="desc">Description:</span>
         <span class="field" id="p_desc"></span><br />

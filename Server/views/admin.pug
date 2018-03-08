@@ -5,23 +5,46 @@ html
         link(rel="stylesheet" href="/css/markdown.css")
     body
         topbar
-            img(src="/image/TheDocsLogoNew_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 23.33px; cursor: pointer;")
+            img(src="/image/TheDocsLogoNew_White.svg" style="height: calc(3em - 20px);position: absolute;top: 10px;left: 50.11px;cursor: pointer;")
             span
                 span(style="vertical-align: middle;")= 'Welcome, ' + user + '!'
                     span(class="fname")
                 a(href="/logout" style="text-decoration: none;") Logout
         aside
             tabs
-                tab.wrapper
+                tab.wrapper(style="top: 5px;")
                 tab
                     h3 Status
                 tab
                     h3 General
                 tab
                     h3 MySQL
-        content
+        content(id="Status")
             h1 The Docs
             p= 'Running on port ' + data.port
             blockquote
                 p!= '<b>MySQL:</b> ' + ((data.mysql.connection) ? 'Connected' : 'Disconnected')
                 p= 'Number of users: ' + data.mysql.users
+        content(id="General")
+            h1 General Configuration
+            form
+                label Port
+                input(placeholder = "Default: 1337" value=data.port)
+        content(id="MySQL")
+            h1 MySQL Configuration
+            form
+                label Host:
+                input(placeholder = "Please enter a host address!" value=data.mysql.settings.host)
+                br
+                label Schema:
+                input(placeholder = "Please enter a schema!" value=data.mysql.settings.database)
+                br
+                label Username:
+                input(placeholder = "Please enter a username!" value=data.mysql.settings.user)
+                br
+                label Password:
+                br
+                input(placeholder = "Password")
+                br
+                input(placeholder = "Confirm Password")
+        script(src="/js/pageViewer.js")

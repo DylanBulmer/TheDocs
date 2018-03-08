@@ -1,178 +1,187 @@
 * {
-	border: 0;
-	font-family: 'Segoe UI', sans-serif;
-	margin: 0;
-	cursor: default;
+    border: 0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    cursor: default;
 }
 
-a, select {
-	cursor: pointer;
+a,
+select {
+    cursor: pointer;
 }
 
-input, textarea {
-	cursor: text;
+input,
+textarea {
+    cursor: text;
 }
 
-input:focus, textarea:focus, select:focus {
-	outline-color: #555;
+input:focus,
+textarea:focus,
+select:focus {
+    outline-color: #555;
 }
 
 /* Custom dropdown */
+
 .custom-dropdown {
-	position: relative;
-	display: inline-block;
-	vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .custom-dropdown select {
-	background-color: #555;
-	color: #fff;
-	font-size: inherit;
-	padding: 0.25em .5em;
-	padding-right: 2.5em;
-	border: 0;
-	margin: 0;
-	border-radius: 3px;
-	text-indent: 0.01px;
-	/*Hiding the select arrow for chrome*/
-	-webkit-appearance: none;
-	-moz-appearance: none;
+    background-color: #555;
+    color: #fff;
+    font-size: inherit;
+    padding: 0.25em .5em;
+    padding-right: 2.5em;
+    border: 0;
+    margin: 0;
+    border-radius: 3px;
+    text-indent: 0.01px;
+    /*Hiding the select arrow for chrome*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .custom-dropdown::before,
 .custom-dropdown::after {
-	content: "";
-	position: absolute;
-	pointer-events: none;
+    content: "";
+    position: absolute;
+    pointer-events: none;
 }
 
-.custom-dropdown::after { /*  Custom dropdown arrow */
-	content: "\25BC";
-	color: #fff;
-	height: 1em;
-	font-size: .625em;
-	line-height: 1;
-	right: 1.2em;
-	top: 50%;
-	margin-top: -.5em;
+.custom-dropdown::after {
+    /*  Custom dropdown arrow */
+    content: "\25BC";
+    color: #fff;
+    height: 1em;
+    font-size: .625em;
+    line-height: 1;
+    right: 1.2em;
+    top: 50%;
+    margin-top: -.5em;
 }
 
-.custom-dropdown::before { /*  Custom dropdown arrow cover */
+.custom-dropdown::before {
+    /*  Custom dropdown arrow cover */
     width: 2em;
     right: 0;
     top: 0;
     bottom: 0;
     border-radius: 0 3px 3px 0;
     background-color: #222222;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .custom-dropdown select option:disabled {
-	color: #ccc;
+    color: #ccc;
 }
 
 body {
-	background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
 
 topbar {
-	display: block;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: #1177ff;
-	color: #ffffff;
-	height: 3em;
-	width: 100%;
-	z-index: 1;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1177ff;
+    color: #ffffff;
+    height: 3em;
+    width: 100%;
+    z-index: 1;
 }
 
-topbar > span {
-	display: block;
-	position: absolute;
-	top: 5px;
-	right: 15px;
-	height: calc(100% - 10px);
-	line-height: calc(200% + 5px);
+topbar>span {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    height: calc(100% - 10px);
+    line-height: calc(200% + 5px);
 }
 
-topbar > span > a {
-	height: calc(100% - 20px);
-	padding: 5px;
-	display: inline-block;
-	vertical-align: middle;
-	background-color: #fff;
-	color: #555;
-	border-radius: 5px;
-	line-height: 1em;
-	margin-left: 15px;
+topbar>span>a {
+    height: calc(100% - 20px);
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #555;
+    border-radius: 5px;
+    line-height: 1em;
+    margin-left: 15px;
 }
 
 aside {
-	display: block;
-	position: fixed;
-	top: 3em;
-	left: 0;
-	background-color: #1177ff;
-	color: #ffffff;
-	height: calc(100vh - 3em);
-	width: 250px;
-	overflow-y: auto;
+    display: block;
+    position: fixed;
+    top: 3em;
+    left: 0;
+    background-color: #1177ff;
+    color: #ffffff;
+    height: calc(100vh - 3em);
+    width: 250px;
+    overflow-y: auto;
 }
 
-aside > tabs {
-	display: block;
-	width: 100%;
+aside>tabs {
+    display: block;
+    width: 100%;
 }
 
-aside > tabs > tab, info {
-	display: block;
-	position: relative;
-	width: calc(100% - 30px);
-	padding: 0;
-	left: 20px;
-	padding-bottom: 5px;
-	margin: 5px 0;
-	background: linear-gradient( to left, transparent 0%, #fff, transparent 100% ) left bottom no-repeat;
-	background-size: 80% 1px;
-	background-position: center bottom;
+aside>tabs>tab,
+info {
+    display: block;
+    position: relative;
+    width: calc(100% - 30px);
+    padding: 0;
+    left: 20px;
+    padding-bottom: 5px;
+    margin: 5px 0;
+    background: linear-gradient( to left, transparent 0%, #fff, transparent 100%) left bottom no-repeat;
+    background-size: 80% 1px;
+    background-position: center bottom;
 }
 
-aside > tabs > tab:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	right: -10px;
-	height: calc( 3em + 10px );
-	width: 100%;
-	background: linear-gradient(to right, transparent 80%, #1177ff );
+aside>tabs>tab:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    height: calc( 3em + 10px);
+    width: 100%;
+    background: linear-gradient(to right, transparent 80%, #1177ff);
 }
 
 aside tab.wrapper {
-	border: 0;
-	border-left: 5px solid #fff;
-	width: calc(100% - 35px);
-	height: 3em;
-	margin: 0;
-	position: absolute;
-	left: 0;
-	background: transparent;
-	transition-duration: 0.5s;
+    border: 0;
+    border-left: 5px solid #fff;
+    width: calc(100% - 35px);
+    height: 3em;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    background: transparent;
+    transition-duration: 0.5s;
 }
 
 aside tab.wrapper:before {
-	display: none;
+    display: none;
 }
 
-aside tab > h3, info > h3 {
-	color: #fff;
-	line-height: 51px;
-	text-align: center;
+aside tab>h3,
+info>h3 {
+    color: #fff;
+    line-height: 51px;
+    text-align: center;
 }
 
 content {
-    display: block;
+    display: none;
     position: absolute;
     top: 3em;
     right: 0;
@@ -180,4 +189,26 @@ content {
     padding: 10px;
     background-color: #fff;
     color: #555;
+}
+
+content>form {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 10px;
+}
+
+content>form>input {
+    padding: 5px;
+    margin: 5px 0 5px 2em;
+}
+
+content>form>label {
+    display: inline-block;
+    width: 75px;
+    padding: 5px;
+    margin: 3px;
+}
+
+content>form>button {
+
 }

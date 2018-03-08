@@ -125,6 +125,7 @@ app.post('/doc', function (req, res) {
 
 app.get('/admin', (req, res) => {
     let users;
+    let mysql = store.get("mysql");
 
     let p = db.getNumUsers().then(data => {
         users = data;
@@ -137,7 +138,12 @@ app.get('/admin', (req, res) => {
                 port: settings.port,
                 mysql: {
                     connection: db.isConnected,
-                    users: (db.isConnected) ? users : 'N/A'
+                    users: db.isConnected ? users : 'N/A',
+                    settings: {
+                        host: db.isConnected ? mysql.host : 'N/A',
+                        database: db.isConnected ? mysql.database : 'N/A',
+                        user: db.isConnected ? mysql.user : 'N/A'
+                    }
                 }
             }
         });
@@ -145,15 +151,29 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/admin', (req, res) => {
-    res.render(admin, {
-        user: 'Test User',
-        data: {
-            port: settings.port,
-            mysql: {
-                connection: db.isConnected,
-                users: (db.isConnected) ? db.getNumUsers((data) => { console.log(data); return data}) : 'N/A'
+    let users;
+    let mysql = store.get("mysql");
+
+    let p = db.getNumUsers().then(data => {
+        users = data;
+    });
+
+    Promise.all([p]).then(() => {
+        res.render(admin, {
+            user: 'Test User',
+            data: {
+                port: settings.port,
+                mysql: {
+                    connection: db.isConnected,
+                    users: db.isConnected ? users : 'N/A',
+                    settings: {
+                        host: db.isConnected ? mysql.host : 'N/A',
+                        database: db.isConnected ? mysql.database : 'N/A',
+                        user: db.isConnected ? mysql.user : 'N/A'
+                    }
+                }
             }
-        }
+        });
     });
 });
 

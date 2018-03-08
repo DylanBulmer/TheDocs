@@ -52,6 +52,7 @@
     <Content Include="views\admin.pug" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\" />
     <Folder Include="public\image\" />
     <Folder Include="modules\" />
     <Folder Include="public\" />

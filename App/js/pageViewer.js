@@ -12,6 +12,7 @@ var md = require('markdown-it')({
         return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
     }
 });
+var dateFormat = require('dateformat');
 
 var cpage = "c_main";
 var viewPage = function viewPage(page, id) {
@@ -19,15 +20,16 @@ var viewPage = function viewPage(page, id) {
     document.getElementById(page).style.display = "block";
     cpage = page;
 
-    if (page == "c_pre") { // Updating preview page
+    if (page === "c_pre") { // Updating preview page
         let title = document.getElementById("p_title");
         let desc = document.getElementById("p_desc");
         let url = document.getElementById("p_url");
         let keywords = document.getElementById("p_keywords");
         let solution = document.getElementById("p_solution");
         let project = document.getElementById('p_project');
+        let date = document.getElementById('p_date');
 
-        if (document.getElementById('n_project').value == 'new') {
+        if (document.getElementById('n_project').value === 'new') {
             project.innerHTML = document.getElementById('n_pname').value;
         } else {
             project.innerHTML = document.getElementById('n_project').selectedOptions[0].innerText;
@@ -38,7 +40,8 @@ var viewPage = function viewPage(page, id) {
         url.innerHTML = document.getElementById("n_url").value;
         keywords.innerHTML = document.getElementById("n_keywords").value;
         solution.innerHTML = md.render(document.getElementById("n_solution").value);
-    } else if (page == "c_doc") { // Updating preview page
+        date.innerHTML = document.getElementById("n_date").innerText;
+    } else if (page === "c_doc") { // Updating preview page
         let title = document.getElementById("d_title");
         let desc = document.getElementById("d_desc");
         let url = document.getElementById("d_url");
@@ -46,23 +49,28 @@ var viewPage = function viewPage(page, id) {
         let solution = document.getElementById("d_solution");
         let project = document.getElementById('d_project');
         let name = document.getElementById('d_name');
+        let date = document.getElementById('d_date');
 
         // Getting The Doc
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 let result = JSON.parse(this.responseText);
                 console.log(result);
 
+                // Set date and time
+                let timestamp = new Date(result.created);
+                date.innerText = dateFormat(timestamp, "ddd, mmm dS, yyyy") + " at " + dateFormat(timestamp, "h:MM TT");
+
                 title.innerHTML = result.title;
                 desc.innerHTML = result.description;
-                url.innerHTML = result.url;
+                url.innerHTML = "<a href='" + result.url + "' target='_BLANK'>" + result.url + "</a>";
                 keywords.innerHTML = "";
                 project.innerHTML = result.project;
                 name.innerHTML = result.user.name_first + " " + result.user.name_last;
 
                 for (let i = 0; i < result.keywords.length; i++) {
-                    if (i === (result.keywords.length - 1)) {
+                    if (i === result.keywords.length - 1) {
                         keywords.innerHTML += result.keywords[i];
                     } else {
                         keywords.innerHTML += result.keywords[i] + ", ";
@@ -72,20 +80,20 @@ var viewPage = function viewPage(page, id) {
                 // Get solution from buffer;
                 solution.innerHTML = md.render(new Buffer(result.solution).toString('utf8'));
             }
-        }
+        };
         xhttp.open("POST", store.get("url") + "/doc", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.send(JSON.stringify({ "id": id }));
 
-    } else if (page == "c_new") { // Updating New Doc Page
+    } else if (page === "c_new") { // Updating New Doc Page
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 let dump = document.getElementById("n_projects");
                 let result = JSON.parse(this.responseText);
 
                 dump.innerHTML = "";
-                if (result.length == 0) {
+                if (result.length === 0) {
                     let opt = document.createElement("option");
                     opt.innerHTML = "No Projects Yet";
                     dump.appendChild(opt);
@@ -95,23 +103,31 @@ var viewPage = function viewPage(page, id) {
                         let opt = document.createElement("option");
                         opt.innerHTML = result[i].name;
                         opt.setAttribute("value", "" + result[i].id);
-                        if (i == 0) {
+                        if (i === 0) {
                             opt.selected = true;
                         }
                         dump.appendChild(opt);
                     }
                 }
             }
-        }
+            let date = document.getElementById('n_date');
+            // Set date and time
+            let timestamp = new Date();
+            date.innerText = dateFormat(timestamp, "ddd, mmm dS, yyyy") + " at " + dateFormat(timestamp, "h:MM TT");
+        };
         xhttp.open("GET", store.get("url") + "/projects", true);
         xhttp.send();
     }
-}
+};
 
 viewPage(cpage);
 
 var updateChange = function () {
-    if (document.getElementById('n_project').value == 'new') {
+    if (document.getElementById('n_project').value === 'new') {
         document.getElementById('pname').style.display = "inline-block";
+    } else {
+        if (document.getElementById('pname').style.display === 'inline-block') {
+            document.getElementById('pname').style.display = 'none';
+        }
     }
-}
+};
