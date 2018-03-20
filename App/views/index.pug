@@ -1,0 +1,44 @@
+extends layout.pug
+
+block links
+    style.
+        * {
+            text-align: center;
+            color: #fff;
+        }
+        input[type=text] {
+            padding: 5px;
+            width: calc(100% - 50px);
+            border: 0;
+            border-radius: 5px 0 0 5px;
+            margin: 10px -2px;
+            color: #333;
+            cursor: text;
+            vertical-align: middle;
+        }
+        .go {
+            padding: 7px;
+            width: calc(40px - 10px);
+            border: 0;
+            border-radius: 0 5px 5px 0;
+            margin: 10px -2px;
+            cursor: pointer;
+            background-color: #333;
+            vertical-align: middle;
+        }
+        span i {
+            vertical-align: middle;
+        }
+
+block content
+    img(src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
+    form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
+        span Please enter the URL of your server!
+        br
+        input(id="url" type="text" placeholder="http://example.com" style="width: calc(100% - 20px); border-radius: 5px;")
+        input(id="port" type="text" placeholder="(optional)" value="1337")
+        button.go(id="btn")
+            i(class="fa fa-arrow-right" aria-hidden="true")
+        br
+        span(id="msg")
+    script(src="../js/index.js")

@@ -1,0 +1,44 @@
+html
+    head
+        title The Docs
+        link(rel='stylesheet' href="../css/font-awesome.min.css")
+        link(rel='stylesheet' href="../css/main.css")
+        block links
+    body
+        div.titlebar
+            span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
+                div.dropdown
+                    button.dropbtn File
+                    div.dropdown-content
+                        span New Document
+                        span New Project
+                        hr
+                        span Logout
+                div.dropdown
+                    button.dropbtn Edit
+                    div.dropdown-content
+                        span Item
+                        span Item
+                        span Item
+                div.dropdown
+                    button.dropbtn View
+                    div.dropdown-content
+                        span Item
+                        span Item
+                        span Item
+                div.dropdown
+                    button.dropbtn Window
+                    div.dropdown-content
+                        span Item
+                        span Item
+                        span Item
+                div.dropdown
+                    button.dropbtn Help
+                    div.dropdown-content
+                        span How To?
+            span(style="text-align: right; float: right")
+                span.sysButton#min(style="line-height: 18px;") _
+                span.sysButton#max(style="font-size: 18px; height: 30px; padding-top: 2px") &#9723;
+                span.sysButton#close &times;
+        block content
+        script(src="../js/titlebar.js")

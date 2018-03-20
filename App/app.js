@@ -1,10 +1,19 @@
 'use strict';
-const { app, dialog, Menu, BrowserWindow } = require('electron');
+
+const { app, dialog, Menu, BrowserWindow, ipcRenderer } = require('electron');
+const locals = {};
+const pug = require('electron-pug')({ pretty: true }, locals);
 const autoUpdater = require("electron-updater").autoUpdater;
 
 const path = require('path');
 const url = require('url');
-const Store = require('./modules/store');
+const Store = require('./modules/store')
+const store = new Store({
+    configName: 'user-preferences',
+    defaults: {
+        windowBounds: { width: 800, height: 600 }
+    }
+});
 
 const isDev = require('electron-is-dev');
 
@@ -26,7 +35,7 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
         title: 'Application Update',
         message: process.platform === 'win32' ? releaseNotes : releaseName,
         detail: 'An update has been downloaded! Restart the application to apply the updates.'
-    }
+    };
 
     dialog.showMessageBox(dialogOpts, (response) => {
         if (response === 0) autoUpdater.quitAndInstall();
@@ -35,8 +44,8 @@ autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 
 // Report errors
 autoUpdater.on('error', message => {
-    console.error('There was a problem updating the application')
-    console.error(message)
+    console.error('There was a problem updating the application');
+    console.error(message);
 });
 
 // New Menu for application
@@ -101,13 +110,13 @@ const template = [
         submenu: [
             {
                 label: 'Learn More',
-                click() { require('electron').shell.openExternal('https://dylanbulmer.github.io/TheDocs') }
+                click() { require('electron').shell.openExternal('https://dylanbulmer.github.io/TheDocs'); }
             }
         ]
     }
-]
+];
 
-/* MacOS Menu
+/* MacOS Menu */
 
 if (process.platform === 'darwin') {
     template.unshift({
@@ -123,7 +132,7 @@ if (process.platform === 'darwin') {
             { type: 'separator' },
             { role: 'quit' }
         ]
-    })
+    });
 
     // Edit menu
     template[1].submenu.push(
@@ -135,7 +144,7 @@ if (process.platform === 'darwin') {
                 { role: 'stopspeaking' }
             ]
         }
-    )
+    );
 
     // Window menu
     template[3].submenu = [
@@ -144,49 +153,42 @@ if (process.platform === 'darwin') {
         { role: 'zoom' },
         { type: 'separator' },
         { role: 'front' }
-    ]
+    ];
 }
-*/
 
 const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
 
 function createWindow() {
-    const store = new Store({
-        configName: 'user-preferences',
-        defaults: {
-            windowBounds: { width: 800, height: 600 }
-        }
-    });
     // Create the browser window.
     let { width, height } = store.get('windowBounds');
     mainWindow = new BrowserWindow({
+        title: "The Docs",
         width: width,
         height: height,
         show: false,
         backgroundColor: '#1177ff',
         titleBarStyle: 'hiddenInset',
-        kiosk: false,
-        frame: true
+        frame: false
     });
 
     mainWindow.loadURL(url.format({
-        pathname: path.join(views, 'index.html'),
+        pathname: path.join(views, 'index.pug'),
         protocol: 'file:',
         slashes: true
     }));
-
+    
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
     });
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     mainWindow.on('resize', function () {
         let b = mainWindow.getBounds();
         store.set('windowBounds', { width: b.width, height: b.height });
-    })
+    });
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
@@ -205,8 +207,8 @@ app.on('ready', () => {
 
     // Auto check for updates every 10 minutes
     setInterval(() => {
-        autoUpdater.checkForUpdates()
-    }, (10 * 60 * 1000));
+        autoUpdater.checkForUpdates();
+    }, 10 * 60 * 1000);
 
     // Check now
     autoUpdater.checkForUpdates();
@@ -217,12 +219,15 @@ app.on('ready', () => {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
+    // Logout the user when all windows are closed.
+    store.removeUser();
+
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
         app.quit();
     }
-})
+});
 
 app.on('activate', function () {
     // On OS X it's common to re-create a window in the app when the
@@ -230,7 +235,7 @@ app.on('activate', function () {
     if (mainWindow === null) {
         createWindow();
     }
-})
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

@@ -1,0 +1,17 @@
+extends layout.pug
+
+block links
+    link(rel='stylesheet' href="../css/login.css")
+
+block content
+    img(src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
+    form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
+        span Please enter the URL of your server!
+        br
+        input(id="url" type="text" placeholder="http://example.com" style="width: calc(100% - 20px); border-radius: 5px;")
+        input(id="port" type="text" placeholder="(optional)" value="1337")
+        button(id="btn")
+            i(class="fa fa-arrow-right" aria-hidden="true")
+        br
+        span(id="msg")
+    script(src="../js/index.js")

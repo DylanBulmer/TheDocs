@@ -7,6 +7,7 @@
     <NodeExePath>E:\Projects\Visual Studio\TheDocs\App\node_modules\electron\dist\electron.exe</NodeExePath>
     <NodeExeArguments>--inspect-brk</NodeExeArguments>
     <DebuggerPort>9229</DebuggerPort>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,8 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="js\index.js" />
     <Compile Include="js\pageViewer.js" />
     <Compile Include="js\submit.js" />
+    <Compile Include="js\titlebar.js" />
     <Compile Include="modules\store.js" />
     <Content Include="build\icon.ico" />
     <Content Include="build\icon.icns" />
@@ -61,7 +64,10 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\app.html" />
+    <Content Include="views\login.pug" />
     <Content Include="views\index.html" />
+    <Content Include="views\index.pug" />
+    <Content Include="views\layout.pug" />
     <Content Include="views\register.html" />
     <Content Include="views\login.html" />
   </ItemGroup>
