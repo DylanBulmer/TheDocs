@@ -168,7 +168,6 @@ function createWindow() {
         height: height,
         show: false,
         backgroundColor: '#1177ff',
-        titleBarStyle: 'hiddenInset',
         frame: false
     });
 
@@ -177,13 +176,13 @@ function createWindow() {
         protocol: 'file:',
         slashes: true
     }));
-    
+
     mainWindow.once('ready-to-show', () => {
         mainWindow.show();
     });
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     mainWindow.on('resize', function () {
         let b = mainWindow.getBounds();
