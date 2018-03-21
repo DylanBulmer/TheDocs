@@ -8,6 +8,7 @@ body {
 }
 
 input {
+    height: 32px;
     padding: 5px;
     width: calc(100% - 10px);
     border: 0;
@@ -17,15 +18,15 @@ input {
     margin: 5px 0;
 }
 
-button {
+button.go {
     padding: 5px;
     width: calc(50% - 10px);
     border: 0;
     border-radius: 5px;
-    margin: 5px 0;
+    margin: 5px 5px;
     cursor: pointer;
+    height: 32px;
     background-color: #333;
-    float: right;
 }
 
 span > i {

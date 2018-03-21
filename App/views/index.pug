@@ -7,27 +7,27 @@ block links
             color: #fff;
         }
         input[type=text] {
-            padding: 5px;
-            width: calc(100% - 50px);
+            width: 100%;
+            height: 32px;
             border: 0;
             border-radius: 5px 0 0 5px;
-            margin: 10px -2px;
+            margin: 10px 0;
             color: #333;
             cursor: text;
             vertical-align: middle;
         }
         .go {
-            padding: 7px;
-            width: calc(40px - 10px);
+            width: 32px;
+            height: 32px;
             border: 0;
             border-radius: 0 5px 5px 0;
-            margin: 10px -2px;
             cursor: pointer;
             background-color: #333;
-            vertical-align: middle;
         }
-        span i {
+        span {
             vertical-align: middle;
+            height: 32px;
+            display: inline-block;
         }
 
 block content
@@ -36,9 +36,11 @@ block content
         span Please enter the URL of your server!
         br
         input(id="url" type="text" placeholder="http://example.com" style="width: calc(100% - 20px); border-radius: 5px;")
-        input(id="port" type="text" placeholder="(optional)" value="1337")
-        button.go(id="btn")
-            i(class="fa fa-arrow-right" aria-hidden="true")
+        span(style="width: calc(100% - 52px);")
+            input(id="port" type="text" placeholder="(optional)" value="1337" style="margin: 0;")
+        span(style="width: 32px;")
+            button.go(id="btn")
+                i(class="fa fa-arrow-right" aria-hidden="true")
         br
         span(id="msg")
     script(src="../js/index.js")

@@ -1,0 +1,27 @@
+extends layout.pug
+
+block links
+    link(rel='stylesheet' href="../css/login.css")
+
+block content
+    a(href="./index.pug")
+        img(src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
+    form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
+        span Register To The Docs!
+        br
+        input(id="fname" type="text" placeholder="First Name" style="display: inline-block; width: calc(50% - 8px);" required)
+        input(id="lname" type="text" placeholder="Last Name" style="display: inline-block; width: calc(50% - 8px);" required)
+        input(id="username" type="text" placeholder="Username" required)
+        input(id="email" type="email" placeholder="Email" required)
+        input(id="password" type="password" placeholder="Password" required)
+        input(id="confirm_password" type="password" placeholder="Confirm Password" required)
+        input(type="text" id="code" placeholder="Registration Code" required)
+        span(style="text-align: right; display: block;")
+            button(id="btn").go
+                i(class="fa fa-arrow-right" aria-hidden="true")
+        br
+        span(id="msg")
+        span(style="text-align: right; width: 100%; display: block;") Already a user? Login 
+            a(href="login.pug") here
+            | !
+    script(src="../js/register.js")

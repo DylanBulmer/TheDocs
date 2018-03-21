@@ -20,7 +20,7 @@ var submition = function submition() {
                 result = JSON.parse(this.responseText);
                 if ((result.host === host || result.url === host) && result.check === true) {
                     msg.innerHTML = "Connected!";
-                    window.location.href = __dirname + "/login.html";
+                    window.location.href = __dirname + "/login.pug";
                 } else {
                     msg.innerHTML = "Almost there...<br>Please verify the entered URL/IPv4";
                 }

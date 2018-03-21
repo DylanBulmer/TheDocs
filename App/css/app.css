@@ -5,13 +5,13 @@ body {
 topbar {
     display: block;
     position: fixed;
-    top: 0;
+    top: 32px;
     left: 0;
     background-color: #1177ff;
     color: #ffffff;
     height: 3em;
     width: 100%;
-    z-index: 1;
+    z-index: 0;
 }
 
 topbar > span {
@@ -38,11 +38,11 @@ topbar > span > a {
 aside {
     display: block;
     position: fixed;
-    top: 3em;
+    top: calc(3em + 32px);
     left: 0;
     background-color: #1177ff;
     color: #ffffff;
-    height: calc(100vh - 3em);
+    height: calc(100vh - 3em - 32px);
     width: 250px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -60,7 +60,7 @@ aside {
 
 aside > span > .search {
     width: calc(100% - 20px);
-    margin: 0 5px 5px 5px;
+    margin: 0 10px 5px 10px;
     padding: 5px;
     border-radius: 5px;
     cursor: text;
@@ -132,12 +132,14 @@ aside tab > p, info > p {
 content {
     display: none;
     position: absolute;
-    top: 3em;
+    top: calc(3em + 32px);
     right: 0;
     width: calc(100% - 270px);
     padding: 10px;
     background-color: #fff;
     color: #555;
+    height: calc(100vh - 3em - 52px);
+    overflow-y: auto;
 }
 
 .add-button {

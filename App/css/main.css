@@ -72,7 +72,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .titlebar {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -83,13 +83,16 @@ input:focus, textarea:focus, select:focus {
     -ms-user-select: none;
     user-select: none;
     -webkit-app-region: drag;
+    z-index: 1;
 }
 
 .sysButton {
     width: 32px;
     height: 32px;
+    color: #ffffff;
     font-size: 24px;
     line-height: 28px;
+    text-align: center;
     user-select: initial;
     display: inline-block;
     vertical-align: middle;
@@ -122,8 +125,8 @@ input:focus, textarea:focus, select:focus {
     background-color: #333;
     min-width: 160px;
     text-align: left;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 2;
 }
 
 .dropdown-content > span {
@@ -148,6 +151,10 @@ input:focus, textarea:focus, select:focus {
 }
 
 .dropdown-content hr {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border: 0;
     background: linear-gradient( to left, transparent 0%, #fff, transparent 100% ) left bottom no-repeat;
     background-size: 80% 1px;
     background-position: center bottom;

@@ -4,14 +4,19 @@ block links
     link(rel='stylesheet' href="../css/login.css")
 
 block content
-    img(src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
+    a(href="./index.pug")
+        img(src="../image/TheDocsLogoSmall_White.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
     form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
-        span Please enter the URL of your server!
+        span Log into The Docs!
         br
-        input(id="url" type="text" placeholder="http://example.com" style="width: calc(100% - 20px); border-radius: 5px;")
-        input(id="port" type="text" placeholder="(optional)" value="1337")
-        button(id="btn")
-            i(class="fa fa-arrow-right" aria-hidden="true")
+        input(id="username" type="text" placeholder="Username")
+        input(id="password" type="password" placeholder="Password")
+        span(style="text-align: right; display: block;")
+            button(id="btn").go
+                i(class="fa fa-arrow-right" aria-hidden="true")
         br
         span(id="msg")
-    script(src="../js/index.js")
+        span(style="text-align: right; width: 100%; display: block;") Not a user? Register 
+            a(href="register.pug") here
+            | !
+    script(src="../js/login.js")

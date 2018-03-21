@@ -7,7 +7,7 @@ const autoUpdater = require("electron-updater").autoUpdater;
 
 const path = require('path');
 const url = require('url');
-const Store = require('./modules/store')
+const Store = require('./modules/store');
 const store = new Store({
     configName: 'user-preferences',
     defaults: {
@@ -80,7 +80,6 @@ const template = [
             { role: 'cut' },
             { role: 'copy' },
             { role: 'paste' },
-            { role: 'pasteandmatchstyle' },
             { role: 'delete' },
             { role: 'selectall' }
         ]
@@ -164,6 +163,8 @@ function createWindow() {
     let { width, height } = store.get('windowBounds');
     mainWindow = new BrowserWindow({
         title: "The Docs",
+        minWidth: 800,
+        minHeight: 500,
         width: width,
         height: height,
         show: false,
@@ -182,7 +183,7 @@ function createWindow() {
     });
 
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     mainWindow.on('resize', function () {
         let b = mainWindow.getBounds();

@@ -35,7 +35,9 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="js\index.js" />
+    <Compile Include="js\login.js" />
     <Compile Include="js\pageViewer.js" />
+    <Compile Include="js\register.js" />
     <Compile Include="js\submit.js" />
     <Compile Include="js\titlebar.js" />
     <Compile Include="modules\store.js" />
@@ -64,12 +66,11 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\app.html" />
+    <Content Include="views\app.pug" />
     <Content Include="views\login.pug" />
-    <Content Include="views\index.html" />
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
-    <Content Include="views\register.html" />
-    <Content Include="views\login.html" />
+    <Content Include="views\register.pug" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
