@@ -1,5 +1,6 @@
 body {
     background-color: #FFFFFF;
+    overflow: hidden;
 }
 
 topbar {
@@ -192,4 +193,63 @@ content {
 input.new {
     padding: 0.25em 0.5em;
     font-size: 1em;
+}
+
+#nav-btn {
+    color: #555;
+    width: 1.5em;
+    padding: 4px 0;
+    cursor: pointer;
+    margin-left: 15px;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    height: calc(1.5em - 8px);
+    border: 1px solid #FFFFFF;
+    background-color: #ffffff;
+}
+
+nav {
+    top: 32px;
+    z-index: 3;
+    color: #fff;
+    width: 230px;
+    right: -250px;
+    display: block;
+    transition: 500ms;
+    position: absolute;
+    background-color: #333;
+    padding: 60px 10px 10px 10px;
+    height: calc(100vh - 52px - 50px);
+}
+
+nav > span {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #818181;
+    display: inline-block;
+    height: 1.5em;
+}
+
+nav > a {
+    padding: 5px 5px 5px 1.5em;
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+nav > a:hover {
+    color: #f1f1f1;
+}
+
+#nav-cls:hover {
+    color: #f1f1f1;
 }

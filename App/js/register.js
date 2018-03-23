@@ -21,7 +21,7 @@ var submition = function () {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                result = JSON.parse(this.responseText)
+                result = JSON.parse(this.responseText);
                 if (result.err) {
                     msg.innerHTML = result.err;
                 } else {
@@ -69,11 +69,11 @@ var submition = function () {
                 fname: fname,
                 lname: lname,
                 password: password,
-                code: code,
+                code: code
             }
         ));
     } else {
         msg.innerHTML = 'Please enter your username and password!';
     }
     return false;
-}
+};

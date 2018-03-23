@@ -7,12 +7,21 @@ block links
 
 block content
     topbar
-        img(src="../image/TheDocsLogoSmall_White.svg" style="height: calc(3em - 10px); position: absolute; top: 5px; left: 46px; cursor: pointer;" onclick="viewPage('c_main')")
+        img(src="../image/TheDocsLogoWhite.svg" style="height: calc(3em - 16px); position: absolute; top: 8px; left: 32px; cursor: pointer;" onclick="viewPage('c_main')")
         span
             span(style="vertical-align: middle;") Welcome 
                 span.fname
                 | !
-            a(onclick="logout()") Logout
+            span(onclick="openNav()")#nav-btn
+                i.fa.fa-bars
+    nav
+        span(onclick="closeNav()")#nav-cls Close 
+            span(style="font-size: 1.3em") &times;
+        a(onclick="") Home
+        a(onclick="") Profile
+        a(onclick="") Projects
+        a(onclick="") Issues
+        a(onclick="logout()" style="position: static; bottom: 0; left: 0;") Logout
     aside
         span
             input(type="text" class="search" id="liveSearch" placeholder="Search The Docs!")
@@ -132,11 +141,7 @@ block content
         for (i = 0; i < lnames.length; i++) {
             lnames[i].innerText = user.name.last
         }
-        // Logout handler
-        var logout = function logout() {
-            store.removeUser();
-            window.location.href = "login.pug";
-        }
+    script(src="../js/app-functions.js")
     script(src="../js/liveSearch.js")
     script(src="../js/pageViewer.js")
     script(src="../js/submit.js")

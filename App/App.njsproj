@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="js\app-functions.js" />
     <Compile Include="js\index.js" />
     <Compile Include="js\login.js" />
     <Compile Include="js\pageViewer.js" />
@@ -58,10 +59,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="image\TheDocsLogoSmall.png" />
-    <Content Include="image\TheDocsLogoSmall.svg" />
-    <Content Include="image\TheDocsLogoSmall_White.png" />
-    <Content Include="image\TheDocsLogoSmall_White.svg" />
+    <Content Include="image\TheDocsLogo.svg" />
+    <Content Include="image\TheDocsLogoWhite.svg" />
     <Content Include="js\liveSearch.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
