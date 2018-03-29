@@ -5,7 +5,7 @@
 // Logout handler
 var logout = function logout() {
     store.removeUser();
-    window.location.href = "login.html";
+    window.location.href = "login.pug";
 };
 
 // Open Nav

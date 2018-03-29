@@ -19,7 +19,7 @@ const isDev = require('electron-is-dev');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+let windows = [];
 let views = __dirname + "/views/";
 
 // Change the path if in development
@@ -158,45 +158,65 @@ if (process.platform === 'darwin') {
 const menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
 
-function createWindow() {
+/**
+ * 
+ * @param {number} w Width
+ * @param {number} h Height
+ * @param {string} file The file's name to render
+ */
+function createWindow(w, h, file) {
     // Create the browser window.
     let { width, height } = store.get('windowBounds');
-    mainWindow = new BrowserWindow({
+
+    let window = new BrowserWindow({
         title: "The Docs",
-        minWidth: 800,
-        minHeight: 500,
-        width: width,
-        height: height,
-        show: false,
+        minWidth: w || 800,
+        minHeight: h || 500,
+        width: w || width,
+        height: h || height,
+        show: file ? true : false,
         backgroundColor: '#1177ff',
         frame: false
     });
 
-    mainWindow.loadURL(url.format({
-        pathname: path.join(views, 'index.pug'),
+    window.loadURL(url.format({
+        pathname: path.join(views, file || 'index.pug'),
         protocol: 'file:',
         slashes: true
     }));
 
-    mainWindow.once('ready-to-show', () => {
-        mainWindow.show();
+    if (file) {
+        createWindow();
+    }
+
+    window.once('ready-to-show', () => {
+        if (!file) {
+            window.show();
+        }
     });
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    window.webContents.openDevTools();
 
-    mainWindow.on('resize', function () {
-        let b = mainWindow.getBounds();
-        store.set('windowBounds', { width: b.width, height: b.height });
-    });
+    if (!file) {
+        // Save resized size if the window is not the splash screen
+        window.on('resize', function () {
+            let b = window.getBounds();
+            store.set('windowBounds', { width: b.width, height: b.height });
+        });
+    }
 
     // Emitted when the window is closed.
-    mainWindow.on('closed', function () {
+    window.on('closed', function () {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-        mainWindow = null;
+        console.log(windows);
+        windows.splice(windows.findIndex(element => { element === window; }), 1);
+        console.log(windows);
     });
+
+    windows.push(window);
 }
 
 // This method will be called when Electron has finished
@@ -214,7 +234,8 @@ app.on('ready', () => {
     autoUpdater.checkForUpdates();
 
     // Create new window
-    createWindow();
+    //createWindow();
+    createWindow(700, 250, "splash.pug");
 });
 
 // Quit when all windows are closed.
@@ -232,7 +253,7 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
     // On OS X it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (mainWindow === null) {
+    if (windows.length === 0) {
         createWindow();
     }
 });

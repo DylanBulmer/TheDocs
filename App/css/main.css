@@ -1,8 +1,13 @@
 * {
     border: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Open Sans';
     margin: 0;
     cursor: default;
+}
+
+body {
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 a, select {

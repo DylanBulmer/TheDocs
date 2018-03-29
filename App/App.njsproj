@@ -46,6 +46,7 @@
     <Content Include="build\icon.icns" />
     <Content Include="css\app.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\fonts.css" />
     <Content Include="css\hljs.css" />
     <Content Include="css\login.css" />
     <Content Include="css\main.css" />
@@ -59,6 +60,17 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\Open_Sans\LICENSE.txt" />
+    <Content Include="fonts\Open_Sans\OpenSans-Bold.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-BoldItalic.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-ExtraBold.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-ExtraBoldItalic.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-Italic.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-Light.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-LightItalic.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-Regular.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-SemiBold.ttf" />
+    <Content Include="fonts\Open_Sans\OpenSans-SemiBoldItalic.ttf" />
     <Content Include="image\TheDocsLogo.svg" />
     <Content Include="image\TheDocsLogoWhite.svg" />
     <Content Include="js\liveSearch.js" />
@@ -70,10 +82,12 @@
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\register.pug" />
+    <Content Include="views\splash.pug" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
     <Folder Include="fonts\" />
+    <Folder Include="fonts\Open_Sans\" />
     <Folder Include="image\" />
     <Folder Include="js\" />
     <Folder Include="modules\" />

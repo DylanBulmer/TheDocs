@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="372.11874"
-   height="69.515625"
-   viewBox="0 0 98.456416 18.392677"
+   width="360.16562"
+   height="70.546875"
+   viewBox="0 0 95.293818 18.665529"
    version="1.1"
    id="svg8"
    sodipodi:docname="TheDocsLogo.svg"
@@ -46,9 +46,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="101.95533"
-     inkscape:cy="290.85726"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="74.089158"
+     inkscape:cy="-45.29462"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -61,7 +61,8 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:pagecheckerboard="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -78,25 +79,25 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-26.842806,-90.129837)">
+     transform="translate(-26.957219,-90.062256)">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:25.39999962px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="26.458334"
-       y="108.21246"
+       x="26.324699"
+       y="108.47974"
        id="text2376"><tspan
          sodipodi:role="line"
          id="tspan2374"
-         x="26.458334"
-         y="108.21246"
-         style="stroke-width:0.26458332;fill:#1377ff;fill-opacity:1"><tspan
-   style="letter-spacing:-2.64583333px;fill:#1377ff;fill-opacity:1"
+         x="26.324699"
+         y="108.47974"
+         style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:25.39999962px;line-height:0;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#1377ff;fill-opacity:1;stroke-width:0.26458332"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:25.39999962px;line-height:0;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:-2.71197915px;writing-mode:lr-tb;text-anchor:start;fill:#1377ff;fill-opacity:1"
    id="tspan2382">T</tspan><tspan
-   style="letter-spacing:-8.89px;fill:#1377ff;fill-opacity:1"
+   style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:25.39999962px;line-height:0;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:-8.89000034px;writing-mode:lr-tb;text-anchor:start;fill:#1377ff;fill-opacity:1"
    id="tspan2384">H</tspan>E <tspan
-   style="letter-spacing:-6.87916667px;fill:#1377ff;fill-opacity:1"
+   style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:25.39999962px;line-height:0;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:-6.8791666px;writing-mode:lr-tb;text-anchor:start;fill:#1377ff;fill-opacity:1"
    id="tspan2378">DO</tspan><tspan
-   style="letter-spacing:-2.38125px;fill:#1377ff;fill-opacity:1"
+   style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:25.39999962px;line-height:0;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Ultra-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:-2.9104166px;writing-mode:lr-tb;text-anchor:start;fill:#1377ff;fill-opacity:1"
    id="tspan2380">C</tspan>S</tspan></text>
   </g>
 </svg>

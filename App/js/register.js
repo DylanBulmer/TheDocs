@@ -16,11 +16,11 @@ var submition = function () {
     let code = document.getElementById('code').value;
 
     // do ajax stuff to check for server...
-    if (password == cpassword) {
+    if (password === cpassword) {
         // create request
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 result = JSON.parse(this.responseText);
                 if (result.err) {
                     msg.innerHTML = result.err;

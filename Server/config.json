@@ -10,5 +10,9 @@
     "database": "thedocs",
     "user": "thedocs",
     "password": "password"
+  },
+  "organization": {
+    "name": "<Your Organizations>",
+    "statment":  "<loading screen messege>"
   }
 }
