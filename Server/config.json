@@ -12,7 +12,7 @@
     "password": "password"
   },
   "organization": {
-    "name": "<Your Organizations>",
-    "statment":  "<loading screen messege>"
+    "name": "<Your Organization>",
+    "statement":  "Welcome to The Docs"
   }
 }

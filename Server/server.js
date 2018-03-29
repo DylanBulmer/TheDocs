@@ -127,6 +127,7 @@ app.post('/doc', function (req, res) {
 app.get('/admin', (req, res) => {
     let users;
     let mysql = store.get("mysql");
+    let org = store.get("organization");
 
     let p = db.getNumUsers().then(data => {
         users = data;
@@ -137,6 +138,9 @@ app.get('/admin', (req, res) => {
             user: 'Test User',
             data: {
                 port: settings.port,
+                url: settings.url,
+                host: settings.host,
+                code: settings.code,
                 mysql: {
                     connection: db.isConnected,
                     users: db.isConnected ? users : 'N/A',
@@ -145,6 +149,10 @@ app.get('/admin', (req, res) => {
                         database: db.isConnected ? mysql.database : 'N/A',
                         user: db.isConnected ? mysql.user : 'N/A'
                     }
+                },
+                organization: {
+                    name: org.name,
+                    statement: org.statement
                 }
             }
         });
