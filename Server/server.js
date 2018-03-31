@@ -191,7 +191,7 @@ app.listen(port, function () {
 
     if (settings.firstTime === true) {
         console.log('');
-        console.log('Please go to http://localhost:1337/admin to setup the server!');
+        console.log('Please go to http://localhost:' + port + '/admin to setup the server!');
         console.log('');
     } else {
         // Connect to database after the app starts running
