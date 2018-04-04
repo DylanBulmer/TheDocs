@@ -124,39 +124,73 @@ app.post('/doc', function (req, res) {
     });
 });
 
+// POST journal
+app.post('/journal', (req, res) => {
+    // The post request must be an array of arrays
+    // Ex: [ [ user_id, project_id, description ], [ ... ] ]
+    db.createJournal(req.body, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.send(false);
+        } else {
+            console.log(result);
+            res.send(true);
+        }
+    });
+});
+
+// Get a log
+// PRE: Send in account info to gain access
+app.get('/log/:type/:id', (req, res) => {
+    db.getLog(req.params.type, req.params.id, 0, function (events) {
+        res.json(events);
+    });
+});
+
+app.get('/log/:type/:id/:offset', function (req, res) {
+    db.getLog(req.params.type, req.params.id, req.params.offset, function (events) {
+        res.json(events);
+    });
+});
+// END OF LOGS
+
 app.get('/admin', (req, res) => {
-    let users;
-    let mysql = store.get("mysql");
-    let org = store.get("organization");
+    if (!settings.firstTime) {
+        let users;
+        let mysql = store.get("mysql");
+        let org = store.get("organization");
 
-    let p = db.getNumUsers().then(data => {
-        users = data;
-    });
-
-    Promise.all([p]).then(() => {
-        res.render(admin, {
-            user: 'Test User',
-            data: {
-                port: settings.port,
-                url: settings.url,
-                host: settings.host,
-                code: settings.code,
-                mysql: {
-                    connection: db.isConnected,
-                    users: db.isConnected ? users : 'N/A',
-                    settings: {
-                        host: db.isConnected ? mysql.host : 'N/A',
-                        database: db.isConnected ? mysql.database : 'N/A',
-                        user: db.isConnected ? mysql.user : 'N/A'
-                    }
-                },
-                organization: {
-                    name: org.name,
-                    statement: org.statement
-                }
-            }
+        let p = db.getNumUsers().then(data => {
+            users = data;
         });
-    });
+
+        Promise.all([p]).then(() => {
+            res.render(admin, {
+                user: 'Test User',
+                data: {
+                    port: settings.port,
+                    url: settings.url,
+                    host: settings.host,
+                    code: settings.code,
+                    mysql: {
+                        connection: db.isConnected,
+                        users: db.isConnected ? users : 'N/A',
+                        settings: {
+                            host: db.isConnected ? mysql.host : 'N/A',
+                            database: db.isConnected ? mysql.database : 'N/A',
+                            user: db.isConnected ? mysql.user : 'N/A'
+                        }
+                    },
+                    organization: {
+                        name: org.name,
+                        statement: org.statement
+                    }
+                }
+            });
+        });
+    } else {
+        res.redirect('/register');
+    }
 });
 
 app.post('/admin', (req, res) => {

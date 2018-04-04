@@ -4,6 +4,12 @@
   "description": "Server for The Docs",
   "main": "server.js",
   "author": "Dylan Bulmer",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  ],
   "os": [
     "win32",
     "macOS",

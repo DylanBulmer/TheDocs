@@ -81,6 +81,7 @@
     <Content Include="views\login.pug" />
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
+    <Content Include="views\projects.pug" />
     <Content Include="views\register.pug" />
     <Content Include="views\splash.pug" />
   </ItemGroup>

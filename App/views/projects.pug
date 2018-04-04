@@ -19,31 +19,16 @@ block content
             span(style="font-size: 1.3em") &times;
         a(onclick="") Home
         a(onclick="") Profile
-        a(onclick="") Projects
+        a(href="projects.pug") Projects
         a(onclick="") Issues
         a(onclick="logout()" style="position: static; bottom: 0; left: 0;") Logout
     aside
-        span
-            input(type="text" class="search" id="liveSearch" placeholder="Search The Docs!")
         tabs#dump
-        a(class="add-button" onclick="viewPage('c_new')") Document a problem!
+        a(class="add-button" onclick="viewPage('c_new')") Start a project!
     content#c_main
-        h1 Welcome to The Docs!
+        h1 Manage your projects
         br
-        p This application helps build a knowledge base of issues run into during: the development process, experiments, and other scenarios. To do this, The Docs allows you to publish documents that allows others to find and learn from past experiences.
-        br
-        h2 How to create a document!
-        br
-        p On the bottom of the left column, there is a button labeled "Document a Problem!" When you click this button you will pop up with a form that looks identical to a published document.
-        | When filling out the form, you will want to make sure the information you are providing is meaningful and will make sense to another user that will be reading your document. In the document
-        | you must give: a title that summarizes the issue you have run into, <i>a recommended max is 3-5 words</i>; the project you are working on (if the project is not listed, you can add it in); a description
-        | describing the issue you ran into; a URL you found helpful (optional but recommended); some keywords that describe the issues, for example <code>NodeJS, Function, Async</code> this allows the reader
-        | to search and understand what your solution is covering; lastly, a detailed solution that clearly describes how to solve the issue.
-        br
-        h2 Search The Docs!
-        br
-        p To search, use terms that apply to what you are looking for. This program uses a keyword system to easily find a solution to your issue, but this can only work if you
-        | add keywords when producing a document.
+        p Click on a project on the right to write up an issue or a journal and view it's event log.
         br
         br
         span() Copyright &copy; 2018 Dylan Bulmer

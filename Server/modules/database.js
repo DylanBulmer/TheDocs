@@ -1,3 +1,5 @@
+'use strict';
+
 var bcrypt = require('bcrypt');
 var mysql = require('mysql');
 var settings = require("../config.json");
@@ -246,6 +248,19 @@ class database {
         });
     }
 
+    // create a new journal
+    createJournal(journals, callback) {
+        this.db.query("insert into journals (user_id, project_id, description) values ? ", [journals], function (err, result) {
+            if (err) {
+                return callback({
+                    'err': err
+                });
+            } else {
+                return callback(false, { 'id': result.insertId });
+            }
+        });
+    }
+
     // Get projects
     getProjects(callback) {
         // Fix this: change offset to the number of already loaded elements.
@@ -332,6 +347,34 @@ class database {
                 resolve(0);
             }
         });
+    }
+
+    /**
+     * @returns {Function} callback will be returned 
+     * @param {String} type Type of log to grab
+     * @param {Number} id ID should be a number
+     * @param {Number} offset Increment by one to get 25 more logs
+     * @param {Function} callback Callback the log with a function
+     */
+    getLog(type, id, offset, callback) {
+        let docs, journals, d, p;
+        switch (type) {
+            case "user":
+                // Grab Documents for user
+                this.db.query("SELECT * FROM ( (SELECT id, user_id, project_id, title, created FROM documents) UNION ALL (SELECT id, user_id, project_id, NULL AS title, created FROM journals)) results WHERE user_id = " + id + " ORDER BY created DESC LIMIT 5 OFFSET " + (5 * offset), (err, rows, fields) => {
+                    return callback(rows);
+                });
+
+                break;
+            case "project":
+                // Grab documents and journals for project by id
+                this.db.query("SELECT * FROM ( (SELECT id, user_id, project_id, title, created FROM documents) UNION ALL (SELECT id, user_id, project_id, NULL AS title, created FROM journals)) results WHERE project_id = " + id + " ORDER BY created DESC LIMIT 5 OFFSET " + (5 * offset), (err, rows, fields) => {
+                    return callback(rows);
+                });
+                break;
+            default:
+                return callback("Event Logs");
+        }
     }
 }
 

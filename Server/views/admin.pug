@@ -46,7 +46,7 @@ html
                 br
                 h3 Organization Settings
                 label Name
-                input(placeholder = "Default: None" name="org[name]" value=data.organization.name)
+                input(placeholder = "Default: None" name="org[name]" value=data.organization.name autocomplete='organization')
                 br
                 label Loading Screen Message
                 textarea(name="org[statement]" placeholder = "Default: Welcome to The Docs!")= data.organization.statement
@@ -64,13 +64,13 @@ html
                 input(placeholder = "Please enter a schema!" name="database" value=data.mysql.settings.database)
                 br
                 label Username:
-                input(placeholder = "Please enter a username!" name="username" value=data.mysql.settings.user)
+                input(placeholder = "Please enter a username!" name="username" value=data.mysql.settings.user autocomplete='username')
                 br
                 label Password:
                 br
-                input(type="password" name="password" placeholder = "Password")
+                input(type="password" name="password" placeholder = "Password" autocomplete='new-password')
                 br
-                input(type="password" name="confirm_password" placeholder = "Confirm Password")
+                input(type="password" name="confirm_password" placeholder = "Confirm Password" autocomplete='new-password')
                 br
                 input(type="hidden" name="type" value="mysql")
                 button Save and Connect

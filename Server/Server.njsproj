@@ -37,6 +37,7 @@
     <Content Include="config.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="makefile" />
     <Content Include="public\css\markdown.css" />
     <Content Include="public\image\TheDocsLogo.png" />
     <Content Include="public\image\TheDocsLogo.svg" />

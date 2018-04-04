@@ -45,8 +45,7 @@ aside {
     color: #ffffff;
     height: calc(100vh - 3em - 32px);
     width: 250px;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
     aside > span {
@@ -56,7 +55,7 @@ aside {
         position: sticky;
         top: 0;
         z-index: 2;
-        background: linear-gradient(to bottom, #1177ff 80%, transparent);
+        /*background: linear-gradient(to bottom, #1177ff 80%, transparent);*/
     }
 
 aside > span > .search {
@@ -71,12 +70,14 @@ aside > span > .search {
     z-index: 2;
 }
 
-aside > tabs {
-    display: block;
-    width: 100%;
-    position:relative;
-    top: -2px;
-}
+    aside > tabs {
+        display: block;
+        width: 100%;
+        position: relative;
+        height: calc(100vh - 48px - 3em - 64px);
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
 
 aside > tabs > tab, info {
     display: block;
@@ -147,15 +148,15 @@ content {
     width: calc(100% - 20px);
     height: 2em;
     border-radius: 5px;
-    position: sticky;
+    position: absolute;
     overflow: hidden;
     white-space: nowrap;
     display: block;
-    background-color: #eee;
+    background-color: #fff;
     bottom: 10px;
     left: 10px;
     text-align: center;
-    color: #333;
+    color: #555;
     line-height: 2em;
 }
 

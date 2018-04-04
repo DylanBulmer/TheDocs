@@ -9,6 +9,7 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "App", "App\App.njsproj", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{428626DA-F6B4-4217-87BD-3B9339F25ECA}"
 	ProjectSection(SolutionItems) = preProject
+		Server\makefile = Server\makefile
 		README.md = README.md
 	EndProjectSection
 EndProject

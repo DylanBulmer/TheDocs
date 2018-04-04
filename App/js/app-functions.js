@@ -2,6 +2,11 @@
  * All handlers will be in this file!
  */
 
+
+// Get Store
+var Store = require('../modules/store');
+var store = new Store({ configName: 'user-preferences' });
+
 // Logout handler
 var logout = function logout() {
     store.removeUser();
