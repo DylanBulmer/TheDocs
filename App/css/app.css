@@ -262,3 +262,21 @@ nav > a:hover {
     background-size: calc(100% - 20px) 1px;
     background-position: center bottom;
 }
+
+#eventlog {
+    border-image: linear-gradient( to bottom, transparent 0%, #555, transparent 100% ) 1 100%;
+    border-left: 1px solid #555;
+    border-right: 1px solid #555;
+    height: calc(100%);
+    width: calc(100% + 26px);
+    overflow-y: scroll;
+}
+
+.collumn {
+    display: inline-block;
+    width: calc(50% - 20px);
+    padding: 10px;
+    vertical-align: text-top;
+    height: calc(100% - 50px);
+    overflow: hidden;
+}

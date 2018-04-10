@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Server", "Server\Server.njsproj", "{31FD217A-EDAE-4BFE-AE70-1CEA1A56B7EE}"
-EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "App", "App\App.njsproj", "{3D9278E2-36AB-460A-AFC2-1F3B08F6AA5D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{428626DA-F6B4-4217-87BD-3B9339F25ECA}"
@@ -19,12 +17,7 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{31FD217A-EDAE-4BFE-AE70-1CEA1A56B7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31FD217A-EDAE-4BFE-AE70-1CEA1A56B7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31FD217A-EDAE-4BFE-AE70-1CEA1A56B7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31FD217A-EDAE-4BFE-AE70-1CEA1A56B7EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D9278E2-36AB-460A-AFC2-1F3B08F6AA5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D9278E2-36AB-460A-AFC2-1F3B08F6AA5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D9278E2-36AB-460A-AFC2-1F3B08F6AA5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D9278E2-36AB-460A-AFC2-1F3B08F6AA5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
