@@ -11,30 +11,30 @@ html
                 div.dropdown
                     button.dropbtn File
                     div.dropdown-content
-                        span New Document
+                        span(onclick="viewPage('c_new')") New Document
                         span New Project
                         hr
                         span(onclick="logout()") Logout
                 div.dropdown
                     button.dropbtn Edit
                     div.dropdown-content
-                        span Undo
-                        span Redo
+                        span#undo Undo
+                        span#redo Redo
                         hr
-                        span Cut
-                        span Copy
-                        span Paste
-                        span Select All
+                        span#cut Cut
+                        span#copy Copy
+                        span#paste Paste
+                        span#selectAll Select All
                 div.dropdown
                     button.dropbtn View
                     div.dropdown-content
-                        span Reload
+                        span#reload Reload
                         hr
-                        span Zoom In
-                        span Zoom Out
-                        span Zoom Reset
+                        span#zoomIn Zoom In
+                        span#zoomOut Zoom Out
+                        span#zoomReset Zoom Reset
                         hr
-                        span Toggle Fullscreen
+                        span#toggleFullsceen Toggle Fullscreen
                 div.dropdown
                     button.dropbtn Window
                     div.dropdown-content

@@ -361,14 +361,14 @@ class database {
         switch (type) {
             case "user":
                 // Grab Documents for user
-                this.db.query("SELECT * FROM ( (SELECT id, user_id, project_id, title, created FROM documents) UNION ALL (SELECT id, user_id, project_id, NULL AS title, created FROM journals)) results WHERE user_id = " + id + " ORDER BY created DESC LIMIT 5 OFFSET " + (5 * offset), (err, rows, fields) => {
+                this.db.query("SELECT * FROM ( (SELECT id, user_id, project_id, title, created FROM documents) UNION ALL (SELECT id, user_id, project_id, NULL AS title, created FROM journals)) results WHERE user_id = " + id + " ORDER BY created DESC LIMIT 20 OFFSET " + (20 * offset), (err, rows, fields) => {
                     return callback(rows);
                 });
 
                 break;
             case "project":
                 // Grab documents and journals for project by id
-                this.db.query("SELECT * FROM ( (SELECT id, user_id, project_id, title, created FROM documents) UNION ALL (SELECT id, user_id, project_id, NULL AS title, created FROM journals)) results WHERE project_id = " + id + " ORDER BY created DESC LIMIT 5 OFFSET " + (5 * offset), (err, rows, fields) => {
+                this.db.query("SELECT * FROM ( (SELECT id, user_id, project_id, title, created FROM documents) UNION ALL (SELECT id, user_id, project_id, NULL AS title, created FROM journals)) results WHERE project_id = " + id + " ORDER BY created DESC LIMIT 20 OFFSET " + (20 * offset), (err, rows, fields) => {
                     return callback(rows);
                 });
                 break;

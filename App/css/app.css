@@ -254,3 +254,11 @@ nav > a:hover {
 #nav-cls:hover {
     color: #f1f1f1;
 }
+
+.log {
+    padding: 10px;
+    text-align: justify;
+    background: linear-gradient( to left, transparent 0%, #555, transparent 100% ) left bottom no-repeat;
+    background-size: calc(100% - 20px) 1px;
+    background-position: center bottom;
+}

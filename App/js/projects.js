@@ -1,8 +1,10 @@
-document.getElementById("liveSearch").addEventListener("keyup", liveSearch);
+// If I choose to do a search feature, just uncomment the code and adjust to the right config.
+// document.getElementById("liveSearch").addEventListener("keyup", liveSearch);
 
-function liveSearch() {
-	let keyword = document.getElementById("liveSearch").value;
-	let xhttp = new XMLHttpRequest();
+var dateFormat = require('dateformat');
+
+function projectSearch() {
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             let dump = document.getElementById("dump");
@@ -18,30 +20,30 @@ function liveSearch() {
 
             if (result.length === 0) {
                 let tab = document.createElement("tab");
-                tab.innerHTML = "<h3>No documents found!</h3><p>Create a new one!</p>";
+                tab.innerHTML = "<h3>No projects found!</h3><p>Create a new one!</p>";
                 dump.appendChild(tab);
             } else {
                 // Add all results
                 for (i = 0; i < result.length; i++) {
-                    let doc = result[i];
+                    let project = result[i];
                     tab = document.createElement("tab");
-                    tab.innerHTML = "<h3>" + result[i].title + "</h3><p>Keyword: " + result[i].keyword + "</p>";
+                    tab.innerHTML = "<h3>" + result[i].name + "</h3><p>Started " + dateFormat(result[i].started, "ddd, mmm dS, yyyy") + "</p>";
                     tab.addEventListener("click", function (e) {
                         let w = document.getElementsByClassName('wrapper')[0];  // Wrapper
                         let t = e.target;                                       // Active Tab
                         let top = parseInt(w.style.top);
                         w.style.top = top + (t.getBoundingClientRect().top - w.getBoundingClientRect().top) + "px";
-                        viewPage('c_doc', doc.doc_id);
+                        viewPage('c_view', project.id);
                     });
                     dump.appendChild(tab);
                 }
             }
         }
     };
-	xhttp.open("GET", store.get("url") + "/search?key=" + keyword, true);
-	xhttp.send();
+    xhttp.open("GET", store.get("url") + "/projects", true);
+    xhttp.send();
 }
 
-document.addEventListener('DOMContentLoaded', function onDocLoaded (event) {
-	liveSearch();
+document.addEventListener('DOMContentLoaded', function onDocLoaded(event) {
+    projectSearch();
 });

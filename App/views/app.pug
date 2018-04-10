@@ -19,14 +19,14 @@ block content
             span(style="font-size: 1.3em") &times;
         a(onclick="") Home
         a(onclick="") Profile
-        a(onclick="") Projects
+        a(href="projects.pug") Projects
         a(onclick="") Issues
         a(onclick="logout()" style="position: static; bottom: 0; left: 0;") Logout
     aside
         span
             input(type="text" class="search" id="liveSearch" placeholder="Search The Docs!")
         tabs#dump
-        a(class="add-button" onclick="viewPage('c_new')") Document a problem!
+        a(class="add-button" onclick="viewPage('c_new')") Document an Issue!
     content#c_main
         h1 Welcome to The Docs!
         br

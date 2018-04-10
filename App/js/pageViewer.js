@@ -117,6 +117,40 @@ var viewPage = function viewPage(page, id) {
         };
         xhttp.open("GET", store.get("url") + "/projects", true);
         xhttp.send();
+    } else if (page == "c_view") {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let dump = document.getElementById("eventlog");
+                let result = JSON.parse(this.responseText);
+
+                dump.innerHTML = "";
+                if (result.length === 0) {
+                    let div = document.createElement("div");
+                    div.innerHTML = "No Projects Yet";
+                    dump.appendChild(div);
+                } else {
+                    // Add all results
+                    for (i = 0; i < result.length; i++) {
+                        let div = document.createElement("div");
+                        div.setAttribute('class', 'log');
+                        let time = dateFormat(result[i].created, "ddd, mmm dS, yyyy") + " at " + dateFormat(result[i].created, "h:MM TT");
+                        if (result[i].title != null) {
+                            div.innerHTML = "User " + result[i].user_id + " created an issue called <code>" + result[i].title + "</code> on " + time;
+                        } else {
+                            div.innerHTML = "User " + result[i].user_id + " wrote a journal on " + time;
+                        }
+                        dump.appendChild(div);
+                    }
+                }
+            }
+            let date = document.getElementById('p_date');
+            // Set date and time
+            let timestamp = new Date();
+            date.innerText = dateFormat(timestamp, "ddd, mmm dS, yyyy") + " at " + dateFormat(timestamp, "h:MM TT");
+        };
+        xhttp.open("GET", store.get("url") + "/log/project/" + id, true);
+        xhttp.send();
     }
 };
 
@@ -131,3 +165,12 @@ var updateChange = function () {
         }
     }
 };
+
+/* VIEW POP-UP FUNCTION */
+
+const viewPupup = (popup) => {
+    switch (popup) {
+        case "newProject":
+            break;
+    }
+}

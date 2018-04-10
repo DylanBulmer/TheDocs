@@ -20,6 +20,7 @@ const isDev = require('electron-is-dev');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let windows = [];
+let splash;
 let views = __dirname + "/views/";
 
 // Change the path if in development
@@ -190,6 +191,10 @@ function createWindow(w, h, file) {
     }
 
     window.once('ready-to-show', () => {
+        if (splash) {
+            windows.splice(windows.findIndex(element => { element === splash; }), 1);
+            splash = null;
+        }
         if (!file) {
             window.show();
         }
@@ -211,9 +216,7 @@ function createWindow(w, h, file) {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-        console.log(windows);
         windows.splice(windows.findIndex(element => { element === window; }), 1);
-        console.log(windows);
     });
 
     windows.push(window);
@@ -235,7 +238,7 @@ app.on('ready', () => {
 
     // Create new window
     //createWindow();
-    createWindow(700, 250, "splash.pug");
+    splash = createWindow(700, 250, "splash.pug");
 });
 
 // Quit when all windows are closed.
