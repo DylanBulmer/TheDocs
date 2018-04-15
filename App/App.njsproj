@@ -42,6 +42,7 @@
     <Compile Include="js\register.js" />
     <Compile Include="js\submit.js" />
     <Compile Include="js\titlebar.js" />
+    <Compile Include="js\user-preferences.js" />
     <Compile Include="modules\store.js" />
     <Content Include="build\icon.ico" />
     <Content Include="build\icon.icns" />

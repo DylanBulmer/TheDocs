@@ -66,8 +66,8 @@ var submition = function () {
             {
                 username: username,
                 email: email,
-                fname: fname,
-                lname: lname,
+                name_first: fname,
+                name_last: lname,
                 password: password,
                 code: code
             }

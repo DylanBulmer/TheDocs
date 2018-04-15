@@ -51,6 +51,13 @@ class Store {
         this.data['user'] = {};
         fs.writeFileSync(this.path, JSON.stringify(this.data));
     }
+
+    getUser() {
+        let sending = {};
+        sending.user = this.data['user'];
+        sending.logged_in = this.data['logged_in'];
+        return sending;
+    }
     /**
      * @param {String} filePath The path to the file.
      * @param {JSON} defaults Custom set default settings.

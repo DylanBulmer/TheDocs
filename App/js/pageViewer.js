@@ -123,31 +123,45 @@ var viewPage = function viewPage(page, id) {
             if (this.readyState === 4 && this.status === 200) {
                 let dump = document.getElementById("eventlog");
                 let result = JSON.parse(this.responseText);
+                let logs = result.logs;
+                let project = result.info;
 
+                // Containts for project data
+                let title = document.getElementById("p_title");
+                let started = document.getElementById("p_date");
+                let desc = document.getElementById("p_desc");
+                let homepage = document.getElementById("p_homepage");
+                
+                // Set date and time
+                let timestamp = new Date(project.started);
+                started.innerText = dateFormat(timestamp, "ddd, mmm dS, yyyy") + " at " + dateFormat(timestamp, "h:MM TT");
+
+                // Insert data
+                title.innerText = project.name;
+                desc.innerText = project.description;
+                homepage.innerText = project.homepage;
+
+                // Creating the Event log!
                 dump.innerHTML = "";
-                if (result.length === 0) {
+                if (logs.length === 0) {
                     let div = document.createElement("div");
                     div.innerHTML = "No Projects Yet";
                     dump.appendChild(div);
                 } else {
                     // Add all results
-                    for (i = 0; i < result.length; i++) {
+                    for (i = 0; i < logs.length; i++) {
                         let div = document.createElement("div");
                         div.setAttribute('class', 'log');
-                        let time = dateFormat(result[i].created, "ddd, mmm dS, yyyy") + " at " + dateFormat(result[i].created, "h:MM TT");
-                        if (result[i].title != null) {
-                            div.innerHTML = "User " + result[i].user_id + " created an issue called <code>" + result[i].title + "</code> on " + time;
+                        let time = dateFormat(logs[i].created, "ddd, mmm dS, yyyy") + " at " + dateFormat(logs[i].created, "h:MM TT");
+                        if (logs[i].title != null) {
+                            div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " created an issue called <code>" + logs[i].title + "</code> on " + time;
                         } else {
-                            div.innerHTML = "User " + result[i].user_id + " wrote a journal on " + time;
+                            div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " wrote a journal on " + time;
                         }
                         dump.appendChild(div);
                     }
                 }
             }
-            let date = document.getElementById('p_date');
-            // Set date and time
-            let timestamp = new Date();
-            date.innerText = dateFormat(timestamp, "ddd, mmm dS, yyyy") + " at " + dateFormat(timestamp, "h:MM TT");
         };
         xhttp.open("GET", store.get("url") + "/log/project/" + id, true);
         xhttp.send();

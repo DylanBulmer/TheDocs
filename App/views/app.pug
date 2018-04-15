@@ -7,7 +7,7 @@ block links
 
 block content
     topbar
-        img(src="../image/TheDocsLogoWhite.svg" style="height: calc(3em - 16px); position: absolute; top: 8px; left: 32px; cursor: pointer;" onclick="viewPage('c_main')")
+        img(src="../image/TheDocsLogoWhite.svg" style="height: calc(3em - 16px); position: absolute; top: 8px; left: 43px; cursor: pointer;" onclick="viewPage('c_main')")
         span
             span(style="vertical-align: middle;") Welcome 
                 span.fname
@@ -132,14 +132,4 @@ block content
     script(src="../js/liveSearch.js")
     script(src="../js/pageViewer.js")
     script(src="../js/submit.js")
-    script.
-        var user = store.get("user");
-
-        let fnames = document.getElementsByClassName('fname');
-        for (i = 0; i < fnames.length; i++) {
-            fnames[i].innerText = user.name.first
-        }
-        let lnames = document.getElementsByClassName('lname');
-        for (i = 0; i < lnames.length; i++) {
-            lnames[i].innerText = user.name.last
-        }
+    script(src='../js/user-preferences.js')
