@@ -20,7 +20,6 @@ const isDev = require('electron-is-dev');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let windows = [];
-let splash;
 let views = __dirname + "/views/";
 
 // Change the path if in development
@@ -186,30 +185,17 @@ function createWindow(w, h, file) {
         slashes: true
     }));
 
-    if (file) {
-        createWindow();
-    }
-
     window.once('ready-to-show', () => {
-        if (splash) {
-            windows.splice(windows.findIndex(element => { element === splash; }), 1);
-            splash = null;
-        }
-        if (!file) {
-            window.show();
-        }
+        window.show();
     });
 
     // Open the DevTools.
-    window.webContents.openDevTools();
-
-    if (!file) {
-        // Save resized size if the window is not the splash screen
-        window.on('resize', function () {
-            let b = window.getBounds();
-            store.set('windowBounds', { width: b.width, height: b.height });
-        });
-    }
+    //window.webContents.openDevTools();
+    
+    window.on('resize', function () {
+        let b = window.getBounds();
+        store.set('windowBounds', { width: b.width, height: b.height });
+    });
 
     // Emitted when the window is closed.
     window.on('closed', function () {
@@ -237,8 +223,7 @@ app.on('ready', () => {
     autoUpdater.checkForUpdates();
 
     // Create new window
-    //createWindow();
-    splash = createWindow(700, 250, "splash.pug");
+    createWindow();
 });
 
 // Quit when all windows are closed.
