@@ -43,6 +43,7 @@
     <Compile Include="js\submit.js" />
     <Compile Include="js\titlebar.js" />
     <Compile Include="js\user-preferences.js" />
+    <Compile Include="modules\slimscroll.js" />
     <Compile Include="modules\store.js" />
     <Content Include="build\icon.ico" />
     <Content Include="build\icon.icns" />
@@ -55,6 +56,7 @@
     <Content Include="css\markdown.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="css\slimscroll.css" />
     <Content Include="dev-app-update.yml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.svg" />

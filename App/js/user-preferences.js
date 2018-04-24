@@ -5,7 +5,7 @@ var user = store.get("user");
 
 let fnames = document.getElementsByClassName('fname');
 for (i = 0; i < fnames.length; i++) {
-    console.log(store.getUser());
+    //console.log(store.getUser());
     fnames[i].innerText = user.name.first
 }
 let lnames = document.getElementsByClassName('lname');

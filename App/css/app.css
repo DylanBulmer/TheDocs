@@ -128,7 +128,7 @@ aside tab > p, info > p {
     color: #ccc;
     white-space: nowrap;
     overflow: hidden;
-    text-indent: 1em;
+    /*text-indent: 1em;*/
 }
 
 content {
@@ -256,6 +256,7 @@ nav > a:hover {
 }
 
 .log {
+    display: block;
     padding: 10px;
     text-align: justify;
     background: linear-gradient( to left, transparent 0%, #555, transparent 100% ) left bottom no-repeat;
@@ -267,9 +268,10 @@ nav > a:hover {
     border-image: linear-gradient( to bottom, transparent 0%, #555, transparent 100% ) 1 100%;
     border-left: 1px solid #555;
     border-right: 1px solid #555;
-    height: calc(100%);
-    width: calc(100% + 26px);
-    overflow-y: scroll;
+    height: calc(100% - 10px);
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .collumn {
@@ -277,6 +279,5 @@ nav > a:hover {
     width: calc(50% - 20px);
     padding: 10px;
     vertical-align: text-top;
-    height: calc(100% - 50px);
-    overflow: hidden;
+    height: calc(100% - 93px);
 }

@@ -82,8 +82,30 @@ var submition = function submition() {
     return false;
 };
 
-// Autologin if URL is set.
-if (store.get('url')) {
-    let host = document.getElementById('url');
-    host.value = store.get("host");
+/**
+ * @description Input saved values to the form.
+ * @param {Boolean} go If true; go straight to signin page.
+ */
+var setup = (go) => {
+    // Grab variables from the store.
+    let url = store.get("host");
+    let port = store.get("port");
+
+    // Auto login if URL is set.
+    if (url) {
+        let host = document.getElementById('url');
+        host.value = url;
+    }
+    // Auto login if port is set.
+    if (port) {
+        let portInput = document.getElementById('port');
+        portInput.value = port;
+    }
+
+    // Start the server call?
+    if (go) {
+        submition();
+    }
 }
+
+setup(false);

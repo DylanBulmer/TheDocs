@@ -6,7 +6,7 @@ var md = require('markdown-it')({
                 return '<pre class="hljs"><code>' +
                     hljs.highlight(lang, str, true).value +
                     '</code></pre>';
-            } catch (__) { }
+            } catch (__) { return ''; }
         }
 
         return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
@@ -117,7 +117,7 @@ var viewPage = function viewPage(page, id) {
         };
         xhttp.open("GET", store.get("url") + "/projects", true);
         xhttp.send();
-    } else if (page == "c_view") {
+    } else if (page === "c_view") {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
@@ -145,21 +145,24 @@ var viewPage = function viewPage(page, id) {
                 dump.innerHTML = "";
                 if (logs.length === 0) {
                     let div = document.createElement("div");
-                    div.innerHTML = "No Projects Yet";
+                    div.innerHTML = "No Events Yet";
                     dump.appendChild(div);
                 } else {
                     // Add all results
                     for (i = 0; i < logs.length; i++) {
-                        let div = document.createElement("div");
+                        let div = document.createElement("span");
                         div.setAttribute('class', 'log');
                         let time = dateFormat(logs[i].created, "ddd, mmm dS, yyyy") + " at " + dateFormat(logs[i].created, "h:MM TT");
-                        if (logs[i].title != null) {
+                        if (logs[i].title !== null) {
                             div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " created an issue called <code>" + logs[i].title + "</code> on " + time;
                         } else {
                             div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " wrote a journal on " + time;
                         }
                         dump.appendChild(div);
                     }
+                }
+                for (i = 0; i < Scrolls.length; i++) {
+                    Scrolls[i].resetValues();
                 }
             }
         };
@@ -187,4 +190,4 @@ const viewPupup = (popup) => {
         case "newProject":
             break;
     }
-}
+};

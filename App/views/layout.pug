@@ -4,6 +4,36 @@ html
         link(rel='stylesheet' href="../css/font-awesome.min.css")
         link(rel='stylesheet' href="../css/main.css")
         link(rel='stylesheet' href="../css/fonts.css")
+        link(rel='stylesheet' href="../css/slimscroll.css")
+        script(src='../modules/slimscroll.js')
+        script.
+            var Scrolls = [];
+            window.onload = function() {
+                if (navigator.userAgent.match('Macintosh') === null) {
+                    var element = document.getElementsByClassName('slimscroll');
+
+                    // Apply slim scroll plugin
+                    for (let i = 0; i < element.length; i++) {
+                        if (!element[i].getAttribute("hasScroll")) {
+                            Scrolls[i] = new slimScroll(element[i], {
+                                'wrapperClass': 'scroll-wrapper unselectable mac',
+                                'scrollBarContainerClass': 'scrollBarContainer',
+                                'scrollBarContainerSpecialClass': 'animate',
+                                'scrollBarClass': 'scroll',
+                                'keepFocus': true
+                            });
+                            Scrolls[i].resetValues();
+                        }
+                    }
+
+                    // resize
+                    window.addEventListener('resize', () => {
+                        for (i = 0; i < Scrolls.length; i ++) {
+                            Scrolls[i].resetValues();
+                        }
+                    });
+                }
+            }
         block links
     body
         div.titlebar

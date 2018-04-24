@@ -19,8 +19,8 @@ const isDev = require('electron-is-dev');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let windows = [];
-let views = __dirname + "/views/";
+var windows = [];
+const views = __dirname + "/views/";
 
 // Change the path if in development
 if (isDev) {
@@ -156,7 +156,8 @@ if (process.platform === 'darwin') {
 }
 
 const menu = Menu.buildFromTemplate(template);
-Menu.setApplicationMenu(menu);
+//Menu.setApplicationMenu(menu);
+app.setApplicationMenu(menu);
 
 /**
  * 
@@ -190,7 +191,7 @@ function createWindow(w, h, file) {
     });
 
     // Open the DevTools.
-    //window.webContents.openDevTools();
+    window.webContents.openDevTools();
     
     window.on('resize', function () {
         let b = window.getBounds();
