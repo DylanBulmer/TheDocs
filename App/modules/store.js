@@ -6,6 +6,7 @@ class Store {
     constructor(opts) {
         const userDataPath = (electron.app || electron.remote.app).getPath('userData'); // Appdata path
         this.path = path.join(userDataPath, opts.configName + '.json');                 // Path to JSON
+        console.log(this.path)
         this.data = this.parseDataFile(this.path, opts.defaults);                       // Data stored in JSON file
     }
   
@@ -16,10 +17,11 @@ class Store {
      * @returns {any} Returns the value requested
      */
     get(key) {
+        console.log(this.data)
         // reload data before grabbing key...
         // other instances may have saved data that another may not have internally
         // this happens often...
-        this.data = this.parseDataFile(this.path, {});
+        this.reload();
         // grab key and send it back.
         return this.data[key];
     }
@@ -30,6 +32,9 @@ class Store {
      * @param {any} val The value to store.
      */
     set(key, val) {
+        // reload data before setting key...
+        this.reload();
+        // Now set the key.
         this.data[key] = val;
         this.saveFile();
     }
@@ -38,6 +43,7 @@ class Store {
      * @param {FormData} data The data to store for the user.
      */
     setUser(data) {
+        this.reload();
         this.data['logged_in'] = true;
         this.data['user'] = {
             username: data.username,
@@ -51,12 +57,17 @@ class Store {
     }
 
     removeUser() {
+        // reload data before setting key...
+        this.reload();
+        // now remove....
         this.data['logged_in'] = false;
         this.data['user'] = {};
+        this.data['autoLogin'] = false;
         this.saveFile();
     }
 
     getUser() {
+        this.reload();
         let sending = {};
         sending.user = this.data['user'];
         sending.logged_in = this.data['logged_in'];
@@ -80,6 +91,10 @@ class Store {
      */
     saveFile() {
         fs.writeFileSync(this.path, JSON.stringify(this.data));
+    }
+
+    reload() {
+        this.data = this.parseDataFile(this.path, {});
     }
 }
 

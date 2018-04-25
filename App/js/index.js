@@ -55,6 +55,9 @@ var submition = function submition() {
                 }
             }
         };
+        let auto = document.getElementById("auto");
+        console.log(auto);
+        store.set("autoLogin", auto.checked);
         if (host.substring(0, 7) !== "http://" || host.substring(0, 8) !== "https://") {
             store.set("host", host);
             if (!port) {
@@ -91,13 +94,14 @@ var setup = (go) => {
     // Grab variables from the store.
     let url = store.get("host");
     let port = store.get("port");
+    let auto = store.get("autoLogin");
 
-    // Auto login if URL is set.
+    // Throw saved host into form
     if (url) {
         let host = document.getElementById('url');
         host.value = url;
     }
-    // Auto login if port is set.
+    // Throw saved port into form
     if (port && port === 80) {
         let portInput = document.getElementById('port');
         portInput.value = "";
@@ -105,9 +109,14 @@ var setup = (go) => {
         let portInput = document.getElementById('port');
         portInput.value = port;
     }
+    // Throw saved auto login checkbox value into form
+    if (auto) {
+        let autoInput = document.getElementById('auto');
+        autoInput.checked = auto;
+    }
 
     // Start the server call?
-    if (go) {
+    if (auto) {
         submition();
     }
 }
