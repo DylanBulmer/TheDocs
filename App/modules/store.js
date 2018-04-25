@@ -16,6 +16,11 @@ class Store {
      * @returns {any} Returns the value requested
      */
     get(key) {
+        // reload data before grabbing key...
+        // other instances may have saved data that another may not have internally
+        // this happens often...
+        this.data = this.parseDataFile(this.path, {});
+        // grab key and send it back.
         return this.data[key];
     }
   
@@ -26,14 +31,13 @@ class Store {
      */
     set(key, val) {
         this.data[key] = val;
-        fs.writeFileSync(this.path, JSON.stringify(this.data));
+        this.saveFile();
     }
 
     /**
      * @param {FormData} data The data to store for the user.
      */
     setUser(data) {
-        console.log(data);
         this.data['logged_in'] = true;
         this.data['user'] = {
             username: data.username,
@@ -43,13 +47,13 @@ class Store {
             },
             id: data.id
         };
-        fs.writeFileSync(this.path, JSON.stringify(this.data));
+        this.saveFile();
     }
 
     removeUser() {
         this.data['logged_in'] = false;
         this.data['user'] = {};
-        fs.writeFileSync(this.path, JSON.stringify(this.data));
+        this.saveFile();
     }
 
     getUser() {
@@ -70,6 +74,12 @@ class Store {
             fs.writeFileSync(filePath, JSON.stringify(defaults));
             return defaults;
         }
+    }
+    /**
+     * @description Saves new data to file.
+     */
+    saveFile() {
+        fs.writeFileSync(this.path, JSON.stringify(this.data));
     }
 }
 

@@ -59,6 +59,7 @@ var submition = function submition() {
             store.set("host", host);
             if (!port) {
                 store.set("url", "http://" + host);
+                store.set("port", 80);
                 xhttp.open("POST", "http://" + host, true);
             } else {
                 store.set("port", port);
@@ -97,7 +98,10 @@ var setup = (go) => {
         host.value = url;
     }
     // Auto login if port is set.
-    if (port) {
+    if (port && port === 80) {
+        let portInput = document.getElementById('port');
+        portInput.value = "";
+    } else if (port) {
         let portInput = document.getElementById('port');
         portInput.value = port;
     }

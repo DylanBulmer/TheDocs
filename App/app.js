@@ -191,7 +191,9 @@ function createWindow(w, h, file) {
     });
 
     // Open the DevTools.
-    //window.webContents.openDevTools();
+    if (isDev) {
+        window.webContents.openDevTools();
+    }
     
     window.on('resize', function () {
         let b = window.getBounds();
