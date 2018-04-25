@@ -29,7 +29,12 @@ var closeNav = () => {
 var create = {
     // Go to the Create a new document page
     'doc': () => {
-
+        store.set("location", {
+            next: {
+                file: "app.pug",
+                function: ["view", "newDoc"],
+            }
+        });
     },
     // Go to the Create a new project page
     'project': () => {

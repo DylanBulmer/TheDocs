@@ -11,7 +11,6 @@ html
             window.onload = function() {
                 if (navigator.userAgent.match('Macintosh') === null) {
                     var element = document.getElementsByClassName('slimscroll');
-
                     // Apply slim scroll plugin
                     for (let i = 0; i < element.length; i++) {
                         if (!element[i].getAttribute("hasScroll")) {
@@ -25,7 +24,6 @@ html
                             Scrolls[i].resetValues();
                         }
                     }
-
                     // resize
                     window.addEventListener('resize', () => {
                         for (i = 0; i < Scrolls.length; i ++) {
@@ -42,7 +40,7 @@ html
                     button.dropbtn File
                     div.dropdown-content
                         span(onclick="viewPage('c_new')") New Document
-                        span New Project
+                        span(onclick="viewPage('c_new')") New Project
                         hr
                         span(onclick="logout()") Logout
                 div.dropdown
