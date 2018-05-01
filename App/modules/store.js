@@ -5,8 +5,7 @@ const fs = require('fs');
 class Store {
     constructor(opts) {
         const userDataPath = (electron.app || electron.remote.app).getPath('userData'); // Appdata path
-        this.path = path.join(userDataPath, opts.configName + '.json');                 // Path to JSON
-        console.log(this.path)
+        this.path = path.join(userDataPath, opts.configName + '.json');                 // Path to JSONs
         this.data = this.parseDataFile(this.path, opts.defaults);                       // Data stored in JSON file
     }
   
@@ -17,7 +16,6 @@ class Store {
      * @returns {any} Returns the value requested
      */
     get(key) {
-        console.log(this.data)
         // reload data before grabbing key...
         // other instances may have saved data that another may not have internally
         // this happens often...

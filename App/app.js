@@ -48,117 +48,6 @@ autoUpdater.on('error', message => {
     console.error(message);
 });
 
-// New Menu for application
-
-const template = [
-    {
-        label: 'File',
-        submenu: [
-            {
-                label: 'New Document',
-                click() {
-                    let focusedWindow = BrowserWindow.getFocusedWindow();
-                    focusedWindow.webContents.executeJavaScript("if (viewPage) { viewPage('c_new'); }");
-                }
-            },
-            { type: 'separator' },
-            {
-                label: 'Logout',
-                click() {
-                    let focusedWindow = BrowserWindow.getFocusedWindow();
-                    focusedWindow.webContents.executeJavaScript("if (logout) { logout() }");
-                }
-            }
-        ]
-    },
-    {
-        label: 'Edit',
-        submenu: [
-            { role: 'undo' },
-            { role: 'redo' },
-            { type: 'separator' },
-            { role: 'cut' },
-            { role: 'copy' },
-            { role: 'paste' },
-            { role: 'delete' },
-            { role: 'selectall' }
-        ]
-    },
-    {
-        label: 'View',
-        submenu: [
-            { role: 'reload' },
-            { role: 'forcereload' },
-            { type: 'separator' },
-            { role: 'resetzoom' },
-            { role: 'zoomin' },
-            { role: 'zoomout' },
-            { type: 'separator' },
-            { role: 'togglefullscreen' }
-        ]
-    },
-    {
-        role: 'window',
-        submenu: [
-            { role: 'minimize' },
-            { role: 'close' }
-        ]
-    },
-    {
-        role: 'help',
-        submenu: [
-            {
-                label: 'Learn More',
-                click() { require('electron').shell.openExternal('https://dylanbulmer.github.io/TheDocs'); }
-            }
-        ]
-    }
-];
-
-/* MacOS Menu */
-
-if (process.platform === 'darwin') {
-    template.unshift({
-        label: app.getName(),
-        submenu: [
-            { role: 'about' },
-            { type: 'separator' },
-            { role: 'services', submenu: [] },
-            { type: 'separator' },
-            { role: 'hide' },
-            { role: 'hideothers' },
-            { role: 'unhide' },
-            { type: 'separator' },
-            { role: 'quit' }
-        ]
-    });
-
-    // Edit menu
-    template[1].submenu.push(
-        { type: 'separator' },
-        {
-            label: 'Speech',
-            submenu: [
-                { role: 'startspeaking' },
-                { role: 'stopspeaking' }
-            ]
-        }
-    );
-
-    // Window menu
-    template[3].submenu = [
-        { role: 'close' },
-        { role: 'minimize' },
-        { role: 'zoom' },
-        { type: 'separator' },
-        { role: 'front' }
-    ];
-}
-
-const menu = Menu.buildFromTemplate(template);
-//Menu.setApplicationMenu(menu);
-app.setApplicationMenu(menu);
-
 /**
  * 
  * @param {number} w Width
@@ -207,6 +96,8 @@ function createWindow(w, h, file) {
         // when you should delete the corresponding element.
         windows.splice(windows.findIndex(element => { element === window; }), 1);
     });
+
+    require('./js/mainmenu');
 
     windows.push(window);
 }

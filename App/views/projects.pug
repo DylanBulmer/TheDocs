@@ -24,7 +24,7 @@ block content
         a(onclick="logout()" style="position: static; bottom: 0; left: 0;") Logout
     aside
         tabs#dump
-        a(class="add-button" onclick="viewPopup('newProject')") Start a Project!
+        a(class="add-button" onclick="viewPage('c_newProject')") Start a Project!
     content#c_main
         h1 View the status of your projects!
         br
@@ -47,6 +47,16 @@ block content
             h3 Event Log
             div#eventlog.slimscroll
                 div(style="height: 100vh; width: 100%;")
+    content#c_newProject
+        span.desc Name:
+        input(placeholder="Project Name").field#n_name
+        br
+        span.desc Description:
+        textarea(rows="4" placeholder="Describe the project. (optional, recommended)").field#n_desc
+        br
+        span.desc Homepage:
+        input(placeholder="Domain name: (optional)").field#n_url
+        br
     script(src="../js/app-functions.js")
     script(src="../js/pageViewer.js")
     script(src="../js/projects.js")

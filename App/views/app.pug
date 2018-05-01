@@ -4,6 +4,7 @@ block links
     link(rel="stylesheet" href="../css/app.css")
     link(rel="stylesheet" href="../css/hljs.css")
     link(rel="stylesheet" href="../css/markdown.css")
+    script(src="../js/regexTester.js")
 
 block content
     topbar
@@ -67,7 +68,7 @@ block content
         span.desc Keywords:
         span.field#d_keywords
         br
-        span.desc Solution:
+        span.desc Document:
         span.field#d_solution
     content#c_new
         input(style="width: calc(100% - 20px); height: 2em; font-size: 2em; font-weight: bold;" placeholder="New Document" autofocus).field#n_title
@@ -93,12 +94,12 @@ block content
         textarea(rows="2" placeholder="Describe breifly the problem you encountered.").field#n_desc
         br
         span.desc Helpful URL:
-        input(placeholder="https://example.com/forum/1234/artical-of-solution").field#n_url
+        input(placeholder="https://example.com/forum/1234/artical-of-solution" onchange="testRegex(this)" pattern="(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)").field#n_url
         br
         span.desc Keywords:
         input(placeholder="Please seperate with commas ','").field#n_keywords
         br
-        span.desc Solution:
+        span.desc Document:
         textarea(rows="15" placeholder="Detailed description of how you solved the problem you encountered. If you supplied a URL, explain how it helped you.").field#n_solution
         span(style="vertical-align: sub;") Use markdown to style your documentation!
         a(onclick="viewPage('c_pre')").p_btn Preview
@@ -124,7 +125,7 @@ block content
         span.desc Keywords:
         span.field#p_keywords
         br
-        span.desc Solution:
+        span.desc Document:
         span.field#p_solution
         a(onclick="submitDoc()").p_btn Submit
         a(onclick="viewPage('c_new')").p_btn Back
