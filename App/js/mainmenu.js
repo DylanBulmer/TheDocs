@@ -1,4 +1,4 @@
-const { Menu, app } = require('electron');
+const { Menu, app, BrowserWindow } = require('electron');
 
 // New Menu for application
 
@@ -10,7 +10,14 @@ const template = [
                 label: 'New Document',
                 click() {
                     let focusedWindow = BrowserWindow.getFocusedWindow();
-                    focusedWindow.webContents.executeJavaScript("if (viewPage) { viewPage('c_new'); }");
+                    focusedWindow.webContents.executeJavaScript("if (typeof(view) !== 'undefined') { view('newDoc'); }");
+                }
+            },
+            {
+                label: 'New Project',
+                click() {
+                    let focusedWindow = BrowserWindow.getFocusedWindow();
+                    focusedWindow.webContents.executeJavaScript("if (typeof(view) !== 'undefined') { view('newProject'); }");
                 }
             },
             { type: 'separator' },
@@ -18,7 +25,7 @@ const template = [
                 label: 'Logout',
                 click() {
                     let focusedWindow = BrowserWindow.getFocusedWindow();
-                    focusedWindow.webContents.executeJavaScript("if (logout) { logout() }");
+                    focusedWindow.webContents.executeJavaScript("if (typeof(logout) !== 'undefined') { logout() }");
                 }
             }
         ]

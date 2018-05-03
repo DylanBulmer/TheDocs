@@ -9,13 +9,13 @@ block content
     topbar
         img(src="../image/TheDocsLogoWhite.svg" style="height: calc(3em - 16px); position: absolute; top: 8px; left: 43px; cursor: pointer;" onclick="viewPage('c_main')")
         span
-            span(style="vertical-align: middle;") Welcome 
+            span(style="vertical-align: middle;") Welcome&nbsp;
                 span.fname
                 | !
             span(onclick="openNav()")#nav-btn
                 i.fa.fa-bars
     nav
-        span(onclick="closeNav()")#nav-cls Close 
+        span(onclick="closeNav()")#nav-cls Close
             span(style="font-size: 1.3em") &times;
         a() Home
         a(onclick="") Profile
@@ -30,12 +30,12 @@ block content
         br
         p Click the project you would like to view on the left!
         br
-        p 
+        p
             i Please note that this page is still being developed and not everything will work correctly.
     content#c_view
         h1(style="width: calc(100% - 20px);").field#p_title
         br
-        span.collumn Started on 
+        span.collumn Started on
             span#p_date
             br
             span.desc Description:
@@ -57,7 +57,6 @@ block content
         span.desc Homepage:
         input(placeholder="Domain name: (optional)").field#n_url
         br
-    script(src="../js/app-functions.js")
     script(src="../js/pageViewer.js")
     script(src="../js/projects.js")
     script(src="../js/submit.js")

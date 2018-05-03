@@ -7,7 +7,6 @@ html
         link(rel='stylesheet' href="../css/slimscroll.css")
         script(src='../modules/slimscroll.js')
         script.
-            var mac = new RegExp('(MacPPC|MacIntel|Mac_PowerPC|Machintosh|Mac OS X)').test(navigator.userAgent);
             var Scrolls = [];
             window.onload = function() {
                 if (navigator.userAgent.match('Macintosh') === null) {
@@ -36,7 +35,7 @@ html
         block links
     body
         div.titlebar
-            if !mac
+            if !process.platform === 'darwin'
                 span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
                     div.dropdown
                         button.dropbtn File
@@ -79,4 +78,4 @@ html
                     span.sysButton#max(style="font-size: 18px;") &#9723;
                     span.sysButton#close &times;
         block content
-        script(src="../js/titlebar.js")
+        script(src="../js/app-functions.js")

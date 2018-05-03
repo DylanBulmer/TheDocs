@@ -1,6 +1,10 @@
 let form = document.getElementById('form');
-let Store = require('../modules/store');
-let store = new Store({ configName: 'user-preferences' });
+if (typeof(Store) === 'undefined') {
+    var Store = require('../modules/store');
+    var store = new Store({
+        configName: 'user-preferences'
+    });
+}
 
 form.style.marginTop = "calc(50vh - " + form.getBoundingClientRect()['height'] / 2 + "px)";
 

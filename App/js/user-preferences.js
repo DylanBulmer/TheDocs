@@ -1,6 +1,8 @@
 // This script is just to take data from the Store and apply it to the app interface.
-
-var store = new Store({ configName: 'user-preferences' });
+if (typeof(Store) === 'undefined') {
+    var Store = require('../modules/store');
+    var store = new Store({ configName: 'user-preferences' });
+}
 var user = store.get("user");
 
 let fnames = document.getElementsByClassName('fname');

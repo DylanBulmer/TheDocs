@@ -50,7 +50,7 @@ autoUpdater.on('error', message => {
 });
 
 /**
- * 
+ *
  * @param {number} w Width
  * @param {number} h Height
  * @param {string} file The file's name to render
@@ -67,7 +67,7 @@ function createWindow(w, h, file) {
         height: h || height,
         show: file ? true : false,
         backgroundColor: '#1177ff',
-        titleBarStyle: 'hiddenInset',
+        titleBarStyle: 'hidden',
         frame: isMac
     });
 
@@ -85,7 +85,7 @@ function createWindow(w, h, file) {
     if (isDev) {
         window.webContents.openDevTools();
     }
-    
+
     window.on('resize', function () {
         let b = window.getBounds();
         store.set('windowBounds', { width: b.width, height: b.height });

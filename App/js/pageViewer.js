@@ -13,9 +13,9 @@ var md = require('markdown-it')({
     }
 });
 var dateFormat = require('dateformat');
-if (!Store) {
-    const Store = require('../modules/store');
-    const store = new Store({
+if (typeof(Store) === 'undefined') {
+    var Store = require('../modules/store');
+    var store = new Store({
         configName: 'user-preferences'
     });
 }
@@ -136,7 +136,7 @@ var viewPage = function viewPage(page, id) {
                 let started = document.getElementById("p_date");
                 let desc = document.getElementById("p_desc");
                 let homepage = document.getElementById("p_homepage");
-                
+
                 // Set date and time
                 let timestamp = new Date(project.started);
                 started.innerText = dateFormat(timestamp, "ddd, mmm dS, yyyy") + " at " + dateFormat(timestamp, "h:MM TT");
@@ -213,6 +213,38 @@ const view = (type, id) => {
 
                 // go to corrent page
                 window.location.href = "app.pug";
+            }
+            break;
+        case 'newDoc':
+            if (window.location.href.slice(-7) === 'app.pug') {
+                viewPage('c_new');
+            } else {
+                // save this call in the store
+                let call = store.get('view') || {};
+
+                call.next = "viewPage('c_new', " + id + ")";
+                call.continue = true;
+
+                store.set('view', call);
+
+                // go to corrent page
+                window.location.href = "app.pug";
+            }
+            break;
+        case 'newProject':
+            if (window.location.href.slice(-12) === 'projects.pug') {
+                viewPage('c_newProject', id);
+            } else {
+                // save this call in the store
+                let call = store.get('view') || {};
+
+                call.next = "viewPage('c_newProject', " + id + ")";
+                call.continue = true;
+
+                store.set('view', call);
+
+                // go to corrent page
+                window.location.href = "projects.pug";
             }
             break;
     }

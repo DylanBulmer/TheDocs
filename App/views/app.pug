@@ -10,13 +10,13 @@ block content
     topbar
         img(src="../image/TheDocsLogoWhite.svg" style="height: calc(3em - 16px); position: absolute; top: 8px; left: 43px; cursor: pointer;" onclick="viewPage('c_main')")
         span
-            span(style="vertical-align: middle;") Welcome 
+            span(style="vertical-align: middle;") Welcome&nbsp;
                 span.fname
                 | !
             span(onclick="openNav()")#nav-btn
                 i.fa.fa-bars
     nav
-        span(onclick="closeNav()")#nav-cls Close 
+        span(onclick="closeNav()")#nav-cls Close
             span(style="font-size: 1.3em") &times;
         a(onclick="") Home
         a(onclick="") Profile
@@ -51,12 +51,13 @@ block content
     content#c_doc
         h1(style="width: calc(100% - 20px);").field#d_title
         br
-        span.desc(style="width: calc(100% - 20px)") By 
-            span#d_name 
-            | &nbsp;on 
+        span.desc(style="width: calc(100% - 20px)") By&nbsp;
+            span#d_name
+            | &nbsp;on&nbsp;
             span#d_date
         br
-        span.desc(style="width: calc(100% - 20px)") This issue was found in 
+        span.desc(style="width: calc(100% - 20px)") This issue was found in
+            | &nbsp;
             span#d_project(style="font-weight: bold;")
         br
         span.desc Description:
@@ -73,14 +74,14 @@ block content
     content#c_new
         input(style="width: calc(100% - 20px); height: 2em; font-size: 2em; font-weight: bold;" placeholder="New Document" autofocus).field#n_title
         br
-        span.desc(style="width: calc(100% - 20px)") By 
+        span.desc(style="width: calc(100% - 20px)") By&nbsp;
             span.fname
             | &nbsp;
             span.lname
-            | &nbsp;on 
+            | &nbsp;on&nbsp;
             span#n_date
         br
-        span.desc(style="width: calc(100% - 20px)") This issue was found in 
+        span.desc(style="width: calc(100% - 20px)") This issue was found in&nbsp;
             span.custom-dropdown
                 select(onchange="updateChange()")#n_project
                     option( disabled selected value="-1") Select Project
@@ -88,7 +89,7 @@ block content
                         option(value="-1" disabled) No Projects Yet
                     optgroup(label="Or:")
                         option(value="new") New Project
-            span(style="display: none;")#pname named: 
+            span(style="display: none;")#pname named:&nbsp;
                 input(placeholder="Project Name").new#n_pname
         span.desc Description:
         textarea(rows="2" placeholder="Describe breifly the problem you encountered.").field#n_desc
@@ -106,14 +107,14 @@ block content
     content#c_pre
         h1(style="width: calc(100% - 20px);").field#p_title
         br
-        span.desc(style="width: calc(100% - 20px)") By 
+        span.desc(style="width: calc(100% - 20px)") By&nbsp;
             span.fname
             | &nbsp;
             span.lname
-            | &nbsp;on 
+            | &nbsp;on&nbsp;
             span#p_date
         br
-        span.desc(style="width: calc(100% - 20px)") This issue was found in 
+        span.desc(style="width: calc(100% - 20px)") This issue was found in&nbsp;
             span#p_project(style="font-weight: bold;")
         br
         span.desc Description:
@@ -129,7 +130,6 @@ block content
         span.field#p_solution
         a(onclick="submitDoc()").p_btn Submit
         a(onclick="viewPage('c_new')").p_btn Back
-    script(src="../js/app-functions.js")
     script(src="../js/liveSearch.js")
     script(src="../js/pageViewer.js")
     script(src="../js/submit.js")
