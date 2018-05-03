@@ -35,46 +35,47 @@ html
         block links
     body
         div.titlebar
-            span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
-                div.dropdown
-                    button.dropbtn File
-                    div.dropdown-content
-                        span(onclick="viewPage('c_new')") New Document
-                        span(onclick="viewPage('c_new')") New Project
-                        hr
-                        span(onclick="logout()") Logout
-                div.dropdown
-                    button.dropbtn Edit
-                    div.dropdown-content
-                        span#undo Undo
-                        span#redo Redo
-                        hr
-                        span#cut Cut
-                        span#copy Copy
-                        span#paste Paste
-                        span#selectAll Select All
-                div.dropdown
-                    button.dropbtn View
-                    div.dropdown-content
-                        span#reload Reload
-                        hr
-                        span#zoomIn Zoom In
-                        span#zoomOut Zoom Out
-                        span#zoomReset Zoom Reset
-                        hr
-                        span#toggleFullsceen Toggle Fullscreen
-                div.dropdown
-                    button.dropbtn Window
-                    div.dropdown-content
-                        span Minimize
-                        span Close
-                div.dropdown
-                    button.dropbtn Help
-                    div.dropdown-content
-                        span Learn More
-            span(style="text-align: right; float: right")
-                span.sysButton#min() &ndash;
-                span.sysButton#max(style="font-size: 18px;") &#9723;
-                span.sysButton#close &times;
+            if !/(MacPPC|MacIntel|Mac_PowerPC|Machintosh|Mac OS X)/.test(navigator.userAgent)
+                span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
+                    div.dropdown
+                        button.dropbtn File
+                        div.dropdown-content
+                            span(onclick="viewPage('c_new')") New Document
+                            span(onclick="viewPage('c_new')") New Project
+                            hr
+                            span(onclick="logout()") Logout
+                    div.dropdown
+                        button.dropbtn Edit
+                        div.dropdown-content
+                            span#undo Undo
+                            span#redo Redo
+                            hr
+                            span#cut Cut
+                            span#copy Copy
+                            span#paste Paste
+                            span#selectAll Select All
+                    div.dropdown
+                        button.dropbtn View
+                        div.dropdown-content
+                            span#reload Reload
+                            hr
+                            span#zoomIn Zoom In
+                            span#zoomOut Zoom Out
+                            span#zoomReset Zoom Reset
+                            hr
+                            span#toggleFullsceen Toggle Fullscreen
+                    div.dropdown
+                        button.dropbtn Window
+                        div.dropdown-content
+                            span Minimize
+                            span Close
+                    div.dropdown
+                        button.dropbtn Help
+                        div.dropdown-content
+                            span Learn More
+                span(style="text-align: right; float: right")
+                    span.sysButton#min() &ndash;
+                    span.sysButton#max(style="font-size: 18px;") &#9723;
+                    span.sysButton#close &times;
         block content
         script(src="../js/titlebar.js")

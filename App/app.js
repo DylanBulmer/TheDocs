@@ -66,6 +66,7 @@ function createWindow(w, h, file) {
         height: h || height,
         show: file ? true : false,
         backgroundColor: '#1177ff',
+        titleBarStyle: 'hiddenInset',
         frame: (process.platform === 'darwin') ? true : false
     });
 
