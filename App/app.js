@@ -14,6 +14,7 @@ const store = new Store({
         windowBounds: { width: 800, height: 600 }
     }
 });
+const isMac = (process.platform === 'darwin') ? true : false
 
 const isDev = require('electron-is-dev');
 
@@ -67,7 +68,7 @@ function createWindow(w, h, file) {
         show: file ? true : false,
         backgroundColor: '#1177ff',
         titleBarStyle: 'hiddenInset',
-        frame: (process.platform === 'darwin') ? true : false
+        frame: isMac
     });
 
     window.loadURL(url.format({
@@ -128,7 +129,7 @@ app.on('window-all-closed', function () {
 
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
+    if (!isMac) {
         app.quit();
     }
 });

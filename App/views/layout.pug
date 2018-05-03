@@ -35,7 +35,7 @@ html
         block links
     body
         div.titlebar
-            if !/(MacPPC|MacIntel|Mac_PowerPC|Machintosh|Mac OS X)/.test(navigator.userAgent)
+            if !isMac
                 span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
                     div.dropdown
                         button.dropbtn File
