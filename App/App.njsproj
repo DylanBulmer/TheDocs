@@ -84,7 +84,6 @@
     <Content Include="js\liveSearch.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="views\app.html" />
     <Content Include="views\app.pug" />
     <Content Include="views\login.pug" />
     <Content Include="views\index.pug" />

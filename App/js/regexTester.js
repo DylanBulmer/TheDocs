@@ -4,17 +4,17 @@
  * @param {Element} element
  */
 
-const testRegex = (element) => {
+const testRegEx = (element) => {
     let regex = new RegExp(element.getAttribute('pattern'));
     let val = element.value;
 
     if (val !== '') {
         if (regex.test(val, "g")) {
-            console.log("Regular Expression Passed!");
+            return true;
         } else {
-            console.log("Regular Expression Failed!");
+            return false;
         }
     } else {
-        console.log("No value to test!");
+        return true;
     }
-} 
+}

@@ -13,6 +13,12 @@ var md = require('markdown-it')({
     }
 });
 var dateFormat = require('dateformat');
+if (!Store) {
+    const Store = require('../modules/store');
+    const store = new Store({
+        configName: 'user-preferences'
+    });
+}
 
 var cpage = "c_main";
 var viewPage = function viewPage(page, id) {
@@ -41,7 +47,7 @@ var viewPage = function viewPage(page, id) {
         keywords.innerHTML = document.getElementById("n_keywords").value;
         solution.innerHTML = md.render(document.getElementById("n_solution").value);
         date.innerHTML = document.getElementById("n_date").innerText;
-    } else if (page === "c_doc") { // Updating preview page
+    } else if (page === "c_doc") { // get document page
         let title = document.getElementById("d_title");
         let desc = document.getElementById("d_desc");
         let url = document.getElementById("d_url");
@@ -56,7 +62,6 @@ var viewPage = function viewPage(page, id) {
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 let result = JSON.parse(this.responseText);
-                console.log(result);
 
                 // Set date and time
                 let timestamp = new Date(result.created);
@@ -154,7 +159,7 @@ var viewPage = function viewPage(page, id) {
                         div.setAttribute('class', 'log');
                         let time = dateFormat(logs[i].created, "ddd, mmm dS, yyyy") + " at " + dateFormat(logs[i].created, "h:MM TT");
                         if (logs[i].title !== null) {
-                            div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " created an issue called <code>" + logs[i].title + "</code> on " + time;
+                            div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " created an issue called <code>" + logs[i].title + "</code> on " + time + "</br><a onclick='view(\"issue\", " + logs[i].id + ")'>View Issue</a>";
                         } else {
                             div.innerHTML = logs[i].name_first + " " + logs[i].name_last + " wrote a journal on " + time;
                         }
@@ -171,8 +176,6 @@ var viewPage = function viewPage(page, id) {
     }
 };
 
-viewPage(cpage);
-
 var updateChange = function () {
     if (document.getElementById('n_project').value === 'new') {
         document.getElementById('pname').style.display = "inline-block";
@@ -185,9 +188,46 @@ var updateChange = function () {
 
 /* VIEW POP-UP FUNCTION */
 
-const viewPupup = (popup) => {
+const viewPopup = (popup) => {
     switch (popup) {
         case "newProject":
             break;
     }
 };
+
+/* VIEW OTHER FUNCTION -- FOR VIEWING ITEMS ON ANOTHER PAGE */
+
+const view = (type, id) => {
+    switch (type) {
+        case 'issue':
+            if (window.location.href.slice(-7) === 'app.pug') {
+                viewPage('c_doc', id);
+            } else {
+                // save this call in the store
+                let call = store.get('view') || {};
+
+                call.next = "viewPage('c_doc', " + id + ")";
+                call.continue = true;
+
+                store.set('view', call);
+
+                // go to corrent page
+                window.location.href = "app.pug";
+            }
+            break;
+    }
+}
+
+(function () {
+    let call = store.get('view');
+
+    if (call && call['continue'] === true) {
+        eval(call.next);
+        call.next = "";
+        call.continue = false;
+
+        store.set('view', call);
+    } else {
+        viewPage(cpage);
+    }
+})();

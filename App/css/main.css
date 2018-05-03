@@ -16,6 +16,7 @@ a, select {
 
 input, textarea {
     cursor: text;
+    font-size: small;
 }
 
 input:focus, textarea:focus, select:focus {

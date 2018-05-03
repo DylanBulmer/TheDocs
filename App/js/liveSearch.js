@@ -9,7 +9,6 @@ function liveSearch() {
             let result = JSON.parse(this.responseText);
 
             dump.innerHTML = "";
-            console.log(result.length);
             // Add wrapper
             let tab = document.createElement("tab");
             tab.setAttribute("class", "wrapper");

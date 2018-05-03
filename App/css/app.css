@@ -281,3 +281,14 @@ nav > a:hover {
     vertical-align: text-top;
     height: calc(100% - 93px);
 }
+
+.log > a {
+    background-color: #555;
+    border-radius: 5px;
+    color: #fff;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    left: calc(100% - 100px);
+}

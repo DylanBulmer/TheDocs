@@ -66,7 +66,7 @@ function createWindow(w, h, file) {
         height: h || height,
         show: file ? true : false,
         backgroundColor: '#1177ff',
-        frame: false
+        frame: (process.platform === 'darwin') ? true : false
     });
 
     window.loadURL(url.format({
