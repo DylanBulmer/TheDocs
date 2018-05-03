@@ -35,7 +35,7 @@ html
         block links
     body
         div.titlebar
-            if !process.platform === 'darwin'
+            if process.platform != 'darwin'
                 span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
                     div.dropdown
                         button.dropbtn File

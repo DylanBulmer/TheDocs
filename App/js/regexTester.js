@@ -10,11 +10,11 @@ const testRegEx = (element) => {
 
     if (val !== '') {
         if (regex.test(val, "g")) {
-            return true;
+            document.getElementById("regExpError").innerText = "";
         } else {
-            return false;
+            document.getElementById("regExpError").innerText = "Invailed URL";
         }
     } else {
-        return true;
+        document.getElementById("regExpError").innerText = "";
     }
 }

@@ -71,7 +71,7 @@ var viewPage = function viewPage(page, id) {
                 desc.innerHTML = result.description;
                 url.innerHTML = "<a href='" + result.url + "' target='_BLANK'>" + result.url + "</a>";
                 keywords.innerHTML = "";
-                project.innerHTML = result.project;
+                project.innerHTML = "<a onclick='view(\"project\", " + result.id + ")'>" + result.project + "</a>";
                 name.innerHTML = result.user.name_first + " " + result.user.name_last;
 
                 for (let i = 0; i < result.keywords.length; i++) {
@@ -215,6 +215,22 @@ const view = (type, id) => {
                 window.location.href = "app.pug";
             }
             break;
+        case 'project':
+            if (window.location.href.slice(-12) === 'projects.pug') {
+                viewPage('c_view', id);
+            } else {
+                // save this call in the store
+                let call = store.get('view') || {};
+
+                call.next = "viewPage('c_view', " + id + ")";
+                call.continue = true;
+
+                store.set('view', call);
+
+                // go to corrent page
+                window.location.href = "projects.pug";
+            }
+            break;
         case 'newDoc':
             if (window.location.href.slice(-7) === 'app.pug') {
                 viewPage('c_new');
@@ -249,6 +265,9 @@ const view = (type, id) => {
             break;
     }
 }
+
+
+// CHECK IF CONTINUE === TRUE => DIRECT TO CORRECT AREA; ELSE VIEW MAIN PAGE
 
 (function () {
     let call = store.get('view');
