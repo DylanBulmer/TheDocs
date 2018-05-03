@@ -7,6 +7,7 @@ html
         link(rel='stylesheet' href="../css/slimscroll.css")
         script(src='../modules/slimscroll.js')
         script.
+            var mac = new RegExp('(MacPPC|MacIntel|Mac_PowerPC|Machintosh|Mac OS X)').test(navigator.userAgent);
             var Scrolls = [];
             window.onload = function() {
                 if (navigator.userAgent.match('Macintosh') === null) {
@@ -35,7 +36,7 @@ html
         block links
     body
         div.titlebar
-            if !isMac
+            if !mac
                 span(style="text-align: left; float: left; -webkit-app-region: no-drag;")
                     div.dropdown
                         button.dropbtn File
