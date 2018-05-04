@@ -52,7 +52,7 @@ block content
         input(placeholder="Project Name").field#n_name
         br
         span.desc Homepage:
-        input(placeholder="Domain name: (optional)").field#n_url
+        input(placeholder="Domain name: (optional)" onchange="testRegEx(this)" pattern="(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)").field#n_url
         br
         span(style="padding: 0 130px; display: block; color: red;")#regExpError
         span.desc Description:
