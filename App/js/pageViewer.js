@@ -71,7 +71,7 @@ var viewPage = function viewPage(page, id) {
                 desc.innerHTML = result.description;
                 url.innerHTML = "<a href='" + result.url + "' target='_BLANK'>" + result.url + "</a>";
                 keywords.innerHTML = "";
-                project.innerHTML = "<a onclick='view(\"project\", " + result.id + ")'>" + result.project + "</a>";
+                project.innerHTML = "<a onclick='view(\"project\", " + result.project_id + ")'>" + result.project + "</a>";
                 name.innerHTML = result.user.name_first + " " + result.user.name_last;
 
                 for (let i = 0; i < result.keywords.length; i++) {
