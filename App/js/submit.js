@@ -88,7 +88,7 @@ var submitProject = function submitProject() {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let result = JSON.parse(this.responseText);
-                if (result.err != null) {
+                if (result.err) {
                     document.getElementById("submitErr").innerText = result.err;
                     clear(10000);
                 } else {
