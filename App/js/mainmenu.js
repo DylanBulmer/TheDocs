@@ -1,4 +1,5 @@
 const { Menu, app, BrowserWindow } = require('electron');
+let isDev = require('electron-is-dev');
 
 // New Menu for application
 

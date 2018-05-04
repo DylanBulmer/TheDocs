@@ -51,13 +51,17 @@ block content
         span.desc Name:
         input(placeholder="Project Name").field#n_name
         br
-        span.desc Description:
-        textarea(rows="4" placeholder="Describe the project. (optional, recommended)").field#n_desc
-        br
         span.desc Homepage:
         input(placeholder="Domain name: (optional)").field#n_url
         br
+        span(style="padding: 0 130px; display: block; color: red;")#regExpError
+        span.desc Description:
+        textarea(rows="4" placeholder="Describe the project. (optional, recommended)").field#n_desc
+        br
+        span(style="display: block; color: red; text-align: right; padding: 10px; transition: 100ms;")#submitErr
+        a(onclick="submitProject()").p_btn Submit
     script(src="../js/pageViewer.js")
+    script(src="../js/regexTester.js")
     script(src="../js/projects.js")
     script(src="../js/submit.js")
     script(src='../js/user-preferences.js')

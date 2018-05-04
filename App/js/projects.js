@@ -11,11 +11,10 @@ function projectSearch() {
             let result = JSON.parse(this.responseText);
 
             dump.innerHTML = "";
-            console.log(result.length);
             // Add wrapper
             let tab = document.createElement("tab");
             tab.setAttribute("class", "wrapper");
-            tab.setAttribute("style", "top: 0;");
+            tab.setAttribute("style", "top: -200px;");
             dump.appendChild(tab);
 
             if (result.length === 0) {
