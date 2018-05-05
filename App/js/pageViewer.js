@@ -144,13 +144,17 @@ var viewPage = function viewPage(page, id) {
                 // Insert data
                 title.innerText = project.name;
                 desc.innerText = project.description;
+                homepage.href = project.homepage;
                 homepage.innerText = project.homepage;
 
                 // Creating the Event log!
                 dump.innerHTML = "";
                 if (logs.length === 0) {
-                    let div = document.createElement("div");
-                    div.innerHTML = "No Events Yet";
+                    let div = document.createElement("span");
+                    div.setAttribute('class', 'log');
+                    div.style.textAlign = 'center';
+                    div.style.padding = '10px 0';
+                    div.innerHTML = "No Events Yet!";
                     dump.appendChild(div);
                 } else {
                     // Add all results

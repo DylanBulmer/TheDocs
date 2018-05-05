@@ -280,6 +280,8 @@ nav > a:hover {
     padding: 10px;
     vertical-align: text-top;
     height: calc(100% - 93px);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .log > a {

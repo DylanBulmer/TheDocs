@@ -33,18 +33,20 @@ block content
         p
             i Please note that this page is still being developed and not everything will work correctly.
     content#c_view
-        h1(style="width: calc(100% - 20px);").field#p_title
-        br
-        span.collumn Started on
-            span#p_date
+        span.collumn
+            h1(style="width: 100%; display: inline-block;")#p_title
+            br
+            span(style="width: 100%") Started on&nbsp;
+                span#p_date
             br
             span.desc Description:
             span.field#p_desc
             br
             span.desc Homepage:
-            span.field#p_homepage
+            span.field
+                a(target="_BLANK")#p_homepage
         span.collumn
-            h3 Event Log
+            h3(style="width: calc(100% - 20px); display: inline-block; text-align: center;").field Event Log
             div#eventlog.slimscroll
                 div(style="height: 100vh; width: 100%;")
     content#c_newProject
