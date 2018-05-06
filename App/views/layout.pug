@@ -50,6 +50,7 @@ html
                     let titlebar = document.getElementsByClassName('titlebar')[0];
                     let content = document.getElementsByTagName('content');
                     let nav = document.getElementsByTagName('nav')[0];
+                    let slim = document.getElementsByClassName('slimscroll');
                     if (aside) {
                         aside.setAttribute("class", "mac");
                     }
@@ -59,6 +60,11 @@ html
                     if (content.length > 0) {
                         for (i = 0; i < content.length; i++) {
                             content[i].setAttribute("class", "mac");
+                        }
+                    }
+                    if (slim.length > 0) {
+                        for (i = 0; i < slim.length; i++) {
+                            slim[i].removeAttribute("class");
                         }
                     }
                     titlebar.setAttribute("style", "height: 22px;");

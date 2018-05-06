@@ -10,7 +10,10 @@ var thisWindow;
 let min = document.getElementById('min');
 let max = document.getElementById('max');
 let close = document.getElementById('close');
+// other elements
+let titlebar = document.getElementsByClassName('titlebar')[0];
 let nav = document.getElementsByTagName('nav')[0];
+let navCover = document.getElementsByTagName('navCover')[0];
 
 /**
  * All handlers will be in this file!
@@ -24,11 +27,14 @@ var logout = function logout() {
 
 // Open Nav
 var openNav = () => {
+    let top = titlebar.getBoundingClientRect().height;
+    navCover.setAttribute("style", "display: block; width: 100vw; height: calc(100vh - " + top + "px);background-color: rgba(0,0,0,0.5);position: fixed;top: " + top + "px;left: 0;z-index: 2; cursor: pointer;");
     nav.setAttribute('style', 'right: 0;');
 };
 
 // Close Nav
 var closeNav = () => {
+    navCover.setAttribute("style", "display: none;");
     nav.setAttribute('style', 'right: -250px;');
 };
 
@@ -76,3 +82,5 @@ var checkWindow = function () {
         thisWindow = BrowserWindow.getFocusedWindow();
     }
 };
+
+navCover.addEventListener('click', closeNav);

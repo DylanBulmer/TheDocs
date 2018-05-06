@@ -15,14 +15,7 @@ block content
                 | !
             span(onclick="openNav()")#nav-btn
                 i.fa.fa-bars
-    nav
-        span(onclick="closeNav()")#nav-cls Close
-            span(style="font-size: 1.3em") &times;
-        a(onclick="") Home
-        a(onclick="") Profile
-        a(href="projects.pug") Projects
-        a(onclick="") Issues
-        a(onclick="logout()" style="position: static; bottom: 0; left: 0;") Logout
+    include ../modules/nav.pug
     aside
         span
             input(type="text" class="search" id="liveSearch" placeholder="Search The Docs!")

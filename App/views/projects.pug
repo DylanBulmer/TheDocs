@@ -14,14 +14,7 @@ block content
                 | !
             span(onclick="openNav()")#nav-btn
                 i.fa.fa-bars
-    nav
-        span(onclick="closeNav()")#nav-cls Close
-            span(style="font-size: 1.3em") &times;
-        a() Home
-        a(onclick="") Profile
-        a(href="projects.pug") Projects
-        a(href="app.pug") Issues
-        a(onclick="logout()" style="position: static; bottom: 0; left: 0;") Logout
+    include ../modules/nav.pug
     aside
         tabs#dump
         a(class="add-button" onclick="viewPage('c_newProject')") Start a Project!

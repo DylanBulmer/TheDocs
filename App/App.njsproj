@@ -81,6 +81,7 @@
     <Content Include="image\TheDocsLogo.svg" />
     <Content Include="image\TheDocsLogoWhite.svg" />
     <Content Include="js\liveSearch.js" />
+    <Content Include="modules\nav.pug" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="views\app.pug" />

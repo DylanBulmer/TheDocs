@@ -34,6 +34,10 @@ topbar > span > a {
     margin-left: 15px;
 }
 
+topbar > span > span > i {
+    cursor: pointer;
+}
+
 aside {
     display: block;
     position: relative;
@@ -281,6 +285,7 @@ nav > a:hover {
     height: calc(100% - 45px);
     width: 100%;
     position: relative;
+    overflow: auto;
 }
 
 .collumn {
