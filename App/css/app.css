@@ -80,42 +80,44 @@ aside > span > .search {
         overflow-y: auto;
     }
 
-aside tabs tab, info {
-    display: block;
-    position: relative;
-    width: calc(100% - 30px);
-    padding: 0;
-    left: 20px;
-    padding-bottom: 5px;
-    margin: 5px 0;
-    background: linear-gradient( to left, transparent 0%, #fff, transparent 100% ) left bottom no-repeat;
-    background-size: 80% 1px;
-    background-position: center bottom;
-}
+        aside tabs tab, info {
+            display: block;
+            position: relative;
+            width: calc(100% - 30px);
+            padding: 0;
+            left: 20px;
+            padding-bottom: 5px;
+            margin: 5px 0;
+            background: linear-gradient( to left, transparent 0%, #fff, transparent 100% ) left bottom no-repeat;
+            background-size: 80% 1px;
+            background-position: center bottom;
+            cursor: pointer;
+        }
 
-aside tabs tab:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: -10px;
-    height: calc( 3em + 10px );
-    width: 100%;
-    background: linear-gradient(to right, transparent 80%, #1177ff );
-}
+            aside tabs tab:before {
+                content: "";
+                display: block;
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                right: -10px;
+                height: calc( 3em + 10px );
+                width: 100%;
+                background: linear-gradient(to right, transparent 80%, #1177ff );
+            }
 
-aside tab.wrapper {
-    border: 0;
-    border-left: 5px solid #fff;
-    width: calc(100% - 35px);
-    height: 3em;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    left: 0;
-    background: transparent;
-    transition-duration: 0.5s;
-}
+    aside tab.wrapper {
+        border: 0;
+        border-left: 5px solid #fff;
+        width: calc(100% - 35px);
+        height: 3em;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        left: 0;
+        background: transparent;
+        transition-duration: 0.5s;
+    }
 
 aside tab.wrapper:before {
     display: none;
