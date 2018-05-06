@@ -51,16 +51,14 @@ html
                     let content = document.getElementsByTagName('content');
                     let nav = document.getElementsByTagName('nav')[0];
                     if (aside) {
-                        aside.setAttribute("style", "height: calc(100vh - 3em - 22px);");
+                        aside.setAttribute("class", "mac");
                     }
                     if (nav) {
-                        //nav.setAttribute("style", "top: 22px; height: calc(100vh - 92px)");
-                        nav.style.top = "22px";
-                        nav.style.height = "height: calc(100vh - 92px)";
+                        nav.setAttribute("class", "mac");
                     }
                     if (content.length > 0) {
                         for (i = 0; i < content.length; i++) {
-                            content[i].setAttribute("style", "top: calc(3em + 22px); height: calc(100vh - 3em - 42px);");
+                            content[i].setAttribute("class", "mac");
                         }
                     }
                     titlebar.setAttribute("style", "height: 22px;");
