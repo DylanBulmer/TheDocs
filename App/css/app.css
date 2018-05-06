@@ -1,12 +1,10 @@
 body {
-    background-color: #FFFFFF;
     overflow: hidden;
 }
 
 topbar {
     display: block;
-    position: fixed;
-    top: 32px;
+    position: relative;
     left: 0;
     background-color: #1177ff;
     color: #ffffff;
@@ -38,8 +36,7 @@ topbar > span > a {
 
 aside {
     display: block;
-    position: fixed;
-    top: calc(3em + 32px);
+    position: relative;
     left: 0;
     background-color: #1177ff;
     color: #ffffff;
@@ -168,10 +165,6 @@ content {
     width: calc(100% - 145px);
     vertical-align: text-top;
     resize: none;
-}
-
-.field:focus {
-    width: calc(100% - 147px);
 }
 
 .desc {

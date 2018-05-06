@@ -12,6 +12,7 @@ body {
 
 a, select {
     cursor: pointer;
+    word-wrap: break-word;
 }
 
 input, textarea {
@@ -78,11 +79,26 @@ input:focus, textarea:focus, select:focus {
 }
 
 .titlebar {
-    position: fixed;
+    position: relative;
     left: 0;
     top: 0;
     width: 100%;
     height: 32px;
+    background-color: #333333;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-app-region: drag;
+    z-index: 1;
+}
+
+.macTitleBar {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 22px;
     background-color: #333333;
     -webkit-user-select: none;
     -moz-user-select: none;

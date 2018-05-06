@@ -44,6 +44,7 @@ function liveSearch() {
             }
         } else {
             let dump = document.getElementById("dump");
+            dump.innerHTML = "";
 
             let tab = document.createElement("tab");
             tab.innerHTML = "<h3>Could Not Connect!</h3><p>Type to try again!</p>";

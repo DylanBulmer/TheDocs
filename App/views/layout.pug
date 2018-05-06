@@ -45,6 +45,11 @@ html
                             Scrolls[i].resetValues();
                         }
                     });
+                } else {
+                    let aside = document.getElemtentsByTagName('aside')[0];
+                    aside.style.height = "calc(100vh - 3em - 22px);";
+                    let titlebar = document.getElementsByClassName('titlebar')[0];
+                    titlebar.style.height = "22px;";
                 }
             }
         block links
