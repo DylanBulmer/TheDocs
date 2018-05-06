@@ -39,7 +39,7 @@ block content
             span(style="width: 100%") Started on&nbsp;
                 span#p_date
             br
-            span.desc Description:
+            span.desc Definition:
             span.field#p_desc
             br
             span.desc Homepage:
@@ -48,17 +48,16 @@ block content
         span.collumn
             h3(style="width: calc(100% - 20px); display: inline-block; text-align: center;").field Event Log
             div#eventlog.slimscroll
-                div(style="height: 100vh; width: 100%;")
     content#c_newProject
         span.desc Name:
         input(placeholder="Project Name").field#n_name
         br
         span.desc Homepage:
-        input(placeholder="Domain name: (optional)" onchange="testRegEx(this)" pattern="(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)").field#n_url
+        input(placeholder="Domain name/URL: (optional)" onchange="testRegEx(this)" pattern="(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)").field#n_url
         br
         span(style="padding: 0 130px; display: block; color: red;")#regExpError
-        span.desc Description:
-        textarea(rows="4" placeholder="Describe the project. (optional, recommended)").field#n_desc
+        span.desc Definition:
+        textarea(rows="4" placeholder="What is the definition or conception of this project? (optional, recommended)").field#n_desc
         br
         span(style="display: block; color: red; text-align: right; padding: 10px; transition: 100ms;")#submitErr
         a(onclick="submitProject()").p_btn Submit

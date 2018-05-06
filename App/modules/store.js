@@ -49,7 +49,8 @@ class Store {
                 first: data.name_first,
                 last: data.name_last
             },
-            id: data.id
+            id: data.id,
+            token: data.token
         };
         this.saveFile();
     }

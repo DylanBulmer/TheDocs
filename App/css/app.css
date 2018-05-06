@@ -70,7 +70,7 @@ aside > span > .search {
     z-index: 2;
 }
 
-    aside > tabs {
+    aside tabs {
         display: block;
         width: 100%;
         position: relative;
@@ -79,7 +79,7 @@ aside > span > .search {
         overflow-y: auto;
     }
 
-aside > tabs > tab, info {
+aside tabs tab, info {
     display: block;
     position: relative;
     width: calc(100% - 30px);
@@ -92,7 +92,7 @@ aside > tabs > tab, info {
     background-position: center bottom;
 }
 
-aside > tabs > tab:before {
+aside tabs tab:before {
     content: "";
     display: block;
     position: absolute;
@@ -108,6 +108,7 @@ aside tab.wrapper {
     border-left: 5px solid #fff;
     width: calc(100% - 35px);
     height: 3em;
+    padding: 0;
     margin: 0;
     position: absolute;
     left: 0;
@@ -268,9 +269,8 @@ nav > a:hover {
     border-image: linear-gradient( to bottom, transparent 0%, #555, transparent 100% ) 1 100%;
     border-left: 1px solid #555;
     border-right: 1px solid #555;
-    height: calc(100% - 10px);
+    height: calc(100% - 45px);
     width: 100%;
-    overflow: hidden;
     position: relative;
 }
 
@@ -279,9 +279,7 @@ nav > a:hover {
     width: calc(50% - 20px);
     padding: 10px;
     vertical-align: text-top;
-    height: calc(100% - 93px);
-    overflow-x: hidden;
-    overflow-y: hidden;
+    height: calc(100% - 20px);
 }
 
 .log > a {
@@ -293,4 +291,8 @@ nav > a:hover {
     display: inline-block;
     position: relative;
     left: calc(100% - 100px);
+}
+
+.slimscroll {
+    overflow: hidden;
 }

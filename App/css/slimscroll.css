@@ -1,6 +1,5 @@
 /* custom stylings */
 .wrapper, .scroll-wrapper {
-    padding: 5px;
 }
 
     .scroll-wrapper.mac + .scrollBarContainer {
@@ -25,6 +24,7 @@
     -moz-user-select: -moz-none;
     -o-user-select: none;
     user-select: none;
+    outline: 0;
 }
 
 .scroll {
