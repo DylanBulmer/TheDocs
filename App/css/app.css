@@ -59,7 +59,7 @@ aside {
         display: block;
         position: sticky;
         top: 0;
-        z-index: 2;
+        z-index: 1;
         /*background: linear-gradient(to bottom, #1177ff 80%, transparent);*/
     }
 
@@ -72,7 +72,7 @@ aside > span > .search {
     text-align: center;
     position: absolute;
     top: 0;
-    z-index: 2;
+    z-index: 1;
 }
 
     aside tabs {
@@ -309,4 +309,15 @@ nav > a:hover {
 
 .slimscroll {
     overflow: hidden;
+}
+
+navCover {
+    display: none;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    transition: 500ms;
 }

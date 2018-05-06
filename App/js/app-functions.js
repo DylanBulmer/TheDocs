@@ -28,13 +28,14 @@ var logout = function logout() {
 // Open Nav
 var openNav = () => {
     let top = titlebar.getBoundingClientRect().height;
-    navCover.setAttribute("style", "display: block; width: 100vw; height: calc(100vh - " + top + "px);background-color: rgba(0,0,0,0.5);position: fixed;top: " + top + "px;left: 0;z-index: 2; cursor: pointer;");
+    navCover.setAttribute("style", "display: block; height: calc(100vh - " + top + "px); top: " + top + "px;");
     nav.setAttribute('style', 'right: 0;');
 };
 
 // Close Nav
 var closeNav = () => {
-    navCover.setAttribute("style", "display: none;");
+    let top = titlebar.getBoundingClientRect().height;
+    navCover.setAttribute("style", "display: none; height: calc(100vh - " + top + "px); top: " + top + "px;");
     nav.setAttribute('style', 'right: -250px;');
 };
 
@@ -83,4 +84,6 @@ var checkWindow = function () {
     }
 };
 
-navCover.addEventListener('click', closeNav);
+if (navCover) {
+    navCover.addEventListener('click', closeNav);
+}
