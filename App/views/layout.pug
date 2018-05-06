@@ -47,8 +47,10 @@ html
                     });
                 } else {
                     let aside = document.getElementsByTagName('aside')[0];
-                    aside.style.height = "calc(100vh - 3em - 22px);";
                     let titlebar = document.getElementsByClassName('titlebar')[0];
+                    if (aside) {
+                        aside.style.height = "calc(100vh - 3em - 22px);";
+                    }
                     titlebar.style.height = "22px;";
                 }
             }
