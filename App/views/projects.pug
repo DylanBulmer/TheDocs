@@ -6,15 +6,8 @@ block links
     link(rel="stylesheet" href="../css/markdown.css")
 
 block content
-    topbar
-        img(src="../image/TheDocsLogoWhite.svg" style="height: calc(3em - 16px); position: absolute; top: 8px; left: 43px; cursor: pointer;" onclick="viewPage('c_main')")
-        span
-            span(style="vertical-align: middle;") Welcome&nbsp;
-                span.fname
-                | !
-            span(onclick="openNav()")#nav-btn
-                i.fa.fa-bars
-    include ../modules/nav.pug
+    include modules/topbar.pug
+    include modules/nav.pug
     aside
         tabs#dump
         a(class="add-button" onclick="viewPage('c_newProject')") Start a Project!
