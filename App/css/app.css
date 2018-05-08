@@ -201,6 +201,7 @@ content {
 input.new {
     padding: 0.25em 0.5em;
     font-size: 1em;
+    vertical-align: middle;
 }
 
 #nav-btn {

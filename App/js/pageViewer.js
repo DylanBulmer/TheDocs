@@ -13,7 +13,7 @@ var md = require('markdown-it')({
     }
 });
 var dateFormat = require('dateformat');
-if (typeof(Store) === 'undefined') {
+if (typeof Store === 'undefined') {
     var Store = require('../modules/store');
     var store = new Store({
         configName: 'user-preferences'

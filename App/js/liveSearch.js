@@ -26,7 +26,7 @@ function liveSearch() {
                     for (i = 0; i < result.length; i++) {
                         let doc = result[i];
                         tab = document.createElement("tab");
-                        tab.innerHTML = "<h3>" + result[i].title + "</h3><p>Keyword: " + result[i].keyword + "</p>";
+                        tab.innerHTML = "<h3>" + result[i].title + "</h3><p>Project: " + result[i].project + "</p>"; // use `result[i].keyword` for displaying keywords instead
                         tab.addEventListener("click", function (e) {
                             let w = document.getElementsByClassName('wrapper')[0];  // Wrapper
                             let t = e.target;                                       // Active Tab
