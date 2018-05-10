@@ -6,10 +6,12 @@ if (typeof Store === 'undefined') {
 
 // Focused window
 var thisWindow;
+
 // Buttons
 let min = document.getElementById('min');
 let max = document.getElementById('max');
 let close = document.getElementById('close');
+
 // other elements
 let titlebar = document.getElementsByClassName('titlebar')[0];
 let nav = document.getElementsByTagName('nav')[0];

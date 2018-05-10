@@ -51,6 +51,7 @@ html
                     let content = document.getElementsByTagName('content');
                     let nav = document.getElementsByTagName('nav')[0];
                     let slim = document.getElementsByClassName('slimscroll');
+                    let dump = document.getElemrntById('dump');
                     if (aside) {
                         aside.setAttribute("class", "mac");
                     }
@@ -66,6 +67,9 @@ html
                         for (i = 0; i < slim.length; i++) {
                             slim[i].removeAttribute("class");
                         }
+                    }
+                    if (window.location.href.slice(-12) === 'projects.pug') {
+                        dump.setAttribute('height: calc(100vh - 3em - 74px);');
                     }
                     titlebar.setAttribute("style", "height: 22px;");
 

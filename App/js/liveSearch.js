@@ -42,15 +42,14 @@ function liveSearch() {
                 tab.innerHTML = result.err;
                 dump.appendChild(tab);
             }
-        }
-        /*else {
+        } else if (this.readyState === 4) {
             let dump = document.getElementById("dump");
             dump.innerHTML = "";
 
             let tab = document.createElement("tab");
             tab.innerHTML = "<h3>Could Not Connect!</h3><p>Type to try again!</p>";
             dump.appendChild(tab);
-        }*/
+        }
     };
     let user = store.getUser();
     user.key = keyword;
