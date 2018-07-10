@@ -175,8 +175,9 @@ var viewPage = function viewPage(page, id) {
                 }
             }
         };
-        xhttp.open("GET", store.get("url") + "/log/project/" + id, true);
-        xhttp.send();
+        xhttp.open("POST", store.get("url") + "/log/project/" + id, true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify(store.getUser()));
     }
 };
 
@@ -283,6 +284,9 @@ const view = (type, id) => {
 
         store.set('view', call);
     } else {
-        viewPage(cpage);
+        try {
+            document.getElementById(cpage);
+            viewPage(cpage);
+        } catch (e) { return; };
     }
 })();

@@ -1,0 +1,319 @@
+topbar {
+    display: block;
+    position: relative;
+    left: 0;
+    background-color: #1177ff;
+    color: #ffffff;
+    height: 3em;
+    width: 100%;
+    z-index: 0;
+}
+
+    topbar > span {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        height: calc(100% - 10px);
+        line-height: calc(200% + 5px);
+    }
+
+        topbar > span > a {
+            height: calc(100% - 20px);
+            padding: 5px;
+            display: inline-block;
+            vertical-align: middle;
+            background-color: #fff;
+            color: #555;
+            border-radius: 5px;
+            line-height: 1em;
+            margin-left: 15px;
+        }
+
+        topbar > span > span > i {
+            cursor: pointer;
+        }
+
+#nav-btn {
+    color: #555;
+    width: 1.5em;
+    padding: 4px 0;
+    cursor: pointer;
+    margin-left: 15px;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    height: calc(1.5em - 8px);
+    border: 1px solid #FFFFFF;
+    background-color: #ffffff;
+}
+
+#nav-cls:hover {
+    color: #f1f1f1;
+}
+
+nav {
+    top: 32px;
+    z-index: 3;
+    color: #fff;
+    width: 230px;
+    right: -250px;
+    display: block;
+    transition: 500ms;
+    position: absolute;
+    background-color: #333;
+    padding: 60px 10px 10px 10px;
+    height: calc(100vh - 52px - 50px);
+}
+
+    nav.mac {
+        top: 22px;
+        height: calc(100vh - 92px);
+    }
+
+    nav > span {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        transition: 0.3s;
+        cursor: pointer;
+        white-space: nowrap;
+        color: #818181;
+        display: inline-block;
+        height: 1.5em;
+    }
+
+    nav > a {
+        padding: 5px 5px 5px 1.5em;
+        text-decoration: none;
+        font-size: 1.1em;
+        color: #999999;
+        display: block;
+        transition: 0.3s;
+        white-space: nowrap;
+    }
+
+        nav > a:hover {
+            color: #f1f1f1;
+        }
+
+navCover {
+    display: none;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+content {
+    display: block;
+    position: relative;
+    width: 90%;
+    padding: 10px 5%;
+    background-color: #fff;
+    color: #555;
+    height: calc(100vh - 3em - 52px);
+    overflow-y: auto;
+}
+
+    content > .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+.column {
+    flex: 30%;
+    max-width: 33%;
+    padding: 1%;
+}
+
+    column > * {
+        vertical-align: middle;
+    }
+
+infobox {
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+    overflow: hidden;
+    margin: 10px 0;
+    max-height: 3em;
+}
+
+    infobox > span {
+        display: inline-block;
+        position: relative;
+        padding: 0 10px;
+        width: calc(100% - 20px - 2em);
+        vertical-align: middle;
+    }
+
+infoblock::after, warnblock::after, errorblock::after, successblock::after {
+    display: inline-block;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 2em;
+    vertical-align: middle;
+    height: 100%;
+    max-height: 3em;
+    line-height: 3em;
+}
+
+infoblock::after {
+    content: "!";
+    background-color: #3369ff;
+}
+
+warnblock::after {
+    content: "\26A0";
+    background-color: #FFBA10;
+}
+
+errorblock::after {
+    content: "X";
+    background-color: #ff1111;
+}
+
+successblock::after {
+    content: "\2714";
+    background-color: #22CC00;
+}
+
+subtitle {
+    display: block;
+    position: relative;
+    width: calc(100% - 20px);
+    height: 2em;
+    line-height: 2em;
+    padding: 0 10px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+projects, #eventlog, todo {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-height: calc(100% - 5em - 52px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
+}
+
+#eventlog {
+    min-height: 300px;
+}
+
+project {
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+    project::before {
+        content: "\1F846";
+        background-color: #3369ff;
+        display: inline-block;
+        position: relative;
+        width: 1.75em;
+        height: 1.75em;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.75em;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    project:hover, projects a:hover {
+        background-color: #ececec;
+    }
+
+projects a {
+    width: 100%;
+    display: block;
+}
+
+    projects a::before {
+        content: "\27A5";
+        background-color: #3369ff;
+        display: inline-block;
+        position: relative;
+        width: 1.75em;
+        height: 1.75em;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.75em;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+.log, todo > item {
+    display: block;
+    padding: 10px;
+    text-align: justify;
+}
+
+    .log > a {
+        background-color: #555;
+        border-radius: 5px;
+        color: #fff;
+        width: 100px;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        left: calc(100% - 100px);
+    }
+
+todo > item.add::before {
+    display: inline-block;
+    position: relative;
+    top: -10px;
+    left: 0;
+    content: "+";
+    font-size: 1.5em;
+    line-height: 1.5em; 
+    font-weight: bold; 
+    vertical-align: middle;
+}
+
+item.add {
+    border: 1px #555 dashed;
+    border-radius: 5px;
+    width: 80%;
+    height: 1em;
+    padding: 10px;
+    margin: 0 auto 10px auto;
+    line-height: calc(1em + 10px);
+}
+
+    item.add > span {
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+        top: -10px;
+        left: 5px;
+    }
+
+@media (max-width: 900px) {
+    .column {
+        flex: 48%;
+        max-width: 48%;
+    }
+}

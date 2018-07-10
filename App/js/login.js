@@ -26,7 +26,7 @@ var submition = function () {
                 } else {
                     msg.innerHTML = "Logged In!";
                     store.setUser(result.result);
-                    window.location.href = __dirname + "/app.pug";
+                    window.location.href = __dirname + "/home.pug";
                 }
             } else {
                 switch (this.readyState) {

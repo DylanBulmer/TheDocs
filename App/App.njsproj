@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="js\app-functions.js" />
+    <Compile Include="js\home.js" />
     <Compile Include="js\index.js" />
     <Compile Include="js\login.js" />
     <Compile Include="js\mainmenu.js" />
@@ -45,6 +46,7 @@
     </Compile>
     <Compile Include="js\register.js" />
     <Compile Include="js\submit.js" />
+    <Compile Include="js\todoList.js" />
     <Compile Include="js\user-preferences.js" />
     <Compile Include="modules\slimscroll.js" />
     <Compile Include="modules\store.js" />
@@ -54,6 +56,7 @@
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\fonts.css" />
     <Content Include="css\hljs.css" />
+    <Content Include="css\home.css" />
     <Content Include="css\login.css" />
     <Content Include="css\main.css" />
     <Content Include="css\markdown.css">
@@ -81,6 +84,7 @@
     <Content Include="image\TheDocsLogo.svg" />
     <Content Include="image\TheDocsLogoWhite.svg" />
     <Content Include="js\liveSearch.js" />
+    <Content Include="views\home.pug" />
     <Content Include="views\modules\nav.pug" />
     <Content Include="package.json" />
     <Content Include="README.md" />

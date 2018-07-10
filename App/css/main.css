@@ -15,16 +15,20 @@ a, select {
     word-wrap: break-word;
 }
 
-input, textarea {
+input[type="text"], textarea {
     cursor: text;
     font-size: small;
     border: 1px solid rgba(0,0,0,.15);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
 
-input:focus, textarea:focus, select:focus {
-    outline-color: #555;
-}
+    input:not([type='text']) {
+        cursor: pointer;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        outline-color: #555;
+    }
 
 /* Custom dropdown */
 .custom-dropdown {

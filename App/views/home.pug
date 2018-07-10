@@ -1,0 +1,59 @@
+extends layout.pug
+
+block links
+    link(rel="stylesheet" href="../css/home.css")
+    link(rel="stylesheet" href="../css/markdown.css")
+
+block content
+    include modules/topbar.pug
+    include modules/nav.pug
+
+    content.full
+        h1 Welcome to The Docs!
+
+        div.row
+            div.column
+                infobox
+                    infoblock
+                    span Don't forget to write your journal!
+                infobox
+                    warnblock
+                    span You haven't written a journal entry in 2 days!
+                subtitle Start a new...
+                projects
+                    span(style="display: block; width: 90%; margin: 5px auto 10px auto; border-radius: 5px; box-shadow: 1px 1px 4px rgba(0,0,0,0.25);overflow: hidden;")
+                        a Journal
+                        a Issue
+                        a Project
+                subtitle Current projects
+                projects
+                    project The Docs
+                    project Elder Scrolls Mod (Minecraft)
+            div.column
+                subtitle Todo list
+                todo
+                    item
+                        input(type="checkbox")
+                        | &nbsp;Make this page fill from database.
+                    item
+                        input(type="checkbox")
+                        | &nbsp;Talk to Spencer about the mod.
+                    item
+                        input(type="checkbox")
+                        | &nbsp;Add new texures into the mod.
+                infobox
+                    successblock
+                    span Auto saved todo list!
+                infobox
+                    errorblock
+                    span Your todo list didn't save!
+            div.column
+                subtitle Recent activity
+                div#eventlog
+
+        span Copyright &copy; 2018 Dylan Bulmer
+        
+    script(src='../js/user-preferences.js')
+    script(src='../js/pageViewer.js')
+    script(src='../js/todoList.js')
+    script(src='../js/home.js')

@@ -150,6 +150,13 @@ content {
     overflow-y: auto;
 }
 
+    content.full {
+        display: block;
+        position: static;
+        padding: 10px 5%;
+        width: 90%;
+    }
+
     content.mac {
         top: calc(3em + 22px);
         height: calc(100vh - 3em - 42px);
@@ -284,7 +291,7 @@ nav > a:hover {
     height: calc(100% - 45px);
     width: 100%;
     position: relative;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .collumn {
