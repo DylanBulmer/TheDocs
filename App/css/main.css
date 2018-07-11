@@ -35,6 +35,8 @@ input[type="text"], textarea {
     position: relative;
     display: inline-block;
     vertical-align: middle;
+    width: auto;
+    margin: auto;
 }
 
 .custom-dropdown select {

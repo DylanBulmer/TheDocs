@@ -53,3 +53,71 @@ xhttp.onreadystatechange = function () {
 xhttp.open("POST", store.get("url") + "/log/activity/all", true);
 xhttp.setRequestHeader("Content-Type", "application/json");
 xhttp.send(JSON.stringify(store.getUser()));
+
+let grabProjects = new XMLHttpRequest();
+grabProjects.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+        let dump = document.getElementById("projects");
+        let result = JSON.parse(this.responseText);
+
+        if (!result.err) {
+            let projects = result.result.projects;
+            dump.innerHTML = "";
+            if (projects.length === 0) {
+                let span = document.createElement("span");
+                span.setAttribute('style', 'display: block; text-align: center; padding: 10px;');
+                span.innerHTML = "You haven't joined any projects yet!";
+                dump.appendChild(span);
+            } else {
+                // Add all results
+                for (i = 0; i < projects.length; i++) {
+                    let a = document.createElement("a");
+                    a.setAttribute('onclick', 'view("project", ' + projects[i].project_id + ')');
+                    a.innerHTML = projects[i].name;
+
+                    dump.appendChild(a);
+                }
+            }
+        } else {
+            let div = document.createElement("span");
+            div.style.textAlign = 'center';
+            div.innerHTML = result.err.message;
+            dump.appendChild(div);
+        }
+        for (i = 0; i < Scrolls.length; i++) {
+            Scrolls[i].resetValues();
+        }
+    }
+};
+grabProjects.open("POST", store.get("url") + "/projects/current", true);
+grabProjects.setRequestHeader("Content-Type", "application/json");
+grabProjects.send(JSON.stringify({
+    'profile': store.getUser()
+}));
+
+let sendMessage = (type, id, msg) => {
+    let col = document.getElementById(id);
+
+    let info = document.createElement('infobox');
+    let block = document.createElement(type + 'block');
+    let span = document.createElement('span');
+
+    span.innerText = msg;
+
+    info.appendChild(block);
+    info.appendChild(span);
+
+    col.appendChild(info);
+
+    setTimeout(() => {
+        info.setAttribute('style', 'opacity: 1');
+    }, 50);
+
+    setTimeout(() => {
+        info.setAttribute('style', 'opacity: 0');
+
+        setTimeout(() => {
+            col.removeChild(info);
+        }, 350);
+    }, 7500);
+}

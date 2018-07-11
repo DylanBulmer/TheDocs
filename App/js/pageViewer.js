@@ -88,7 +88,7 @@ var viewPage = function viewPage(page, id) {
         };
         xhttp.open("POST", store.get("url") + "/doc", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
-        xhttp.send(JSON.stringify({ "id": id }));
+        xhttp.send(JSON.stringify({ "id": id, "profile": store.getUser() }));
 
     } else if (page === "c_new") { // Updating New Doc Page
         let xhttp = new XMLHttpRequest();
@@ -136,6 +136,7 @@ var viewPage = function viewPage(page, id) {
                 let started = document.getElementById("p_date");
                 let desc = document.getElementById("p_desc");
                 let homepage = document.getElementById("p_homepage");
+                let joinBtn = document.getElementById("join_btn");
 
                 // Set date and time
                 let timestamp = new Date(project.started);
@@ -146,6 +147,14 @@ var viewPage = function viewPage(page, id) {
                 desc.innerText = project.description;
                 homepage.href = project.homepage;
                 homepage.innerText = project.homepage;
+
+                if (project.joined) {
+                    joinBtn.innerHTML = "Joined";
+                    joinBtn.setAttribute('onclick', '');
+                } else {
+                    joinBtn.innerHTML = "Join";
+                    joinBtn.setAttribute('onclick', 'joinProject(' + project.id + ')');
+                }
 
                 // Creating the Event log!
                 dump.innerHTML = "";
@@ -180,6 +189,30 @@ var viewPage = function viewPage(page, id) {
         xhttp.send(JSON.stringify(store.getUser()));
     }
 };
+
+var joinProject = (id) => {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            let result = JSON.parse(this.responseText);
+            let joinBtn = document.getElementById("join_btn");
+
+            if (result.err) {
+                console.log(err.message);
+            } else {
+                if (result.result.hasJoined) {
+                    joinBtn.innerHTML = "Joined";
+                    joinBtn.setAttribute('onclick', '');
+                } else {
+                    console.log("Something wrong happened!");
+                }
+            }
+        }
+    };
+    xhttp.open("POST", store.get("url") + "/project/join/" + id, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(store.getUser()));
+}
 
 var updateChange = function () {
     if (document.getElementById('n_project').value === 'new') {
