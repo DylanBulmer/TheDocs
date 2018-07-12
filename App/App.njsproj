@@ -62,6 +62,7 @@
     <Content Include="css\markdown.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="css\project.css" />
     <Content Include="css\slimscroll.css" />
     <Content Include="dev-app-update.yml" />
     <Content Include="fonts\fontawesome-webfont.eot" />

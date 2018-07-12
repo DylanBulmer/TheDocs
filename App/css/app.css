@@ -275,44 +275,6 @@ nav > a:hover {
     color: #f1f1f1;
 }
 
-.log {
-    display: block;
-    padding: 10px;
-    text-align: justify;
-    background: linear-gradient( to left, transparent 0%, #555, transparent 100% ) left bottom no-repeat;
-    background-size: calc(100% - 20px) 1px;
-    background-position: center bottom;
-}
-
-#eventlog {
-    border-image: linear-gradient( to bottom, transparent 0%, #555, transparent 100% ) 1 100%;
-    border-left: 1px solid #555;
-    border-right: 1px solid #555;
-    height: calc(100% - 45px);
-    width: 100%;
-    position: relative;
-    overflow-y: auto;
-}
-
-.collumn {
-    display: inline-block;
-    width: calc(50% - 20px);
-    padding: 10px;
-    vertical-align: text-top;
-    height: calc(100% - 20px);
-}
-
-.log > a {
-    background-color: #555;
-    border-radius: 5px;
-    color: #fff;
-    width: 100px;
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    left: calc(100% - 100px);
-}
-
 .slimscroll {
     overflow: hidden;
 }

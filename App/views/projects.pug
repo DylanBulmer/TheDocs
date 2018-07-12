@@ -2,7 +2,7 @@ extends layout.pug
 
 block links
     link(rel="stylesheet" href="../css/app.css")
-    link(rel="stylesheet" href="../css/hljs.css")
+    link(rel="stylesheet" href="../css/project.css")
     link(rel="stylesheet" href="../css/markdown.css")
 
 block content
@@ -19,23 +19,26 @@ block content
         p
             i Please note that this page is still being developed and not everything will work correctly.
     content#c_view
-        span.collumn
+        span.column(style="width: calc(100% - 390px);")
             h1(style="width: 100%; display: inline-block;")#p_title
             br
             span(style="width: 100%") Started on&nbsp;
                 span#p_date
-            br
-            span.desc Definition:
-            span.field#p_desc
-            br
-            span.desc Homepage:
-            span.field
-                a(target="_BLANK")#p_homepage
-            span(style="width: 100%")
-                a#join_btn Join
-        span.collumn
-            h3(style="width: calc(100% - 20px); display: inline-block; text-align: center;").field Event Log
-            div#eventlog.slimscroll
+            table
+                tbody
+                    tr
+                        td Definition:
+                        td#p_desc
+                    tr
+                        td Homepage:
+                        td
+                            a(target="_BLANK")#p_homepage
+        div#options
+            | Project options
+            a#join_btn Join
+        span(style="width: 330px; display: inline-block; vertical-align: text-top; margin: 10px; position: absolute; top: 10px; max-height: calc(100% - 20px);")#container
+            subtitle(style="width: calc(100% - 20px); text-align: center; margin-top: 0;") Event Log
+            div(style="min-height: 400px; position: absolute; margin-bottom: 10px;")#eventlog
     content#c_newProject
         span.desc Name:
         input(type="text" placeholder="Project Name").field#n_name

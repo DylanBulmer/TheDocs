@@ -235,7 +235,7 @@ let onUpdate = (element) => {
 
             if (result.err) {
                 // if there is an error
-                sendMessage('error', 'column2', result.err);
+                sendMessage('error', 'column2', result.err.message);
             } else {
                 sendMessage('success', 'column2', 'Your task has been updated!');
             }

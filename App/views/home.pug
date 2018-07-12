@@ -9,8 +9,6 @@ block content
     include modules/nav.pug
 
     content.full
-        h1 Welcome to The Docs!
-
         div.row
             div.column
                 infobox(style="opacity: 1;")
@@ -28,20 +26,9 @@ block content
                 subtitle Current projects
                 projects
                     span(style="display: block; width: 100%; border-radius: 5px; overflow: hidden;")#projects
-                        a The Docs
-                        a Elder Scrolls Mod (Minecraft)
             div.column#column2
                 subtitle Todo list
                 todo
-                    item
-                        input(type="checkbox")
-                        | &nbsp;Make this page fill from database.
-                    item
-                        input(type="checkbox")
-                        | &nbsp;Talk to Spencer about the mod.
-                    item
-                        input(type="checkbox")
-                        | &nbsp;Add new texures into the mod.
             div.column
                 subtitle Recent activity
                 div#eventlog

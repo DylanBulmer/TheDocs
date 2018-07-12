@@ -149,11 +149,11 @@ var viewPage = function viewPage(page, id) {
                 homepage.innerText = project.homepage;
 
                 if (project.joined) {
-                    joinBtn.innerHTML = "Joined";
-                    joinBtn.setAttribute('onclick', '');
+                    joinBtn.innerHTML = "Leave";
+                    joinBtn.setAttribute('onclick', 'toggleJoin("leave", ' + project.id + ')');
                 } else {
                     joinBtn.innerHTML = "Join";
-                    joinBtn.setAttribute('onclick', 'joinProject(' + project.id + ')');
+                    joinBtn.setAttribute('onclick', 'toggleJoin("join", ' + project.id + ')');
                 }
 
                 // Creating the Event log!
@@ -190,7 +190,7 @@ var viewPage = function viewPage(page, id) {
     }
 };
 
-var joinProject = (id) => {
+var toggleJoin = (type, id) => {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -201,15 +201,20 @@ var joinProject = (id) => {
                 console.log(err.message);
             } else {
                 if (result.result.hasJoined) {
-                    joinBtn.innerHTML = "Joined";
-                    joinBtn.setAttribute('onclick', '');
+                    joinBtn.innerHTML = "Leave";
+                    joinBtn.setAttribute('onclick', 'toggleJoin("leave", ' + id + ')');
                 } else {
-                    console.log("Something wrong happened!");
+                    joinBtn.innerHTML = "Join";
+                    joinBtn.setAttribute('onclick', 'toggleJoin("join", ' + id + ')');
                 }
             }
         }
     };
-    xhttp.open("POST", store.get("url") + "/project/join/" + id, true);
+    if (type === "join") {
+        xhttp.open("POST", store.get("url") + "/project/join/" + id, true);
+    } else {
+        xhttp.open("POST", store.get("url") + "/project/leave/" + id, true);
+    }
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(store.getUser()));
 }

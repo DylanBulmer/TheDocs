@@ -189,3 +189,147 @@ input[type="text"], textarea {
     background-size: 80% 1px;
     background-position: center bottom;
 }
+
+/* Log stuff */
+
+
+subtitle {
+    display: block;
+    position: relative;
+    width: calc(100% - 20px);
+    height: 2em;
+    line-height: 2em;
+    padding: 0 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.25);
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+projects, #eventlog, todo {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-height: calc(100% - 5em - 10px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0px 3px 4px 1px rgba(0,0,0,0.25);
+}
+
+#eventlog {
+    min-height: 300px;
+}
+
+project {
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+    project::before {
+        content: "\1F846";
+        background-color: #3369ff;
+        display: inline-block;
+        position: relative;
+        width: 1.75em;
+        height: 1.75em;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.75em;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    project:hover, projects a:hover {
+        background-color: #ececec;
+    }
+
+projects a {
+    width: 100%;
+    display: block;
+}
+
+    projects a::before {
+        content: "\27A5";
+        background-color: #3369ff;
+        display: inline-block;
+        position: relative;
+        width: 1.75em;
+        height: 1.75em;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.75em;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+.log, todo > item {
+    display: block;
+    padding: 10px;
+    text-align: justify;
+}
+
+    .log > a {
+        background-color: #555;
+        border-radius: 5px;
+        color: #fff;
+        width: 100px;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        left: calc(100% - 100px);
+    }
+
+    todo > item.add::before {
+        display: inline-block;
+        position: relative;
+        top: -5px;
+        left: 0;
+        content: "+";
+        font-size: 1.5em;
+        height: 30px;
+        line-height: 30px;
+        font-weight: bold;
+        vertical-align: middle;
+    }
+
+item.add {
+    border: 1px #555 dashed;
+    border-radius: 5px;
+    width: calc(100% - 42px);
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 10px;
+    margin: 0 auto 10px auto;
+    cursor: pointer;
+}
+
+    item.add > span {
+        vertical-align: middle;
+        display: inline-block;
+        position: relative;
+        top: -5px;
+        left: 10px;
+        cursor: pointer;
+    }
+
+item > a {
+    background-color: #555;
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    vertical-align: text-top;
+}
+
+item > span {
+    display: inline-block;
+    width: calc(100% - 79px);
+    vertical-align: text-top;
+    margin: 0 5px;
+}
