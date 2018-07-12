@@ -36,9 +36,9 @@ block content
         div#options
             | Project options
             a#join_btn Join
-        span(style="width: 330px; display: inline-block; vertical-align: text-top; margin: 10px; position: absolute; top: 10px; max-height: calc(100% - 20px);")#container
+        span(style="width: 330px; display: inline-block; vertical-align: text-top; margin: 10px; position: absolute; top: 10px; right: 10px; max-height: calc(100% - 20px);")#container
             subtitle(style="width: calc(100% - 20px); text-align: center; margin-top: 0;") Event Log
-            div(style="min-height: 400px; position: absolute; margin-bottom: 10px;")#eventlog
+            div(style="min-height: 400px; height: calc(100vh - 2em - 120px);")#eventlog
     content#c_newProject
         span.desc Name:
         input(type="text" placeholder="Project Name").field#n_name
