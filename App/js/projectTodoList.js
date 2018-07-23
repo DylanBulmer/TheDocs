@@ -65,7 +65,8 @@ grabList.setRequestHeader("Content-Type", "application/json");
 grabList.send(JSON.stringify({
     profile: store.getUser(),
     opts: {
-        type: 'user'
+        type: 'project',
+        id: 1
     }
 }));
 
@@ -83,28 +84,8 @@ let onNew = (element) => {
     let input = document.createElement("input");
     input.setAttribute('id', 'newItem');
     input.setAttribute('placeholder', 'Enter new task.');
-    input.setAttribute('style', 'display: inline-block; vertical-align: middle; padding: 5px 10px; width: calc(100% - 150px); height: 32px; line-height: 32px; border-radius: 5px 0 0 5px;');
+    input.setAttribute('style', 'display: inline-block; vertical-align: middle; padding: 5px 10px; width: calc(100% - 50px); height: 32px; line-height: 32px; border-radius: 5px 0 0 5px;');
     input.setAttribute('type', 'text');
-
-    let span = document.createElement('span');
-    span.setAttribute('class', 'custom-dropdown');
-
-    let select = document.createElement('select');
-    select.setAttribute('style', 'width: 100px; border-radius: 0; height: 32px; font-size: 14px;');
-    select.setAttribute('id', 'project');
-
-    let option = document.createElement('option');
-    option.setAttribute('disabled', true);
-    option.setAttribute('selected', true);
-    option.setAttribute('value', -1);
-    option.innerText = "Select Project";
-
-    let optGroup = document.createElement('optgroup');
-    optGroup.label = "Projects:";
-
-    select.appendChild(option);
-    select.appendChild(optGroup);
-    span.appendChild(select);
 
     let a = document.createElement("a");
     a.setAttribute('style', 'display: inline-block; vertical-align: middle; padding: 5px; width: 40px; height: 22px; line-height: 22px; text-align: center; background-color: #3369ff; color: #fff; border-radius: 0 5px 5px 0;');
@@ -112,36 +93,7 @@ let onNew = (element) => {
     a.innerText = "Add";
 
     element.appendChild(input);
-    element.appendChild(span);
     element.appendChild(a);
-
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            let result = JSON.parse(this.responseText);
-
-            optGroup.innerHTML = "";
-            if (result.length === 0) {
-                select.innerHTML = "";
-                let opt = document.createElement("option");
-                opt.innerHTML = "No Projects Yet";
-                select.appendChild(opt);
-            } else {
-                // Add all results
-                for (i = 0; i < result.length; i++) {
-                    let opt = document.createElement("option");
-                    opt.innerHTML = result[i].name;
-                    opt.setAttribute("value", "" + result[i].id);
-                    if (i === 0) {
-                        opt.selected = true;
-                    }
-                    optGroup.appendChild(opt);
-                }
-            }
-        }
-    };
-    xhttp.open("GET", store.get("url") + "/projects", true);
-    xhttp.send();
 };
 
 /**
@@ -161,7 +113,7 @@ let onAdd = (element) => {
 
                 if (result.err) {
                     // if there is an error
-                    sendMessage('error', 'column2', result.err.message);
+                    sendMessage('error', 'todo', result.err.message);
                 } else {
                     let newItem = result.result.item;
 
@@ -184,7 +136,7 @@ let onAdd = (element) => {
                     let a = document.createElement('a');
                     a.setAttribute("onclick", "view('project', " + newItem.project_id + ")");
                     a.innerText = "Project";
-                    
+
                     item.appendChild(input);
                     item.appendChild(span);
                     item.appendChild(a);
@@ -203,7 +155,7 @@ let onAdd = (element) => {
 
                     dump.appendChild(item);
 
-                    sendMessage('success', 'column2', 'Your task has been added!');
+                    sendMessage('success', 'todo', 'Your task has been added!');
                 }
             }
         };
@@ -218,7 +170,7 @@ let onAdd = (element) => {
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(request));
     } else {
-        sendMessage('error', 'column2', 'New task field cannot be empty!');
+        sendMessage('error', 'todo', 'New task field cannot be empty!');
     }
 };
 
@@ -240,9 +192,9 @@ let onUpdate = (element) => {
 
             if (result.err) {
                 // if there is an error
-                sendMessage('error', 'column2', result.err.message);
+                sendMessage('error', 'todo', result.err.message);
             } else {
-                sendMessage('success', 'column2', 'Your task has been updated!');
+                sendMessage('success', 'todo', 'Your task has been updated!');
             }
         }
     };

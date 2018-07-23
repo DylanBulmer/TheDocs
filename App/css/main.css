@@ -87,7 +87,6 @@ input[type="text"], textarea {
 }
 
 .titlebar {
-    position: relative;
     left: 0;
     top: 0;
     width: 100%;
@@ -156,7 +155,7 @@ input[type="text"], textarea {
     min-width: 160px;
     text-align: left;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    z-index: 2;
+    z-index: 3;
 }
 
 .dropdown-content > span {
@@ -332,4 +331,61 @@ item > span {
     width: calc(100% - 79px);
     vertical-align: text-top;
     margin: 0 5px;
+}
+
+infobox {
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.25);
+    overflow: hidden;
+    margin: 10px 0;
+    max-height: 3em;
+    visibility: visible;
+    opacity: 0;
+    transition-duration: 300ms;
+}
+
+    infobox > span {
+        display: inline-block;
+        position: relative;
+        padding: 0 10px;
+        width: calc(100% - 20px - 2em);
+        vertical-align: middle;
+    }
+
+infoblock::after, warnblock::after, errorblock::after, successblock::after {
+    display: inline-block;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    line-height: 2em;
+    vertical-align: middle;
+    height: 100%;
+    max-height: 3em;
+    line-height: 3em;
+}
+
+infoblock::after {
+    content: "!";
+    background-color: #3369ff;
+}
+
+warnblock::after {
+    content: "\26A0";
+    background-color: #FFBA10;
+}
+
+errorblock::after {
+    content: "X";
+    background-color: #ff1111;
+}
+
+successblock::after {
+    content: "\2714";
+    background-color: #22CC00;
 }

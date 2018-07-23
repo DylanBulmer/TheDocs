@@ -16,10 +16,9 @@ td, th {
     margin: 10px;
     padding: 10px;
     display: inline-block;
-    width: calc(100% - 410px);
+    width: calc(50% - 45px);
     vertical-align: text-top;
-    position: absolute;
-    bottom: 10px;
+    position: relative;
 }
 
     #options a {
@@ -32,18 +31,30 @@ td, th {
         float: right;
     }
 
-.column {
+#todo {
+    width: calc(50% - 20px);
     display: inline-block;
+    vertical-align: text-top;
+    margin: 10px;
+}
+
+.column {
+    display: block;
     width: calc(50% - 20px);
     padding: 10px;
     vertical-align: text-top;
     max-height: calc(100% - 20px);
-    position: absolute;
+    position: relative;
+}
+
+#col {
+    display: inline-block;
+    width: calc(100% - 350px);
+    vertical-align: text-top;
 }
 
 @media (max-width: 1150px) {
     .column {
-        position: relative !important;
         width: calc(100% - 20px) !important;
     }
 
@@ -60,10 +71,18 @@ td, th {
         max-width: 330px;
     }
 
-    #options {
+    #options, #todo {
         position: relative !important;
         bottom: 0 !important;
-        width: calc(100% - 390px) !important;
+        width: calc(100% - 40px) !important;
+    }
+
+    #todo {
+        width: calc(100% - 20px) !important;
+    }
+
+    #todo > subtitle {
+        max-width: initial;
     }
 
     #container {
@@ -74,9 +93,15 @@ td, th {
 }
 
 @media (max-width: 900px) {
+    #col {
+        width: 100% !important;
+    }
+
     #options {
-        position: relative !important;
-        bottom: 0 !important;
-        width: calc(100% - 40px) !important;
+        width: calc(50% - 45px) !important;
+    }
+
+    #todo {
+        width: calc(50% - 20px) !important;
     }
 }

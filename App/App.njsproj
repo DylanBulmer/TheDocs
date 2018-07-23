@@ -41,6 +41,7 @@
     <Compile Include="js\mainmenu.js" />
     <Compile Include="js\pageViewer.js" />
     <Compile Include="js\projects.js" />
+    <Compile Include="js\projectTodoList.js" />
     <Compile Include="js\regexTester.js">
       <SubType>Code</SubType>
     </Compile>

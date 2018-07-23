@@ -94,30 +94,3 @@ grabProjects.setRequestHeader("Content-Type", "application/json");
 grabProjects.send(JSON.stringify({
     'profile': store.getUser()
 }));
-
-let sendMessage = (type, id, msg) => {
-    let col = document.getElementById(id);
-
-    let info = document.createElement('infobox');
-    let block = document.createElement(type + 'block');
-    let span = document.createElement('span');
-
-    span.innerText = msg;
-
-    info.appendChild(block);
-    info.appendChild(span);
-
-    col.appendChild(info);
-
-    setTimeout(() => {
-        info.setAttribute('style', 'opacity: 1');
-    }, 50);
-
-    setTimeout(() => {
-        info.setAttribute('style', 'opacity: 0');
-
-        setTimeout(() => {
-            col.removeChild(info);
-        }, 350);
-    }, 7500);
-}
