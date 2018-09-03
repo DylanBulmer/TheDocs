@@ -5,12 +5,27 @@ if (typeof Store === 'undefined') {
 }
 
 // Focused window
+/**
+ * @namespace thisWindow
+ * @type {Electron.BrowserWindow}
+ */
 var thisWindow;
 
 // Buttons
 let min = document.getElementById('min');
 let max = document.getElementById('max');
 let close = document.getElementById('close');
+let undo = document.getElementById('undo');
+let redo = document.getElementById('redo');
+let cut = document.getElementById('cut');
+let copy = document.getElementById('copy');
+let paste = document.getElementById('paste');
+let selectAll = document.getElementById('selectAll');
+let reload = document.getElementById('reload');
+let zookIn = document.getElementById('zoomIn');
+let zoomOut = document.getElementById('zoomOut');
+let zoomReset = document.getElementById('zoomReset');
+let fullscreen = document.getElementById('toggleFullscreen');
 
 // other elements
 let titlebar = document.getElementsByClassName('titlebar')[0];
@@ -54,6 +69,12 @@ var create = {
         if (view) {
             view('newProject');
         }
+    },
+    // Go to the journal page
+    'journal': () => {
+        if (view) {
+            view('newJournal');
+        }
     }
 };
 
@@ -78,6 +99,74 @@ if (!/(MacPPC|MacIntel|Mac_PowerPC|Macintosh|Mac OS X)/.test(navigator.userAgent
         checkWindow();
         thisWindow.close();
     });
+
+    undo.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.undo();
+    });
+
+    redo.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.redo();
+    });
+
+    cut.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.cut();
+    });
+
+    copy.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.copy();
+    });
+
+    paste.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.paste();
+    });
+
+    selectAll.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.selectAll();
+    });
+    
+    reload.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.reload();
+    });
+
+    zoomIn.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.getZoomLevel((level) => {
+            if (level < 300) {
+                thisWindow.webContents.setZoomLevel(level + 1);
+            }
+        });
+    });
+
+    zoomOut.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.getZoomLevel((level) => {
+            console.log(level);
+            if (level > -3) {
+                thisWindow.webContents.setZoomLevel(level - 1);
+            }
+        });
+    });
+    
+    zoomReset.addEventListener('click', (e) => {
+        checkWindow();
+        thisWindow.webContents.setZoomLevel(0);
+    });
+
+    fullscreen.addEventListener('click', (e) => {
+        checkWindow();
+        if (thisWindow.isFullScreen()) {
+            thisWindow.setFullScreen(false);
+        } else {
+            thisWindow.setFullScreen(true);
+        }
+    });
 }
 
 var checkWindow = function () {
@@ -97,7 +186,7 @@ var escapeHTML = function escapeHTML(unsafe) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-}
+};
 
 var sendMessage = (type, id, msg) => {
     let col = document.getElementById(id);
@@ -124,4 +213,4 @@ var sendMessage = (type, id, msg) => {
             col.removeChild(info);
         }, 350);
     }, 7500);
-}
+};

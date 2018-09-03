@@ -183,15 +183,15 @@ var viewPage = function viewPage(page, id) {
                             // Add all results
                             for (i = 0; i < list.length; i++) {
                                 let item = document.createElement("item");
-                                item.setAttribute("id", list[i].id)
-                                item.setAttribute("created", list[i].created)
-                                item.setAttribute("project_id", list[i].project_id)
+                                item.setAttribute("id", list[i].id);
+                                item.setAttribute("created", list[i].created);
+                                item.setAttribute("project_id", list[i].project_id);
 
                                 let input = document.createElement("input");
                                 input.setAttribute('type', 'checkbox');
                                 input.setAttribute('onchange', "onUpdateTodo(this)");
 
-                                if (list[i].completed != null) {
+                                if (list[i].completed !== null) {
                                     input.checked = true;
                                 }
 
@@ -261,7 +261,8 @@ var viewPage = function viewPage(page, id) {
 
 /**
  * 
- * @param {Element} element
+ * @param {Element} element Element
+ * @param {number} id Id of project
  */
 let onNewTodo = (element, id) => {
 
@@ -287,7 +288,8 @@ let onNewTodo = (element, id) => {
 
 /**
  * 
- * @param {Element} element
+ * @param {Element} element Element
+ * @param {number} id Id of project
  */
 let onAddTodo = (element, id) => {
 
@@ -311,9 +313,9 @@ let onAddTodo = (element, id) => {
 
                     // create the new item
                     let item = document.createElement("item");
-                    item.setAttribute("id", newItem.id)
-                    item.setAttribute("created", newItem.created)
-                    item.setAttribute("project_id", newItem.project_id)
+                    item.setAttribute("id", newItem.id);
+                    item.setAttribute("created", newItem.created);
+                    item.setAttribute("project_id", newItem.project_id);
 
                     let input = document.createElement("input");
                     input.setAttribute('type', 'checkbox');
@@ -350,7 +352,7 @@ let onAddTodo = (element, id) => {
                 project_id: id,
                 description: escapeHTML(newTodoItem.value)
             }
-        }
+        };
         req.open("POST", store.get("url") + "/todo/new", true);
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(request));
@@ -361,12 +363,12 @@ let onAddTodo = (element, id) => {
 
 /**
  * 
- * @param {Element} element
+ * @param {Element} element Elements
  */
 let onUpdateTodo = (element) => {
     let item = {
         id: element.parentElement.id,
-        is_done: (element.checked) ? 1 : 0
+        is_done: element.checked ? 1 : 0
     };
 
     let req = new XMLHttpRequest();
@@ -386,11 +388,11 @@ let onUpdateTodo = (element) => {
     let request = {
         profile: store.getUser(),
         item: item
-    }
+    };
     req.open("POST", store.get("url") + "/todo/update", true);
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSON.stringify(request));
-}
+};
 
 var toggleJoin = (type, id) => {
     let xhttp = new XMLHttpRequest();
@@ -419,7 +421,7 @@ var toggleJoin = (type, id) => {
     }
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(store.getUser()));
-}
+};
 
 var updateChange = function () {
     if (document.getElementById('n_project').value === 'new') {
@@ -508,6 +510,22 @@ const view = (type, id) => {
                 window.location.href = "projects.pug";
             }
             break;
+        case 'newJournal':
+            if (window.location.href.slice(-12) === 'journals.pug') {
+                //viewPage('c_newJournal', id);
+            } else {
+                // save this call in the store
+                let call = store.get('view') || {};
+
+                //call.next = "viewPage('c_newJournal', " + id + ")";
+                //call.continue = true;
+
+                //store.set('view', call);
+
+                // go to corrent page
+                window.location.href = "journals.pug";
+            }
+            break;
     }
 }
 
@@ -527,6 +545,6 @@ const view = (type, id) => {
         try {
             document.getElementById(cpage);
             viewPage(cpage);
-        } catch (e) { return; };
+        } catch (e) { return; }
     }
 })();

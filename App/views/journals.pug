@@ -1,0 +1,18 @@
+extends layout.pug
+
+block links
+    link(rel="stylesheet" href="../css/app.css")
+    link(rel="stylesheet" href="../css/calendar.css")
+    link(rel="stylesheet" href="../css/markdown.css")
+
+block content
+    include modules/topbar.pug
+    include modules/nav.pug
+
+    content#c_main.full
+        div#cal
+    
+    script(src="../js/pageViewer.js")
+    script(src="../js/calendar.js")
+    script(src="../js/journals.js")
+    script(src='../js/user-preferences.js')

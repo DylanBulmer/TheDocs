@@ -14,7 +14,7 @@ const store = new Store({
         windowBounds: { width: 800, height: 600 }
     }
 });
-const isMac = (process.platform === 'darwin') ? true : false
+const isMac = process.platform === 'darwin' ? true : false;
 
 const isDev = require('electron-is-dev');
 

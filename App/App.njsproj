@@ -35,13 +35,14 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="js\app-functions.js" />
+    <Compile Include="js\calendar.js" />
     <Compile Include="js\home.js" />
     <Compile Include="js\index.js" />
+    <Compile Include="js\journals.js" />
     <Compile Include="js\login.js" />
     <Compile Include="js\mainmenu.js" />
     <Compile Include="js\pageViewer.js" />
     <Compile Include="js\projects.js" />
-    <Compile Include="js\projectTodoList.js" />
     <Compile Include="js\regexTester.js">
       <SubType>Code</SubType>
     </Compile>
@@ -54,6 +55,7 @@
     <Content Include="build\icon.ico" />
     <Content Include="build\icon.icns" />
     <Content Include="css\app.css" />
+    <Content Include="css\calendar.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\fonts.css" />
     <Content Include="css\hljs.css" />
@@ -87,6 +89,7 @@
     <Content Include="image\TheDocsLogoWhite.svg" />
     <Content Include="js\liveSearch.js" />
     <Content Include="views\home.pug" />
+    <Content Include="views\journals.pug" />
     <Content Include="views\modules\nav.pug" />
     <Content Include="package.json" />
     <Content Include="README.md" />
