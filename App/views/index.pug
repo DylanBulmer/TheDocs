@@ -4,7 +4,6 @@ block links
     style.
         * {
             text-align: center;
-            color: #fff;
         }
         input[type=text] {
             width: 100%;
@@ -22,7 +21,8 @@ block links
             border: 0;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
-            background-color: #333;
+            background-color: #555;
+            color: #fff;
         }
         span {
             vertical-align: middle;
@@ -31,11 +31,20 @@ block links
         }
 
 block content
-    img(src="../image/TheDocsLogoWhite.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
+    aside.main
+        span(style="height: auto; margin-top: 2em;")
+            b(style="font-size: 18px;") The Docs
+            br
+            img(src="../image/TheDocsLogo2White.svg" style="height: 150px; position: relative; margin: 15px auto;")
+            br
+            i Create, Review
+            br
+            i Revise.
+        span(style="position: absolute; text-align: center; bottom: 0; left: 0; width: 100%; font-size: 14px;") Copyright &copy; 2018 Dylan Bulmer
     form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
-        span Please enter the URL of your server!
+        span Connect to your server!
         br
-        input(id="url" type="text" placeholder="http://example.com" style="width: calc(100% - 20px); border-radius: 5px;")
+        input(id="url" type="text" placeholder="http://example.com" description="URL" style="width: calc(100% - 20px); border-radius: 5px;")
         span(style="width: calc(100% - 52px);")
             input(id="port" type="text" placeholder="(optional)" value="1337" style="margin: 0;")
         span(style="width: 32px;")
@@ -43,10 +52,9 @@ block content
                 i(class="fa fa-arrow-right" aria-hidden="true")
         br
         br
-        span(style="width: calc(100% - 20px); text-align: right;") Would you like to auto connect?
+        span(style="width: calc(100% - 20px); text-align: right;") Auto connect to this server &nbsp;
             input(type="checkbox" id="auto" style="cursor: pointer;")
         br
         br
         span(id="msg")
-    span(style="position: absolute; text-align: right; bottom: 0; right: 10px;") Copyright &copy; 2018 Dylan Bulmer
     script(src="../js/index.js")

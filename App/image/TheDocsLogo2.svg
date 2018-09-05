@@ -15,7 +15,7 @@
    version="1.1"
    id="SVGRoot"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="TheDocsLogo_2.svg"
+   sodipodi:docname="TheDocsLogo2.svg"
    inkscape:export-filename="E:\Projects\Visual Studio\TheDocs\App\build\appimage\icon.256x256.png"
    inkscape:export-xdpi="96.000008"
    inkscape:export-ydpi="96.000008">
@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="116.48701"
-     inkscape:cy="129.28086"
+     inkscape:zoom="1.1210938"
+     inkscape:cx="128"
+     inkscape:cy="131.64525"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -69,17 +69,15 @@
        inkscape:export-filename="C:\Users\Dylan Bulmer\Desktop\TheDocsLogo_2-2.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot1578"
+    <g
+       aria-label="D"
+       transform="matrix(1.620155,0,0,1.6201514,-120.07892,-116.44327)"
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:32px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Light';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
-       transform="matrix(1.620155,0,0,1.6201514,-120.07892,-116.44327)"><flowRegion
-         id="flowRegion1580"><rect
-           id="rect1582"
-           width="106.59367"
-           height="108.09367"
-           x="103.23759"
-           y="100.08295" /></flowRegion><flowPara
-         id="flowPara1584"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:96px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#1177ff;fill-opacity:1">D</flowPara></flowRoot>  </g>
+       id="flowRoot1578">
+      <path
+         d="m 186.48828,150.22087 q 0,16.92187 -9.65625,25.92187 -9.60937,9 -27.79687,9 h -19.40625 v -68.53125 h 21.51562 q 16.78125,0 26.0625,8.85938 9.28125,8.85937 9.28125,24.75 z m -15.09375,0.375 q 0,-22.07813 -19.5,-22.07813 h -7.73437 v 44.625 h 6.23437 q 21,0 21,-22.54687 z"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:96px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#1177ff;fill-opacity:1"
+         id="path825" />
+    </g>
+  </g>
 </svg>
