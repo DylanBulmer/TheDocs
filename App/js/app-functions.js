@@ -147,7 +147,6 @@ if (!/(MacPPC|MacIntel|Mac_PowerPC|Macintosh|Mac OS X)/.test(navigator.userAgent
     zoomOut.addEventListener('click', (e) => {
         checkWindow();
         thisWindow.webContents.getZoomLevel((level) => {
-            console.log(level);
             if (level > -3) {
                 thisWindow.webContents.setZoomLevel(level - 1);
             }

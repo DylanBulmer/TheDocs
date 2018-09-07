@@ -527,7 +527,7 @@ const view = (type, id) => {
             }
             break;
     }
-}
+};
 
 
 // CHECK IF CONTINUE === TRUE => DIRECT TO CORRECT AREA; ELSE VIEW MAIN PAGE

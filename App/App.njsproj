@@ -60,6 +60,7 @@
     <Content Include="css\fonts.css" />
     <Content Include="css\hljs.css" />
     <Content Include="css\home.css" />
+    <Content Include="css\journals.css" />
     <Content Include="css\login.css" />
     <Content Include="css\main.css" />
     <Content Include="css\markdown.css">

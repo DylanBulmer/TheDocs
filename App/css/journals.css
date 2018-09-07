@@ -1,0 +1,67 @@
+.col {
+    display: inline-block;
+    width: calc(33% - 40px);
+    min-width: calc(33% - 40px);
+    max-width: calc(33% - 40px);
+    padding: 10px 20px;
+    vertical-align: top;
+}
+
+#todo, #docs, #other {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 1px 2px 4px 0px rgba(0,0,0,0.15);
+}
+
+    #todo::before, #docs::before, #other::before {
+        width: 100%;
+        display: block;
+        background-color: #3369ff;
+        content: attr(title);
+        text-align: center;
+        color: #fff;
+        line-height: 2em;
+    }
+
+    #todo > item, #docs > item, #other > item {
+        width: calc(100% - 22px);
+        padding: 5px 10px;
+        display: block;
+        border: 1px solid #ddd;
+        border-top: 0;
+        position: relative;
+    }
+
+        #todo > item::before {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #aaa;
+            border-radius: 5px;
+            vertical-align: middle;
+            content: "";
+            margin-right: 10px;
+        }
+
+        #todo > item::after {
+            content: "\2714";
+            position: absolute;
+            top: -1px;
+            left: 14px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #docs > item::before {
+            top: -2px;
+            width: 2px;
+            content: "";
+            display: inline-block;
+            position: relative;
+            height: 20px;
+            vertical-align: middle;
+            background-color: #3369ff;
+            margin-right: 5px;
+        }

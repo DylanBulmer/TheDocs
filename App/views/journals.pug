@@ -2,6 +2,7 @@ extends layout.pug
 
 block links
     link(rel="stylesheet" href="../css/app.css")
+    link(rel="stylesheet" href="../css/journals.css")
     link(rel="stylesheet" href="../css/calendar.css")
     link(rel="stylesheet" href="../css/markdown.css")
 
@@ -10,7 +11,25 @@ block content
     include modules/nav.pug
 
     content#c_main.full
-        div#cal
+        span.col
+            div#cal
+        span.col
+            div(title="Finished Todo(s)")#todo
+                item Nothing.
+                item Nothing.
+                item Nothing.
+                item Nothing.
+                item Nothing.
+                item Nothing.
+                item Nothing.
+                item Nothing.
+        span.col
+            div(title="Modified Document(s)")#docs
+                item Nothing.
+                item Nothing.
+                item Nothing.
+            div(title="Explanation")#other
+                item Today I finished some tasks for these projects, I did this to these documents, and I started this project.
     
     script(src="../js/pageViewer.js")
     script(src="../js/calendar.js")
