@@ -1,14 +1,15 @@
 class Calendar {
     /**
-     * 
      * @param {String} name Calendar name
      * @param {String} type Calendar type
      * @param {HTMLElement} target Target element to dump the calendar into
+     * @param {Requester~requestCallback} onclick Onclick event
      */
-    constructor(name, type, target) {
+    constructor(name, type, target, onclick) {
         this.name = name;
         this.type = type;
         this.target = target;
+        this.onclick = onclick;
 
         /**
          * @namespace Calendar#data
@@ -74,6 +75,7 @@ class Calendar {
                 if (data.length > 0) {
                     for (let i = 0; i < data.length; i++) {
                         let newItem = new CalendarElement('item', self, data[i].name);
+                        newItem.setAttribute('onclick', self.onclick);
                         self.elements.items.push(newItem);
                         self.elements.body.appendChild(newItem);
                     }
@@ -285,3 +287,11 @@ class CalendarDate {
         return d.getDate();
     }
 }
+
+// Documetation 
+
+/**
+ * This callback is displayed as part of the Requester class.
+ * @callback Requester~requestCallback
+ * @param {MouseEvent} e
+ */
