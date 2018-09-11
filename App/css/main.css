@@ -23,6 +23,17 @@ aside.main {
     color: #fff;
 }
 
+aside.mac {
+    position: absolute;
+    display: inline-block;
+    background-color: #1177FF;
+    height: calc(100vh - 52px);
+    min-width: 220px;
+    left: 0;
+    padding: 15px;
+    color: #fff;
+}
+
 a, select {
     cursor: pointer;
     word-wrap: break-word;
@@ -110,21 +121,6 @@ input:focus, textarea:focus, select:focus {
     top: 0;
     width: 100%;
     height: 32px;
-    background-color: #333333;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-app-region: drag;
-    z-index: 1;
-}
-
-.macTitleBar {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 22px;
     background-color: #333333;
     -webkit-user-select: none;
     -moz-user-select: none;
