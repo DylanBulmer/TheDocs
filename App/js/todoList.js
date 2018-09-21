@@ -20,19 +20,27 @@ grabList.onreadystatechange = function () {
             let item = document.createElement("item");
             item.innerHTML = "No Activity Yet!";
             dump.appendChild(item);
+            
+            item = document.createElement("item");
+            let span = document.createElement("span");
+            span.innerText = "Add new item.";
+            item.appendChild(span);
+            item.setAttribute("onclick", "onNew(this)");
+            item.setAttribute("class", "add");
+            dump.appendChild(item);
         } else {
             // Add all results
             for (i = 0; i < list.length; i++) {
                 let item = document.createElement("item");
-                item.setAttribute("id", list[i].id)
-                item.setAttribute("created", list[i].created)
-                item.setAttribute("project_id", list[i].project_id)
+                item.setAttribute("id", list[i].id);
+                item.setAttribute("created", list[i].created);
+                item.setAttribute("project_id", list[i].project_id);
 
                 let input = document.createElement("input");
                 input.setAttribute('type', 'checkbox');
                 input.setAttribute('onchange', "onUpdate(this)");
 
-                if (list[i].completed != null) {
+                if (list[i].completed !== null) {
                     input.checked = true;
                 }
 
@@ -71,7 +79,7 @@ grabList.send(JSON.stringify({
 
 /**
  * 
- * @param {Element} element
+ * @param {Element} element Element to adjust
  */
 let onNew = (element) => {
 
@@ -146,7 +154,7 @@ let onNew = (element) => {
 
 /**
  * 
- * @param {Element} element
+ * @param {Element} element Element to adjust
  */
 let onAdd = (element) => {
 
@@ -170,9 +178,9 @@ let onAdd = (element) => {
 
                     // create the new item
                     let item = document.createElement("item");
-                    item.setAttribute("id", newItem.id)
-                    item.setAttribute("created", newItem.created)
-                    item.setAttribute("project_id", newItem.project_id)
+                    item.setAttribute("id", newItem.id);
+                    item.setAttribute("created", newItem.created);
+                    item.setAttribute("project_id", newItem.project_id);
 
                     let input = document.createElement("input");
                     input.setAttribute('type', 'checkbox');
@@ -213,7 +221,7 @@ let onAdd = (element) => {
                 project_id: document.getElementById('project').value,
                 description: escapeHTML(newTodoItem.value)
             }
-        }
+        };
         req.open("POST", store.get("url") + "/todo/new", true);
         req.setRequestHeader("Content-Type", "application/json");
         req.send(JSON.stringify(request));
@@ -224,12 +232,12 @@ let onAdd = (element) => {
 
 /**
  * 
- * @param {Element} element
+ * @param {Element} element Element to adjust
  */
 let onUpdate = (element) => {
     let item = {
         id: element.parentElement.id,
-        is_done: (element.checked) ? 1 : 0
+        is_done: element.checked ? 1 : 0
     };
 
     let req = new XMLHttpRequest();
@@ -249,8 +257,8 @@ let onUpdate = (element) => {
     let request = {
         profile: store.getUser(),
         item: item
-    }
+    };
     req.open("POST", store.get("url") + "/todo/update", true);
     req.setRequestHeader("Content-Type", "application/json");
     req.send(JSON.stringify(request));
-}
+};
