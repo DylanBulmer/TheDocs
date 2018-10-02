@@ -62,16 +62,18 @@ aside {
         /*background: linear-gradient(to bottom, #1177ff 80%, transparent);*/
     }
 
-aside > span > .search {
-    width: calc(100% - 20px);
-    margin: 0 10px 5px 10px;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: text;
-    text-align: center;
-    position: absolute;
-    top: 0;
-}
+        aside > span > .search {
+            width: calc(100% - 20px);
+            margin: 0 10px 5px 10px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: text;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            border: 1px solid rgba(0,0,0,.15);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        }
 
     aside tabs {
         display: block;

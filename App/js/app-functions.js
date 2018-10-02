@@ -53,7 +53,7 @@ var openNav = () => {
 var closeNav = () => {
     let top = titlebar.getBoundingClientRect().height;
     navCover.setAttribute("style", "display: none; height: calc(100vh - " + top + "px); top: " + top + "px;");
-    nav.setAttribute('style', 'right: -250px;');
+    nav.setAttribute('style', 'right: -250px; visibility: hidden;');
 };
 
 // The "Go To" Create Functions

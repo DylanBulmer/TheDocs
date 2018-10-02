@@ -13,23 +13,16 @@ block content
     content#c_main.full
         span.col
             div#cal
+            a(onclick="cal.getToday()")#today-btn Today
         span.col
+            div()#date
             div(title="Finished Todo(s)")#todo
-                item Nothing.
-                item Nothing.
-                item Nothing.
-                item Nothing.
-                item Nothing.
-                item Nothing.
-                item Nothing.
-                item Nothing.
+                null-item Please select a user's journal.
         span.col
             div(title="Modified Document(s)")#docs
-                item Nothing.
-                item Nothing.
-                item Nothing.
+                null-item Please select a user's journal.
             div(title="Explanation")#other
-                item Today I finished some tasks for these projects, I did this to these documents, and I started this project.
+                null-item Please select a user's journal.
     
     script(src="../js/pageViewer.js")
     script(src="../js/calendar.js")

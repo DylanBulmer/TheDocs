@@ -5,11 +5,10 @@ class Calendar {
      * @param {HTMLElement} target Target element to dump the calendar into
      * @param {Requester~requestCallback} onclick Onclick event
      */
-    constructor(name, type, target, onclick) {
+    constructor(name, type, target) {
         this.name = name;
         this.type = type;
         this.target = target;
-        this.onclick = onclick;
 
         /**
          * @namespace Calendar#data
@@ -33,6 +32,67 @@ class Calendar {
         };
 
         this.init(name);
+    }
+
+    /**
+     * onClick event to display journal data
+     * @param {MouseEvent} e Mouse Event
+     */
+    onClick(e) {
+        let id = e.target.getAttribute('journal-id');
+        let name = e.target.innerText;
+
+        let data = cal.data[id];
+
+
+        let docs = document.getElementById("docs");
+        let todo = document.getElementById("todo");
+        let journal = document.getElementById("other");
+        document.getElementById("date").setAttribute('title', name + " | " + cal.today.getMonthShort() + " " + cal.today.getDate());
+
+        todo.innerHTML = "";
+
+        if (data.todo.length > 0) {
+
+            for (let t = 0; t < data.todo.length; t++) {
+                let item = document.createElement("item");
+                item.innerHTML = data.todo[t].description;
+                todo.appendChild(item);
+            }
+        } else {
+            let item = document.createElement("null-item");
+            item.innerHTML = "No tasks were completed.";
+            todo.appendChild(item);
+        }
+
+        docs.innerHTML = "";
+
+        if (data.document.length > 0) {
+
+            for (let t = 0; t < data.document.length; t++) {
+                let item = document.createElement("item");
+                item.innerText = data.document[t].description;
+                docs.appendChild(item);
+            }
+        } else {
+            let item = document.createElement("null-item");
+            item.innerHTML = "No documents were touched.";
+            docs.appendChild(item);
+        }
+
+        journal.innerHTML = "";
+
+        if (data.other.length > 0) {
+            for (let t = 0; t < data.other.length; t++) {
+                let item = document.createElement("item");
+                item.innerText = data.other[t].description;
+                journal.appendChild(item);
+            }
+        } else {
+            let item = document.createElement("null-item");
+            item.innerHTML = "No explanation was given";
+            journal.appendChild(item);
+        }
     }
 
     /**
@@ -74,8 +134,8 @@ class Calendar {
 
                 if (data.length > 0) {
                     for (let i = 0; i < data.length; i++) {
-                        let newItem = new CalendarElement('item', self, data[i].name);
-                        newItem.setAttribute('onclick', self.onclick);
+                        let newItem = new CalendarElement('item', self, data[i].name, i);
+                        newItem.onclick = self.onClick;
                         self.elements.items.push(newItem);
                         self.elements.body.appendChild(newItem);
                     }
@@ -105,6 +165,12 @@ class Calendar {
         this.updateDate();
     }
 
+    getToday() {
+        this.today.getNow();
+        this.getData();
+        this.updateDate();
+    }
+
     updateDate() {
         this.elements.title.innerText = this.today.getDayShort() + " " + this.today.getMonth() + " " + this.today.getDate() + ", " + this.today.getYear();
     }
@@ -117,13 +183,15 @@ class CalendarElement {
      * @param {string} type Element type
      * @param {Calendar} calendar Calendar
      * @param {String} [contents] Item inner text
+     * @param {Number} id User's journal data id
      * @returns {HTMLElement} Returns custom HTMLElement
      */
-    constructor(type, calendar, contents) {
+    constructor(type, calendar, contents, id) {
         this.calendar = calendar;
         this.type = type;
         this.contents = contents;
         this.id = 'cal-' + calendar.name + '-' + type;
+        this.journalId = id;
 
         this.init();
 
@@ -137,6 +205,7 @@ class CalendarElement {
 
         switch (this.type) {
             case 'item':
+                this.element.setAttribute('journal-id', this.journalId);
                 this.element.innerText = this.contents;
                 break;
             case 'null-item':
@@ -150,6 +219,7 @@ class CalendarDate {
 
     constructor() {
         this.date = new Date();
+        this.date.setHours(0, 0, 0, 0); // fixes issues with grabbing data from the server.
 
         this.year = this.date.getFullYear();
         this.day = this.date.getDate();
@@ -158,7 +228,7 @@ class CalendarDate {
 
     getNextDay() {
         if (this.day < this.monthDays()) {
-            this.day = this.day + 1;
+            this.day += 1;
         } else {
             this.day = 1;
             this.month += 1;
@@ -169,13 +239,22 @@ class CalendarDate {
 
     getPrevDay() {
         if (this.day > 1) {
-            this.day = this.day - 1;
+            this.day -= 1;
         } else {
             this.month -= 1;
             this.day = this.monthDays();
         }
 
         this.date = new Date(this.year, this.month - 1, this.day);
+    }
+
+    getNow() {
+        this.date = new Date();
+        this.date.setHours(0, 0, 0, 0); // fixes issues with grabbing data from the server.
+
+        this.year = this.date.getFullYear();
+        this.day = this.date.getDate();
+        this.month = this.date.getMonth() + 1;
     }
 
     getMonth() {
@@ -226,7 +305,7 @@ class CalendarDate {
             case 7:
                 return "Aug";
             case 8:
-                return "Sep";
+                return "Sept";
             case 9:
                 return "Oct";
             case 10:

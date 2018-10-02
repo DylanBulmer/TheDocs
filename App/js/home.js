@@ -91,6 +91,4 @@ grabProjects.onreadystatechange = function () {
 };
 grabProjects.open("POST", store.get("url") + "/projects/current", true);
 grabProjects.setRequestHeader("Content-Type", "application/json");
-grabProjects.send(JSON.stringify({
-    'profile': store.getUser()
-}));
+grabProjects.send(JSON.stringify(store.getUser()));

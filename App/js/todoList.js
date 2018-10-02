@@ -127,19 +127,21 @@ let onNew = (element) => {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             let result = JSON.parse(this.responseText);
+            let projects = result.result.projects;
 
             optGroup.innerHTML = "";
-            if (result.length === 0) {
+
+            if (projects.length === 0) {
                 select.innerHTML = "";
                 let opt = document.createElement("option");
                 opt.innerHTML = "No Projects Yet";
                 select.appendChild(opt);
             } else {
                 // Add all results
-                for (i = 0; i < result.length; i++) {
+                for (i = 0; i < projects.length; i++) {
                     let opt = document.createElement("option");
-                    opt.innerHTML = result[i].name;
-                    opt.setAttribute("value", "" + result[i].id);
+                    opt.innerHTML = projects[i].name;
+                    opt.setAttribute("value", "" + projects[i].id);
                     if (i === 0) {
                         opt.selected = true;
                     }
@@ -148,8 +150,9 @@ let onNew = (element) => {
             }
         }
     };
-    xhttp.open("GET", store.get("url") + "/projects", true);
-    xhttp.send();
+    xhttp.open("POST", store.get("url") + "/projects/current", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(store.getUser()));
 };
 
 /**

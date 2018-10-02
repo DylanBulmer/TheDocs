@@ -285,7 +285,6 @@ projects a {
 .log, todo > item {
     display: block;
     padding: 10px;
-    text-align: justify;
 }
 
     .log > a {
