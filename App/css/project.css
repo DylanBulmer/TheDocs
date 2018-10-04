@@ -53,6 +53,10 @@ td, th {
     vertical-align: text-top;
 }
 
+content#c_view {
+
+}
+
 @media (max-width: 1150px) {
     .column {
         width: calc(100% - 20px) !important;

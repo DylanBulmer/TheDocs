@@ -403,3 +403,52 @@ successblock::after {
     content: "\2714";
     background-color: #22CC00;
 }
+
+input[type="date"] {
+    position: relative;
+}
+
+    /* Changed the clear button from date inputs */
+    input[type="date"]::-webkit-clear-button {
+        display: none;
+    }
+
+    /* Removes the spin button */
+    input[type="date"]::-webkit-inner-spin-button {
+        display: none;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        color: transparent;
+        background-color: transparent;
+        margin-right: 4px;
+        height: 100%;
+        width: calc(1em);
+        cursor: pointer;
+    }
+
+    input[type="date"]::before,
+    input[type="date"]::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+    }
+
+    input[type="date"]::after { /*  Custom dropdown arrow */
+        content: "\25BC";
+        color: #fff;
+        font-size: 16px;
+        line-height: 0;
+        right: calc(1em - 8px);
+        top: 50%;
+    }
+
+    input[type="date"]:hover::before,
+    input[type="date"]:focus::before {
+        width: 2em;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 3px 3px 0;
+        background-color: #888888;
+    }

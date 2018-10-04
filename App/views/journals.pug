@@ -12,10 +12,12 @@ block content
 
     content#c_main.full
         span.col
+            span#changeDate
+                input(type="date" onchange="cal.setDate(this)" id="picker")
+                a(onclick="cal.getToday()")#today-btn Today
             div#cal
-            a(onclick="cal.getToday()")#today-btn Today
         span.col
-            div()#date
+            div#date
             div(title="Finished Todo(s)")#todo
                 null-item Please select a user's journal.
         span.col

@@ -21,13 +21,14 @@ class Calendar {
 
         /**
          * @namespace Calender#elements
-         * @type {{'title': HTMLElement 'body': HTMLElement 'next': HTMLElement 'prev': HTMLElement 'items': HTMLElement[]}}
+         * @type {{'title': HTMLElement 'body': HTMLElement 'next': HTMLElement 'prev': HTMLElement 'picker': HTMLElement 'items': HTMLElement[]}}
          */
         this.elements = {
             'title': null,
             'body': null,
             'next': null,
             'prev': null,
+            'picker': null,
             'items': []
         };
 
@@ -90,7 +91,7 @@ class Calendar {
             }
         } else {
             let item = document.createElement("null-item");
-            item.innerHTML = "No explanation was given";
+            item.innerHTML = "No explanation was given.";
             journal.appendChild(item);
         }
     }
@@ -105,6 +106,7 @@ class Calendar {
         this.elements.body = new CalendarElement('body', this);
         this.elements.next = new CalendarElement('next', this);
         this.elements.prev = new CalendarElement('prev', this);
+        this.elements.picker = document.getElementById("picker");
 
         // Add listener to elements
         this.elements.next.setAttribute("onclick", "cal.nextDay()");
@@ -171,7 +173,17 @@ class Calendar {
         this.updateDate();
     }
 
+    setDate(element) {
+        this.today.setDate(element.value);
+        this.getData();
+        this.updateDate();
+    }
+
     updateDate() {
+
+        let date = this.today.getISO().split('T')[0];
+
+        this.elements.picker.value = date;
         this.elements.title.innerText = this.today.getDayShort() + " " + this.today.getMonth() + " " + this.today.getDate() + ", " + this.today.getYear();
     }
     
@@ -257,6 +269,23 @@ class CalendarDate {
         this.month = this.date.getMonth() + 1;
     }
 
+    /**
+     * 
+     * @param {String} date Date from date input
+     */
+    setDate(date) {
+
+        // change the format of the string from YYYY-MM-DD to MM-DD-YYYY
+        let a = date.split('-');
+        let nDate = a[1] + "-" + a[2] + "-" + a[0];
+
+        this.date = new Date(nDate);
+
+        this.year = this.date.getFullYear();
+        this.day = this.date.getDate();
+        this.month = this.date.getMonth() + 1;
+    }
+
     getMonth() {
         switch (this.date.getMonth()) {
             case 0:
@@ -321,6 +350,10 @@ class CalendarDate {
 
     getDate() {
         return this.date.getDate();
+    }
+
+    getISO() {
+        return this.date.toISOString();
     }
 
     getDay() {
