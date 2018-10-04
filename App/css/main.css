@@ -27,10 +27,9 @@ aside.mac {
     position: absolute;
     display: inline-block;
     background-color: #1177FF;
-    height: calc(100vh - 52px);
+    height: calc(100vh - 3em - 22px);
     min-width: 220px;
     left: 0;
-    padding: 15px;
     color: #fff;
 }
 
