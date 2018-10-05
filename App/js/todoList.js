@@ -141,7 +141,7 @@ let onNew = (element) => {
                 for (i = 0; i < projects.length; i++) {
                     let opt = document.createElement("option");
                     opt.innerHTML = projects[i].name;
-                    opt.setAttribute("value", "" + projects[i].id);
+                    opt.setAttribute("value", "" + projects[i].project_id);
                     if (i === 0) {
                         opt.selected = true;
                     }
