@@ -4,19 +4,28 @@ block links
     link(rel='stylesheet' href="../css/login.css")
 
 block content
-    a(href="./index.pug")
-        img(src="../image/TheDocsLogoWhite.svg" style="height: 3em; position: absolute; top: 42px; left: 10px;")
+    aside.main
+        span(style="height: auto; margin-top: 2em;")
+            img(src="../image/TheDocsLogo4White.svg" style="height: 24px; position: relative; margin: auto;")
+            br
+            img(src="../image/TheDocsLogo2White.svg" style="height: 150px; position: relative; margin: 15px auto;")
+            br
+            i Create, Review
+            br
+            i Revise.
+        span(style="position: absolute; text-align: center; bottom: 0; left: 0; width: 100%; font-size: 14px;") Copyright &copy; 2018 Dylan Bulmer
     form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
         span Register To The Docs!
         br
-        input(id="fname" type="text" placeholder="First Name" style="display: inline-block; width: calc(50% - 8px);" required)
-        input(id="lname" type="text" placeholder="Last Name" style="display: inline-block; width: calc(50% - 8px);" required)
+        input(id="fname" type="text" placeholder="First Name" style="display: inline-block; width: calc(50% - 6px); margin: 0; margin-right: 7px;" required)
+        input(id="lname" type="text" placeholder="Last Name" style="display: inline-block; width: calc(50% - 6px); margin: 0;" required)
         input(id="username" type="text" placeholder="Username" required)
         input(id="email" type="email" placeholder="Email" required)
         input(id="password" type="password" placeholder="Password" required)
         input(id="confirm_password" type="password" placeholder="Confirm Password" required)
-        input(type="text" id="code" placeholder="Registration Code" required)
-        span(style="text-align: right; display: block;")
+        span(style="width: calc(100% - 32px);")
+            input(type="text" id="code" placeholder="Registration Code" style="margin: 0;" required)
+        span(style="width: 32px")
             button(id="btn").go
                 i(class="fa fa-arrow-right" aria-hidden="true")
         br
@@ -24,5 +33,4 @@ block content
         span(style="text-align: right; width: 100%; display: block;") Already a user? Login 
             a(href="login.pug") here
             | !
-    span(style="position: absolute; text-align: right; bottom: 10px; right: 10px;") Copyright &copy; 2018 Dylan Bulmer
     script(src="../js/register.js")

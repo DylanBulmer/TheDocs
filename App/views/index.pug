@@ -8,8 +8,6 @@ block links
         input[type=text] {
             width: 100%;
             height: 32px;
-            border: 0;
-            border-radius: 5px 0 0 5px;
             margin: 10px 0;
             color: #333;
             cursor: text;
@@ -19,7 +17,6 @@ block links
             width: 32px;
             height: 32px;
             border: 0;
-            border-radius: 0 5px 5px 0;
             cursor: pointer;
             background-color: #555;
             color: #fff;
@@ -33,7 +30,7 @@ block links
 block content
     aside.main
         span(style="height: auto; margin-top: 2em;")
-            b(style="font-size: 24px;") The Docs
+            img(src="../image/TheDocsLogo4White.svg" style="height: 24px; position: relative; margin: auto;")
             br
             img(src="../image/TheDocsLogo2White.svg" style="height: 150px; position: relative; margin: 15px auto;")
             br
@@ -44,7 +41,7 @@ block content
     form(id="form" style="display: inline-block; width: 300px;" onsubmit="event.preventDefault(); submition();")
         span Connect to your server!
         br
-        input(id="url" type="text" placeholder="http://example.com" description="URL" style="width: calc(100% - 20px); border-radius: 5px;")
+        input(id="url" type="text" placeholder="http://example.com" description="URL" style="width: calc(100% - 20px);")
         span(style="width: calc(100% - 52px);")
             input(id="port" type="text" placeholder="(optional)" value="1337" style="margin: 0;")
         span(style="width: 32px;")

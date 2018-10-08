@@ -89,6 +89,8 @@
     <Content Include="image\TheDocsLogo.svg" />
     <Content Include="image\TheDocsLogo2.svg" />
     <Content Include="image\TheDocsLogo2White.svg" />
+    <Content Include="image\TheDocsLogo3.svg" />
+    <Content Include="image\TheDocsLogo3White.svg" />
     <Content Include="image\TheDocsLogoWhite.svg" />
     <Content Include="js\liveSearch.js" />
     <Content Include="views\home.pug" />

@@ -9,8 +9,7 @@ block content
     include modules/topbar.pug
     include modules/nav.pug
     aside
-        tabs#dump
-        a(class="add-button" onclick="viewPage('c_newProject')") Start a Project!
+        tabs(button-name="Start a Project!")#dump
     content#c_main
         h1 View the status of your projects!
         br
@@ -19,7 +18,7 @@ block content
         p
             i Please note that this page is still being developed and not everything will work correctly.
     content#c_view
-        span.column(style="width: calc(100% - 390px);")
+        span.item#info
             h1(style="width: 100%; display: inline-block;")#p_title
             br
             span(style="width: 100%") Started on&nbsp;
@@ -33,16 +32,18 @@ block content
                         td Homepage:
                         td
                             a(target="_BLANK")#p_homepage
-        span#col
+        span.item#opts
             div#options
                 | Project options
                 a#join_btn Join
+        span.item#col-event
+            div#eventlog-container
+                subtitle(style="margin-top: 0;") Event Log
+                div#eventlog
+        span.item#col-todo
             div#todo
                 subtitle(style="margin-top: 0;") Todo list
                 todo
-        span(style="width: 330px; display: inline-block; vertical-align: text-top; margin: 10px; position: absolute; top: 10px; right: 10px; max-height: calc(100% - 20px);")#container
-            subtitle(style="width: calc(100% - 20px); text-align: center; margin-top: 0;") Event Log
-            div(style="min-height: 400px; height: calc(100vh - 2em - 120px);")#eventlog
     content#c_newProject
         span.desc Name:
         input(type="text" placeholder="Project Name").field#n_name

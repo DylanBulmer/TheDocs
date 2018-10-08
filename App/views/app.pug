@@ -12,8 +12,7 @@ block content
     aside
         span
             input(type="text" class="search" id="liveSearch" placeholder="Search The Docs!")
-        tabs#dump
-        a(class="add-button" onclick="viewPage('c_new')") Document an Issue!
+        tabs(style="height: calc(100% - 82px)" button-name="Document an Issue!")#dump
     content#c_main
         h1 Welcome to The Docs!
         br

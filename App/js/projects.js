@@ -31,7 +31,7 @@ function projectSearch() {
                         let w = document.getElementsByClassName('wrapper')[0];  // Wrapper
                         let t = e.target;                                       // Active Tab
                         let top = parseInt(w.style.top);
-                        w.style.top = top + (t.getBoundingClientRect().top - w.getBoundingClientRect().top) + "px";
+                        w.style.top = top + (t.getBoundingClientRect().top - w.getBoundingClientRect().top) + 5 + "px";
                         viewPage('c_view', project.id);
                     });
                     dump.appendChild(tab);
@@ -46,3 +46,8 @@ function projectSearch() {
 document.addEventListener('DOMContentLoaded', function onDocLoaded(event) {
     projectSearch();
 });
+
+
+document.getElementById("dump").addEventListener("click", (e) => {
+    viewPage('c_newProject', null, e);
+}, true);

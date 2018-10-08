@@ -32,7 +32,7 @@ function liveSearch() {
                             let t = e.target;                                       // Active Tab
                             let top = parseInt(w.style.top);
                             w.style.top = top + (t.getBoundingClientRect().top - w.getBoundingClientRect().top) + "px";
-                            viewPage('c_doc', doc.doc_id);
+                            viewPage('c_doc', doc.doc_id, null);
                         });
                         dump.appendChild(tab);
                     }
@@ -61,3 +61,7 @@ function liveSearch() {
 document.addEventListener('DOMContentLoaded', function onDocLoaded (event) {
 	liveSearch();
 });
+
+document.getElementById("dump").addEventListener("click", (e) => {
+    viewPage('c_new', null, e);
+}, true);

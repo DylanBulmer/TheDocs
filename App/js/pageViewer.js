@@ -21,10 +21,24 @@ if (typeof Store === 'undefined') {
 }
 
 var cpage = "c_main";
-var viewPage = function viewPage(page, id) {
-    document.getElementById(cpage).style.display = "none";
-    document.getElementById(page).style.display = "block";
-    cpage = page;
+/**
+ * 
+ * @param {String} page page identifier
+ * @param {Number} id id for project, journal, etc.
+ * @param {MouseEvent} e MouseEvent
+ */
+var viewPage = function viewPage(page, id, e) {
+    if (window.location.href.slice(-12) === 'projects.pug' && page === "c_view") {
+        document.getElementById(cpage).style.display = "none";
+        document.getElementById(page).style.display = "grid";
+        cpage = page;
+    } else if ((page === "c_newProject" || page === "c_new") && e && e.target.getAttribute('id') !== "dump") {
+        return;
+    } else {
+        document.getElementById(cpage).style.display = "none";
+        document.getElementById(page).style.display = "block";
+        cpage = page;
+    }
 
     if (page === "c_pre") { // Updating preview page
         let title = document.getElementById("p_title");
