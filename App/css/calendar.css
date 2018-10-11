@@ -10,7 +10,7 @@
 
     .cal .title {
         width: calc(100% - 16px);
-        font-size: 18px;
+        font-size: 16px;
         padding: 8px;
         color: #fff;
         background-color: #3369ff;

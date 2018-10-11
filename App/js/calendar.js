@@ -184,7 +184,7 @@ class Calendar {
         let date = this.today.getISO().split('T')[0];
 
         this.elements.picker.value = date;
-        this.elements.title.innerText = this.today.getDayShort() + " " + this.today.getMonth() + " " + this.today.getDate() + ", " + this.today.getYear();
+        this.elements.title.innerText = this.today.getDayShort() + " " + this.today.getMonthShort() + " " + this.today.getDate() + ", " + this.today.getYear();
     }
     
 }

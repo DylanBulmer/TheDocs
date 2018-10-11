@@ -172,14 +172,15 @@ input:focus, textarea:focus, select:focus {
     z-index: 3;
 }
 
-.dropdown-content > span {
-    color: #fff;
-    padding: 8px 12px;
-    text-align: left;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-}
+    .dropdown-content > span {
+        color: #fff;
+        padding: 8px 12px;
+        text-align: left;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        height: auto;
+    }
 
 .dropdown-content > span:hover {
     background-color: #555

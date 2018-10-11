@@ -1,3 +1,4 @@
+const { dialog } = require('electron').remote;
 
 var cal = new Calendar('journal', 'day', document.getElementById('cal'));
 
@@ -69,43 +70,54 @@ var journal = {
                     e.preventDefault();
                     console.log("Enter only test. Shift Key: ", e.shiftKey);
 
-                    let confirm = window.confirm("Do you want to submit your journal?");
+                    let dialogOpts = {
+                        type: 'question',
+                        buttons: ['No', 'Yes'],
+                        title: 'The Docs',
+                        detail: 'Do you want to submit your journal?'
+                    };
 
-                    if (confirm) {
+                    dialog.showMessageBox(dialogOpts, (response) => {
+                        if (response === 0) {
+                            // Answers No
+                            console.log('User responded No!');
+                        } else {
+                            // Answers Yes
 
-                        // Code for submitting journal
+                            console.log([[e.target.value, cal.today.getISO()]]);
 
-                        console.log([[e.target.value, cal.today.getISO()]]);
+                            // Code for submitting journal
 
-                        /*
-                        let xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function () {
-                            if (this.readyState === 4 && this.status === 200) {
-                                let journal = document.getElementById("other");
-                                let result = JSON.parse(this.responseText);
+                            /*
+                            let xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function () {
+                                if (this.readyState === 4 && this.status === 200) {
+                                    let journal = document.getElementById("other");
+                                    let result = JSON.parse(this.responseText);
 
-                                journal.innerHTML = "";
+                                    journal.innerHTML = "";
 
-                                if (result.length > 0) {
-                                    for (let t = 0; t < data.other.length; t++) {
-                                        let item = document.createElement("item");
-                                        item.innerText = data.other[t].description;
+                                    if (result.length > 0) {
+                                        for (let t = 0; t < data.other.length; t++) {
+                                            let item = document.createElement("item");
+                                            item.innerText = data.other[t].description;
+                                            journal.appendChild(item);
+                                        }
+                                    } else {
+                                        let item = document.createElement("null-item");
+                                        item.innerHTML = "No explanation was given.";
                                         journal.appendChild(item);
                                     }
-                                } else {
-                                    let item = document.createElement("null-item");
-                                    item.innerHTML = "No explanation was given.";
-                                    journal.appendChild(item);
                                 }
-                            }
-                        };
-                        xhttp.open("POST", store.get("url") + "/journal", true);
-                        xhttp.setRequestHeader("Content-Type", "application/json");
-                        xhttp.send(JSON.stringify({
-                            profile: store.getUser(),
-                            journal: [[e.target.value, cal.today.getISO() ]]
-                        })); */
-                    }
+                            };
+                            xhttp.open("POST", store.get("url") + "/journal", true);
+                            xhttp.setRequestHeader("Content-Type", "application/json");
+                            xhttp.send(JSON.stringify({
+                                profile: store.getUser(),
+                                journal: [[e.target.value, cal.today.getISO() ]]
+                            })); */
+                        }
+                    });
                 }
                 break;
         }

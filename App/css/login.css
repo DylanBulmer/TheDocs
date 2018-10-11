@@ -30,4 +30,8 @@ span {
 #msg {
     display: inline-block;
     width: 100%;
+    height: auto;
+    font-size: 14px;
+    /* color: #D00; */
+    margin: 10px 0;
 }
