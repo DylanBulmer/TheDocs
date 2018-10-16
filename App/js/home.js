@@ -1,3 +1,5 @@
+const path = require('path');
+const { nativeImage } = require('electron');
 var dateFormat = require('dateformat');
 if (typeof Store === 'undefined') {
     var Store = require('../modules/store');
@@ -45,9 +47,6 @@ xhttp.onreadystatechange = function () {
             div.innerHTML = "A error occurred!";
             dump.appendChild(div);
         }
-        for (i = 0; i < Scrolls.length; i++) {
-            Scrolls[i].resetValues();
-        }
     }
 };
 xhttp.open("POST", store.get("url") + "/log/activity/all", true);
@@ -84,11 +83,20 @@ grabProjects.onreadystatechange = function () {
             div.innerHTML = result.err.message;
             dump.appendChild(div);
         }
-        for (i = 0; i < Scrolls.length; i++) {
-            Scrolls[i].resetValues();
-        }
     }
 };
 grabProjects.open("POST", store.get("url") + "/projects/current", true);
 grabProjects.setRequestHeader("Content-Type", "application/json");
 grabProjects.send(JSON.stringify(store.getUser()));
+
+let iconURL = path.join(__dirname, '../image/icon/icon@4x.png');
+let icon = nativeImage.createFromPath(iconURL);
+
+let myNotification = new Notification('The Docs', {
+    body: 'Don\'t forget to write your daily journal!',
+    icon: icon.toDataURL()
+});
+
+myNotification.onclick = () => {
+    console.log('Notification clicked');
+};

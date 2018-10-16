@@ -13,16 +13,18 @@ var journal = {
      * @param {MouseEvent} e Event
      */
     edit: (e) => {
-        if (e.target.getAttribute("id") === "other") {
+        if (e.target.getAttribute("id") === "other" && journal.state.status !== 'edit') {
             let j = document.getElementById("other");
 
             // Create element and add value before storing elements
+            let p = document.createElement("p");
+            
             let newItem = document.createElement('textarea');
             newItem.setAttribute("id", "edit");
             newItem.value = journal.state.lastEdit;
 
             // Store element(s) before removing
-            if (j.childNodes.length > 1) {
+            if (j.childNodes.length > 1) { // if statement fixes bugs
                 journal.state.previousState = j.childNodes[1].valueOf();
             } else {
                 journal.state.previousState = j.childNodes[0].valueOf();
@@ -31,7 +33,8 @@ var journal = {
 
             // Clear and send text box
             j.innerHTML = "";
-            j.appendChild(newItem);
+            p.appendChild(newItem);
+            j.appendChild(p);
         }
     },
     /**
@@ -84,7 +87,18 @@ var journal = {
                         } else {
                             // Answers Yes
 
-                            console.log([[e.target.value, cal.today.getISO()]]);
+                            let now = new Date();
+                            let dateISO = "";
+
+                            console.log(now.getDate(), cal.today.getDate());
+
+                            if (cal.today.getDate() === now.getDate()) {
+                                dateISO = now.toISOString();
+                            } else {
+                                dateISO = cal.today.getISO();
+                            }
+
+                            console.log([[e.target.value, dateISO]]);
 
                             // Code for submitting journal
 

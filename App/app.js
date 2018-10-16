@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, dialog, Menu, BrowserWindow, ipcRenderer } = require('electron');
+const { app, dialog, Menu, Tray, BrowserWindow, ipcRenderer } = require('electron');
 const locals = {};
 const pug = require('electron-pug')({ pretty: true }, locals);
 const autoUpdater = require("electron-updater").autoUpdater;
@@ -20,7 +20,12 @@ const isDev = require('electron-is-dev');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+/**
+ * @namespace windows
+ * @type {BrowserWindow[]}
+ * */
 var windows = [];
+var tray = null;
 const views = __dirname + "/views/";
 
 // Change the path if in development
@@ -66,16 +71,28 @@ function createWindow(w, h, file) {
         width: w || width,
         height: h || height,
         show: file ? true : false,
-        backgroundColor: '#1177ff',
+        darkTheme: true,
         titleBarStyle: 'hidden',
+        icon: path.join(__dirname, 'image/icon/iconWhite@1.5x.png'),
+        webPreferences: {
+            preload: path.join(__dirname, 'scripts/preload.js')
+        },
         frame: isMac
     });
 
-    window.loadURL(url.format({
-        pathname: path.join(views, file || 'index.pug'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    if (store.getUser().logged_in) {
+        window.loadURL(url.format({
+            pathname: path.join(views, 'home.pug'),
+            protocol: 'file:',
+            slashes: true
+        }));
+    } else {
+        window.loadURL(url.format({
+            pathname: path.join(views, file || 'index.pug'),
+            protocol: 'file:',
+            slashes: true
+        }));
+    }
 
     window.once('ready-to-show', () => {
         window.show();
@@ -110,6 +127,35 @@ function createWindow(w, h, file) {
 app.on('ready', () => {
     app.setAppUserModelId('com.github.dylanbulmer.thedocs');
 
+    tray = new Tray(path.join(__dirname, 'image/icon/icon.png'));
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'The Docs',
+            type: 'normal',
+            enabled: false
+        },
+        {
+            label: 'New window',
+            type: 'normal',
+            click() {
+                createWindow();
+            }
+        },
+        {
+            label: 'Exit',
+            type: 'normal',
+            click() {
+                app.exit();
+            }
+        }
+    ]);
+    tray.setToolTip('The Docs');
+    tray.on('click', () => {
+        if (windows.length > 0) windows[0].show();
+        else createWindow();
+    });
+    tray.setContextMenu(contextMenu);
+
     // Auto check for updates every 10 minutes
     setInterval(() => {
         autoUpdater.checkForUpdates();
@@ -129,9 +175,9 @@ app.on('window-all-closed', function () {
 
     // On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-    if (!isMac) {
-        app.quit();
-    }
+    //if (!isMac) {
+    //    app.quit();
+    //}
 });
 
 app.on('activate', function () {

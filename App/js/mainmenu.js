@@ -15,6 +15,13 @@ const template = [
                 }
             },
             {
+                label: 'New Journal',
+                click() {
+                    let focusedWindow = BrowserWindow.getFocusedWindow();
+                    focusedWindow.webContents.executeJavaScript("if (typeof(view) !== 'undefined') { view('newJournal'); }");
+                }
+            },
+            {
                 label: 'New Project',
                 click() {
                     let focusedWindow = BrowserWindow.getFocusedWindow();
@@ -51,7 +58,7 @@ const template = [
                 label: 'Reload',
                 accelerator: 'CmdOrCtrl+R',
                 click(item, focusedWindow) {
-                    if (focusedWindow) focusedWindow.reload()
+                    if (focusedWindow) focusedWindow.reload();
                 }
             },
             { role: 'forcereload' },
@@ -67,6 +74,7 @@ const template = [
         role: 'window',
         submenu: [
             { role: 'minimize' },
+            { role: 'maximize' },
             { role: 'close' }
         ]
     },
@@ -84,7 +92,7 @@ const template = [
 /* MacOS Menu */
 
 if (process.platform === 'darwin') {
-    const name = app.getName()
+    const name = app.getName();
     template.unshift({
         label: name,
         submenu: [
@@ -117,7 +125,7 @@ if (process.platform === 'darwin') {
                 role: 'quit'
             }
         ]
-    })
+    });
     // Edit menu.
     template[1].submenu.push(
         {
@@ -134,7 +142,7 @@ if (process.platform === 'darwin') {
                 }
             ]
         }
-    )
+    );
     // Window menu.
     template[3].submenu = [
         {
@@ -158,7 +166,7 @@ if (process.platform === 'darwin') {
             label: 'Bring All to Front',
             role: 'front'
         }
-    ]
+    ];
 }
 
 const menu = Menu.buildFromTemplate(template);

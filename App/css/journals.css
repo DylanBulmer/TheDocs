@@ -120,7 +120,7 @@ a#today-btn {
         cursor: pointer;
     }
 
-    #other > #edit {
+    #other #edit {
         width: 100%;
         max-width: 100%;
         min-width: 100%;
@@ -129,5 +129,17 @@ a#today-btn {
         border: 0;
         pointer-events: initial;
         position: relative;
-        text-indent: 1em;
     }
+
+    #other p {
+        display: block;
+    }
+
+        #other p::after {
+            content: "[Enter] Submit journal • [Shift + Enter] New line \a [Esc] to cancel";
+            font-size: small;
+            text-align: center;
+            display: block;
+            color: #777;
+            white-space: pre;
+        }
