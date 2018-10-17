@@ -136,10 +136,10 @@ a#today-btn {
     }
 
         #other p::after {
-            content: "[Enter] Submit journal • [Shift + Enter] New line \a [Esc] to cancel";
+            content: "[Enter] Submit • [Shift + Enter] New line • [Esc] Cancel";
             font-size: small;
             text-align: center;
             display: block;
             color: #777;
-            white-space: pre;
+            white-space: pre-wrap;
         }

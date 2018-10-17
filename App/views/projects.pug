@@ -21,17 +21,14 @@ block content
         span.item#info
             h1(style="width: 100%; display: inline-block;")#p_title
             br
-            span(style="width: 100%") Started on&nbsp;
+            span(style="width: 100%; display: block;") Started on&nbsp;
                 span#p_date
-            table
-                tbody
-                    tr
-                        td Definition:
-                        td#p_desc
-                    tr
-                        td Homepage:
-                        td
-                            a(target="_BLANK")#p_homepage
+            div
+                span Definition:
+                span#p_desc
+                span Homepage:
+                span
+                    a(target="_BLANK")#p_homepage
         span.item#opts
             div#options
                 | Project options

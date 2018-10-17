@@ -259,31 +259,39 @@ nav {
         height: calc(100vh - 92px);
     }
 
-nav > span {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    transition: 0.3s;
-    cursor: pointer;
-    white-space: nowrap;
-    color: #818181;
-    display: inline-block;
-    height: 1.5em;
-}
+    nav > span {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        transition: 0.3s;
+        cursor: pointer;
+        white-space: nowrap;
+        color: #818181;
+        display: inline-block;
+        height: 1.5em;
+    }
 
-nav > a {
-    padding: 5px 5px 5px 1.5em;
-    text-decoration: none;
-    font-size: 1.1em;
-    color: #999999;
-    display: block;
-    transition: 0.3s;
-    white-space: nowrap;
-}
+    nav > a {
+        padding: 5px 5px 5px 1.5em;
+        text-decoration: none;
+        font-size: 1.1em;
+        color: #999999;
+        display: block;
+        transition: 0.3s;
+        white-space: nowrap;
+    }
 
-nav > a:hover {
-    color: #f1f1f1;
-}
+        nav > a:hover {
+            color: #f1f1f1;
+        }
+
+    nav > hr {
+        height: 1px;
+        background: linear-gradient( to left, transparent 0%, #fff, transparent 100% ) left bottom no-repeat;
+        width: 80%;
+        margin: auto;
+        border: 0;
+    }
 
 #nav-cls:hover {
     color: #f1f1f1;

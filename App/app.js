@@ -26,7 +26,7 @@ const isDev = require('electron-is-dev');
  * */
 var windows = [];
 var tray = null;
-const views = __dirname + "/views/";
+const views = path.join(__dirname, "views/");
 
 // Change the path if in development
 if (isDev) {
@@ -73,10 +73,7 @@ function createWindow(w, h, file) {
         show: file ? true : false,
         darkTheme: true,
         titleBarStyle: 'hidden',
-        icon: path.join(__dirname, 'image/icon/iconWhite@1.5x.png'),
-        webPreferences: {
-            preload: path.join(__dirname, 'scripts/preload.js')
-        },
+        icon: path.join(__dirname, 'image/icon/iconWhite@4x.png'),
         frame: isMac
     });
 
@@ -127,7 +124,7 @@ function createWindow(w, h, file) {
 app.on('ready', () => {
     app.setAppUserModelId('com.github.dylanbulmer.thedocs');
 
-    tray = new Tray(path.join(__dirname, 'image/icon/icon.png'));
+    tray = new Tray(path.join(__dirname, 'image/icon/icon@4x.png'));
     const contextMenu = Menu.buildFromTemplate([
         {
             label: 'The Docs',

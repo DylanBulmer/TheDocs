@@ -52,7 +52,6 @@
     <Compile Include="js\user-preferences.js" />
     <Compile Include="modules\slimscroll.js" />
     <Compile Include="modules\store.js" />
-    <Compile Include="scripts\preload.js" />
     <Content Include="build\icon.ico" />
     <Content Include="build\icon.icns" />
     <Content Include="css\app.css" />
@@ -116,7 +115,6 @@
     <Folder Include="js\" />
     <Folder Include="modules\" />
     <Folder Include="build\" />
-    <Folder Include="scripts\" />
     <Folder Include="views\" />
     <Folder Include="views\modules\" />
   </ItemGroup>
