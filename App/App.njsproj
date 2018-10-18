@@ -52,8 +52,26 @@
     <Compile Include="js\user-preferences.js" />
     <Compile Include="modules\slimscroll.js" />
     <Compile Include="modules\store.js" />
+    <Content Include="build\appimage\icon.150x150.png" />
+    <Content Include="build\appimage\icon.256x256.png" />
+    <Content Include="build\appimage\icon.32x32.png" />
+    <Content Include="build\appimage\icon.44x44.png" />
+    <Content Include="build\appimage\icon.64x64.png" />
+    <Content Include="build\appx\LargeTile.png" />
+    <Content Include="build\appx\SmallTile.png" />
+    <Content Include="build\appx\SplashScreen.png" />
+    <Content Include="build\appx\Square150x150Logo.png" />
+    <Content Include="build\appx\Square300x300Logo.png" />
+    <Content Include="build\appx\Square44x44Logo.png" />
+    <Content Include="build\appx\StoreLogo.png" />
+    <Content Include="build\appx\Wide310x150Logo.png" />
+    <Content Include="build\icon.icns.old.icns" />
     <Content Include="build\icon.ico" />
     <Content Include="build\icon.icns" />
+    <Content Include="build\icon.old.ico" />
+    <Content Include="build\icon.old.png" />
+    <Content Include="build\icon.png" />
+    <Content Include="build\iconWhite.png" />
     <Content Include="css\app.css" />
     <Content Include="css\calendar.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -108,6 +126,8 @@
     <Content Include="views\splash.pug" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\appimage\" />
+    <Folder Include="build\appx\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
     <Folder Include="fonts\Open_Sans\" />

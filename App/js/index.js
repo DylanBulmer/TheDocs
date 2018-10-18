@@ -1,5 +1,5 @@
 let form = document.getElementById('form');
-if (typeof(Store) === 'undefined') {
+if (typeof Store === 'undefined') {
     var Store = require('../modules/store');
     var store = new Store({
         configName: 'user-preferences'
@@ -60,28 +60,25 @@ var submition = function submition() {
             }
         };
         let auto = document.getElementById("auto");
-        console.log(auto);
-        store.set("autoLogin", auto.checked);
+        store.set("autoConnect", auto.checked);
         if (host.substring(0, 7) !== "http://" || host.substring(0, 8) !== "https://") {
-            store.set("host", host);
+            let domain = host.substring(0, 7) === "http://" ? host.substring(7) : host;
+            console.log(domain, port);
+            store.set("host", domain);
             if (!port) {
-                store.set("url", "http://" + host);
+                store.set("url", "http://" + domain);
                 store.set("port", 80);
-                xhttp.open("POST", "http://" + host, true);
+                xhttp.open("POST", "http://" + domain, true);
             } else {
                 store.set("port", port);
-                store.set("url", "http://" + host + ":" + port);
-                xhttp.open("POST", "http://" + host + ":" + port, true);
+                store.set("url", "http://" + domain + ":" + port);
+                xhttp.open("POST", "http://" + domain + ":" + port, true);
             }
         } else {
             store.set("host", host);
-            if (!port) {
-                store.set("url", host);
-                xhttp.open("POST", host, true);
-            } else {
-                store.set("url", host + ":1337");
-                xhttp.open("POST", host + ":1337", true);
-            }
+            store.set("url", host);
+            store.set("port", null);
+            xhttp.open("POST", host, true);
         }
         xhttp.send();
     } else {
