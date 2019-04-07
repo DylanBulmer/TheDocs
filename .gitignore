@@ -267,4 +267,5 @@ App/dev-app-update.yml
 /Server-v0.1.1-beta
 App/package.json
 *.exe
-Server/config.json
+App/package-lock.json
+.DS_Store

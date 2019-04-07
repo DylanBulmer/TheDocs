@@ -155,11 +155,11 @@ content {
     position: absolute;
     top: calc(3em + 32px);
     right: 0;
-    width: calc(100% - 270px);
-    padding: 10px;
+    width: calc(100% - 250px - 2em);
+    padding: 1em;
     background-color: #fff;
     color: #555;
-    height: calc(100vh - 3em - 52px);
+    height: calc(100vh - 5em - 32px);
     overflow-y: auto;
 }
 
@@ -172,7 +172,7 @@ content {
 
     content.mac {
         top: calc(3em + 22px);
-        height: calc(100vh - 3em - 42px);
+        height: calc(100vh - 5em - 22px);
     }
 
 .add-button {

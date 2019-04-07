@@ -36,50 +36,26 @@ td, th {
 #todo, #eventlog-container {
     width: 100%;
     display: block;
-    vertical-align: text-top;
 }
 
 content#c_view {
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-auto-rows: 1fr auto 10fr;
-}
-
-#info > div {
     display: grid;
-    grid-template-columns: 110px calc(100% - 110px);
-    grid-auto-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+    row-gap: 1em;
 }
-
-    #info > div > span {
-        grid-column-end: span 1;
-        padding: 10px;
-    }
 
 .item {
     display: block;
-    vertical-align: middle;
     position: relative;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-    .item#info {
-        grid-column-start: 1;
-        grid-column-end: 5;
-    }
-
-    .item#opts, .item#col-todo, .item#col-event {
-        grid-column-end: span 2;
-    }
-
-    .item#opts, .item#col-todo {
-        grid-row-end: span 1;
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .item#col-event {
-        grid-row-end: span 2;
-        width: 80%;
-        margin: 0 auto;
+    .item.wide {
+        max-width: initial;
+        grid-column: span 2;
     }
 
 @media (max-width: 1150px) {

@@ -187,6 +187,12 @@ var escapeHTML = function escapeHTML(unsafe) {
         .replace(/'/g, "&#039;");
 };
 
+/**
+ * 
+ * @param {String} type info, warning or error.
+ * @param {String} id id to target location.
+ * @param {String} msg message to send.
+ */
 var sendMessage = (type, id, msg) => {
     let col = document.getElementById(id);
 

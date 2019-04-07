@@ -11,11 +11,7 @@ function projectSearch() {
             let result = JSON.parse(this.responseText);
 
             dump.innerHTML = "";
-            // Add wrapper
-            let tab = document.createElement("tab");
-            tab.setAttribute("class", "wrapper");
-            tab.setAttribute("style", "top: -200px;");
-            dump.appendChild(tab);
+            let tab;
 
             if (result.length === 0) {
                 let tab = document.createElement("tab");
@@ -28,10 +24,7 @@ function projectSearch() {
                     tab = document.createElement("tab");
                     tab.innerHTML = "<h3>" + result[i].name + "</h3><p>Started " + dateFormat(result[i].started, "ddd, mmm dS, yyyy") + "</p>";
                     tab.addEventListener("click", function (e) {
-                        let w = document.getElementsByClassName('wrapper')[0];  // Wrapper
-                        let t = e.target;                                       // Active Tab
-                        let top = parseInt(w.style.top);
-                        w.style.top = top + (t.getBoundingClientRect().top - w.getBoundingClientRect().top) + 5 + "px";
+                        let t = e.target;
                         viewPage('c_view', project.id);
                     });
                     dump.appendChild(tab);

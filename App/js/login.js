@@ -54,6 +54,8 @@ var submition = function () {
                             case 404:
                                 msg.innerHTML = '404 - Page not found!';
                                 break;
+                            default:
+                                msg.innerHTML = 'Timed out'
                         }
                         break;
                 }

@@ -22,7 +22,8 @@ var submition = function submition() {
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 result = JSON.parse(this.responseText);
-                if ((result.host === host || result.url === host) && result.check === true) {
+                console.log(result, store.get("host"));
+                if ((result.host === store.get("host") || result.url === store.get("host")) && result.check === true) {
                     msg.innerHTML = "Connected!";
                     window.location.href = __dirname + "/login.pug";
                 } else {
@@ -61,7 +62,7 @@ var submition = function submition() {
         };
         let auto = document.getElementById("auto");
         store.set("autoConnect", auto.checked);
-        if (host.substring(0, 7) !== "http://" || host.substring(0, 8) !== "https://") {
+        if (host.substring(0, 8) !== "https://" && host.substring(0, 7) !== "http://") {
             let domain = host.substring(0, 7) === "http://" ? host.substring(7) : host;
             console.log(domain, port);
             store.set("host", domain);
@@ -74,8 +75,13 @@ var submition = function submition() {
                 store.set("url", "http://" + domain + ":" + port);
                 xhttp.open("POST", "http://" + domain + ":" + port, true);
             }
+        } else if (host.substring(0, 8) === "https://") {
+            store.set("host", host.substring(8));
+            store.set("url", host);
+            store.set("port", null);
+            xhttp.open("POST", host, true);
         } else {
-            store.set("host", host);
+            store.set("host", host.substring(7));
             store.set("url", host);
             store.set("port", null);
             xhttp.open("POST", host, true);

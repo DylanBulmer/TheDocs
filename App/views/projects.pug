@@ -18,7 +18,7 @@ block content
         p
             i Please note that this page is still being developed and not everything will work correctly.
     content#c_view
-        span.item#info
+        span.item.wide
             h1(style="width: 100%; display: inline-block;")#p_title
             br
             span(style="width: 100%; display: block;") Started on&nbsp;
@@ -29,18 +29,19 @@ block content
                 span Homepage:
                 span
                     a(target="_BLANK")#p_homepage
-        span.item#opts
-            div#options
-                | Project options
-                a#join_btn Join
-        span.item#col-event
+        span.item
+            span.item
+                div#options
+                    | Project options
+                    a#join_btn Join
+            span.item
+                div#todo
+                    subtitle(style="margin-top: 0;") Todo list
+                    todo
+        span.item
             div#eventlog-container
                 subtitle(style="margin-top: 0;") Event Log
                 div#eventlog
-        span.item#col-todo
-            div#todo
-                subtitle(style="margin-top: 0;") Todo list
-                todo
     content#c_newProject
         span.desc Name:
         input(type="text" placeholder="Project Name").field#n_name
