@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Encoding=UTF-8
-Name=The Docs
-Comment=Solve problems from past experiences
-Exec=application
-Icon=build/appimage/icon.256x256.png
-Terminal=false
-Categories=Utility;

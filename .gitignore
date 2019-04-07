@@ -269,3 +269,7 @@ App/package.json
 *.exe
 App/package-lock.json
 .DS_Store
+
+package.json
+build/
+dist/

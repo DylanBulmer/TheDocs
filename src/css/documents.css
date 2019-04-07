@@ -1,0 +1,28 @@
+.Documents {
+    width: calc(75% - 3em);
+    height: calc(100vh - 4em);
+    margin: 1em;
+    margin-left: 0;
+    padding: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12);
+    position: relative;
+}
+
+.Search {
+    height: 1em;
+    padding: 8px;
+    width: 300px;
+    margin: 3px 0;
+    font-size: 14px;
+}
+
+.SearchBtn {
+    display: inline-block;
+    line-height: 34px;
+    background-color: #eee;
+    padding: 0 8px;
+    cursor: pointer;
+}

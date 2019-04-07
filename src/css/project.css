@@ -1,0 +1,20 @@
+.Project {
+    width: calc(75% - 1em);
+    height: calc(100vh - 2em);
+    margin: 1em;
+    margin-left: 0;
+    display: inline-grid;
+    column-gap: 1em;
+    row-gap: 1em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: calc(40px + 2em) 1fr 1fr;
+    vertical-align: middle;
+}
+
+.Box {
+    width: calc(100% - 2em);
+    height: calc(100% - 2em);
+    padding: 1em;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+}

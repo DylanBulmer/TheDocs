@@ -1,0 +1,63 @@
+.SideBar {
+    height: calc(100vh - 4em);
+    margin: 1em;
+    padding: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(25% - 4em);
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+}
+
+.SideBar.dark {
+    background-color: #12121F;
+    color: #fff;
+}
+
+.NameGroup {
+    margin: 8px 0 8px 8px;
+    width: calc(100% - 72px);
+    line-height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Avatar {
+    border-radius: 50%;
+    background-color: #eee;
+    height: 40px;
+    width: 40px;
+    margin: 8px 8px 8px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.Status {
+    color: #777777;
+    font-size: 14px;
+}
+
+.Name {
+    margin: 0;
+}
+
+.ButtonGroup {
+    width: 100%;
+    display: block;
+    margin: 1em 0;
+}
+
+.Button {
+    line-height: 40px;
+    padding: 0 8px;
+    width: calc(90% - 16px);
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
+
+.Button:hover, .Button.show {
+    background-color: #eee;
+    /*background-color: #17F;
+    color: #fff;*/
+}
