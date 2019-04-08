@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Search } from '@material-ui/icons';
 import '../css/documents.css';
 
 class Documents extends Component {
@@ -21,15 +22,42 @@ class Documents extends Component {
 
   render() {
     return (
-      <div className="Documents" style={{display:this.state.active ? "inline-block" : "none"}}>
-        <div className="Title">Documents</div>
-        <span style={{position:"absolute", height: "40px", top: "1em", right: "1em", display: "inline-block"}}>
-          <input className="Search" />
-          <div className="SearchBtn">Search</div>
-        </span>
+      <div className="Documents" style={{display:this.state.active ? "inline-grid" : "none"}}>
+        <div className="Box" style={{padding: "0.5em 1em"}}>
+          <div className="Title">Documents</div>
+          <span style={{height: "30px", float: "right", display: "inline-block", verticalAlign: "middle"}}>
+            <input className="Search" placeholder="Search The Docs" />
+            <div className="SearchBtn">
+              <Search />
+            </div>
+          </span>
+        </div>
+        <div className="Box" style={{padding:"0", overflow: "auto"}}>
+          {
+            [0,1,2,3,4,5,6,7,8,9].map((id) => {
+              return (<Result key={id} title={"Document " + id}></Result>)
+            })
+          }
+        </div>
       </div>
     );
   }
+}
+
+class Result extends Component {
+
+  render() {
+    return ( 
+      <div className="DocResult">
+        <div>
+          <div className="DocTitle">{this.props.title}</div>
+          &nbsp;| Dylan Bulmer
+        </div>
+        <div>This is the summary or abstract to this document </div>
+      </div>
+    )
+  }
+
 }
 
 export default Documents;

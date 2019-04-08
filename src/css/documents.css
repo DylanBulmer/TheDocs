@@ -1,28 +1,31 @@
 .Documents {
-    width: calc(75% - 3em);
-    height: calc(100vh - 4em);
+    width: calc(75% - 1em);
+    height: calc(100vh - 2em);
     margin: 1em;
     margin-left: 0;
-    padding: 1em;
-    display: inline-block;
+    display: inline-grid;
+    column-gap: 1em;
+    row-gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(30px + 1em) 1fr;
     vertical-align: middle;
-    background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12);
-    position: relative;
 }
 
 .Search {
     height: 1em;
-    padding: 8px;
+    padding: 7px;
     width: 300px;
-    margin: 3px 0;
     font-size: 14px;
+    vertical-align: middle;
+    border: #eee 1px solid;
+    outline: 0;
 }
 
 .SearchBtn {
     display: inline-block;
-    line-height: 34px;
+    line-height: 12px;
     background-color: #eee;
-    padding: 0 8px;
+    padding: 3px 8px;
     cursor: pointer;
+    vertical-align: middle;
 }

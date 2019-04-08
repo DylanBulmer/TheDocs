@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Search } from '@material-ui/icons'
 import '../css/sidebar.css';
 
 class SideBar extends Component {
@@ -31,7 +32,12 @@ class SideBar extends Component {
           }
           <Tab index={2} isActive={this.state.activeIndex === 2} onClick={this.handleClick} name="Documents"></Tab>
         </span>
-        <h3>Projects:</h3>
+        <h3>
+          Projects:
+          <span style={{float: "right"}}>
+            <Search />
+          </span>
+        </h3>
         <span className="ButtonGroup">
           {this.state.projects}
           {

@@ -9,15 +9,28 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     vertical-align: middle;
-    /*background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)*/
 }
 
-.DashItem {
-    width: calc(100% - 2em);
-    height: calc(100% - 2em);
-    padding: 1em;
-    background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+.DocTitle {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
 }
 
+.DocResult {
+    padding: 0.5em 1em;
+}
+
+.DocResult:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.Activity {
+    padding: 0.5em 1em;
+}
+
+.Activity:hover {
+    background-color: #eee;
+    cursor: pointer;
+}

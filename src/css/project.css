@@ -7,14 +7,35 @@
     column-gap: 1em;
     row-gap: 1em;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: calc(40px + 2em) 1fr 1fr;
+    grid-template-rows: calc(30px + 1em) 1fr 1fr;
     vertical-align: middle;
 }
 
-.Box {
+.Settings {
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 100%;
+    float: right;
+    padding: 3px 5px;
+    border: 1px solid #eee;
+}
+
+.Settings svg {
+    vertical-align: middle;
+    line-height: 30px;
+    margin-right: 3px;
+    margin-top: -1px
+}
+
+.DropBox {
+    width: 100%;
+    height: calc(100% - 22px);
+}
+
+.DragBox {
     width: calc(100% - 2em);
-    height: calc(100% - 2em);
     padding: 1em;
-    background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+    margin: 0.5em 0;
+    background-color: #eee;
 }

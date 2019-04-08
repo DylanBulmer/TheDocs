@@ -12,10 +12,16 @@ body.dark {
 }
 
 .Title {
-  font-size: 2em;
+  font-size: 28px;
   font-variant: small-caps;
   font-weight: bold;
   display: inline-block;
-  line-height: 40px;
+  line-height: 30px;
   vertical-align: middle;
+}
+
+.Box {
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
 }

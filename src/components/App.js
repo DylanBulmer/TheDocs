@@ -16,6 +16,12 @@ class App extends Component {
     },
     selected: 0,
     projects: ["Website", "The Docs", "The Map Game"],
+    activity: [
+      {"project": "The Map Game", "user": "Dylan Bulmer", "type": "document", "action": "edited"},
+      {"project": "The Docs",     "user": "Dylan Bulmer", "type": "document", "action": "created"},
+      {"project": "Website",      "user": "Dylan Bulmer", "type": "task",     "action": "create"},
+      {"project": "The Docs",     "user": "Dylan Bulmer", "type": "task",     "action": "completed"}
+    ],
     selectedProject: 0
   };
 
@@ -35,7 +41,7 @@ class App extends Component {
     return (
       <div className="App">
         <SideBar user={this.state.user} selected={this.state.selected} projects={this.state.projects} onUpdate={this.handleClick} />
-        <Dashboard index={0} isActive={this.state.selected === 0} />
+        <Dashboard index={0} isActive={this.state.selected === 0} activity={this.state.activity} />
         <Documents index={2} isActive={this.state.selected === 2} />
         <Project name={this.state.projects[this.state.selectedProject]} index={this.state.selected} isActive={this.state.selected > 2} />
       </div>
