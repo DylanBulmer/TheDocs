@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Search } from '@material-ui/icons'
+import { Button } from '@material-ui/core'
 import '../css/sidebar.css';
 
 class SideBar extends Component {
@@ -27,9 +28,6 @@ class SideBar extends Component {
         </span>
         <span className="ButtonGroup">
           <Tab index={0} isActive={this.state.activeIndex === 0} onClick={this.handleClick} name="Dashboard"></Tab>
-          {
-            //<Tab index={1} isActive={this.state.activeIndex === 1} onClick={this.handleClick} name="Journals"></Tab>
-          }
           <Tab index={2} isActive={this.state.activeIndex === 2} onClick={this.handleClick} name="Documents"></Tab>
         </span>
         <h3>
@@ -41,9 +39,9 @@ class SideBar extends Component {
         <span className="ButtonGroup">
           {this.state.projects}
           {
-            this.props.projects.map((name, i) => {
+            this.props.projects.map((project, i) => {
               return (
-                <Tab index={i+3} key={i+3} isActive={this.state.activeIndex === (i+3)} onClick={this.handleClick} name={name}></Tab>
+                <Tab index={i+3} key={i+3} isActive={this.state.activeIndex === (i+3)} onClick={this.handleClick} name={project.name}></Tab>
               )
             })
           }

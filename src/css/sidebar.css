@@ -52,8 +52,9 @@
     padding: 0 8px;
     width: calc(90% - 16px);
     display: block;
-    margin: auto;
+    margin: 5px auto;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .Button:hover, .Button.show {

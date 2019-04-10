@@ -15,7 +15,61 @@ class App extends Component {
       avatar: ""
     },
     selected: 0,
-    projects: ["Website", "The Docs", "The Map Game"],
+    projects: [
+      {"name": "Website", "items": [
+        {
+          "type": "todo",
+          "text": "Do a thing"
+        },{
+          "type": "wip",
+          "text": "Do a thing"
+        },{
+          "type": "todo",
+          "text": "Do a thing"
+        },{
+          "type": "wip",
+          "text": "Do a thing"
+        },{
+          "type": "completed",
+          "text": "Do a thing"
+        }]
+      },
+      {"name": "The Docs", "items": [
+        {
+          "type": "todo",
+          "text": "Do a thing"
+        },{
+          "type": "wip",
+          "text": "Do a thing"
+        },{
+          "type": "todo",
+          "text": "Do a thing"
+        },{
+          "type": "wip",
+          "text": "Do a thing"
+        },{
+          "type": "completed",
+          "text": "Do a thing"
+        }]},
+      {"name": "The Map Game", "items": [
+        {
+          "type": "todo",
+          "text": "Do a thing"
+        },{
+          "type": "todo",
+          "text": "Do a thing"
+        },{
+          "type": "wip",
+          "text": "Do a thing"
+        },{
+          "type": "wip",
+          "text": "Do a thing"
+        },{
+          "type": "completed",
+          "text": "Do a thing"
+        }]
+      }
+    ],
     activity: [
       {"project": "The Map Game", "user": "Dylan Bulmer", "type": "document", "action": "edited"},
       {"project": "The Docs",     "user": "Dylan Bulmer", "type": "document", "action": "created"},
@@ -43,7 +97,13 @@ class App extends Component {
         <SideBar user={this.state.user} selected={this.state.selected} projects={this.state.projects} onUpdate={this.handleClick} />
         <Dashboard index={0} isActive={this.state.selected === 0} activity={this.state.activity} />
         <Documents index={2} isActive={this.state.selected === 2} />
-        <Project name={this.state.projects[this.state.selectedProject]} index={this.state.selected} isActive={this.state.selected > 2} />
+        {
+          this.state.projects.map((project, index) => {
+            return (
+              <Project key={"project-"+index} project={project} index={index+3} isActive={this.state.selected === index + 3}></Project>
+            )
+          })
+        }
       </div>
     );
   }

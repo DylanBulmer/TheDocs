@@ -12,13 +12,10 @@
 }
 
 .Settings {
-    height: 22px;
     display: inline-block;
     vertical-align: middle;
     line-height: 100%;
     float: right;
-    padding: 3px 5px;
-    border: 1px solid #eee;
 }
 
 .Settings svg {
@@ -38,4 +35,5 @@
     padding: 1em;
     margin: 0.5em 0;
     background-color: #eee;
+    border-radius: 4px;
 }

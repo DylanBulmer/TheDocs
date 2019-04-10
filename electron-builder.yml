@@ -1,0 +1,31 @@
+appId: com.github.dylanbulmer.${name}
+productName: The Docs
+copyright: Copyright © year ${author}
+author: Dylan Bulmer
+win:
+  target:
+    - target: appx
+    - target: nsis
+      arch:
+        - x64
+        - ia32
+mac:
+  category: public.app-category.Reference
+  target: 
+    - target: zip
+    - target: dmg
+linux:
+  target:
+    - target: AppImage
+    - target: deb
+  maintainer: Dylan Bulmer
+  vendor: Dylan Bulmer
+  category: Utility
+  executableName: The Docs
+  icon: ./assets/appimage/icon.256x256.png
+  desktop: ./thedocs.desktop
+  files:
+    - files: build/**/*
+    - files: node_modules/**/*
+  directories:
+    buildResources: assets

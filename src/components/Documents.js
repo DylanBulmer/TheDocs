@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Search } from '@material-ui/icons';
+import { TextField } from '@material-ui/core'
 import '../css/documents.css';
 
 class Documents extends Component {
@@ -26,6 +27,14 @@ class Documents extends Component {
         <div className="Box" style={{padding: "0.5em 1em"}}>
           <div className="Title">Documents</div>
           <span style={{height: "30px", float: "right", display: "inline-block", verticalAlign: "middle"}}>
+          {
+            /*<TextField
+              id="outlined-search"
+              label="Search field"
+              type="search"
+              margin="normal"
+              variant="outlined" />*/
+          }
             <input className="Search" placeholder="Search The Docs" />
             <div className="SearchBtn">
               <Search />
