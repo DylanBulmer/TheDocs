@@ -15,6 +15,10 @@ class Project extends Component {
     this.state.active = props.isActive;
   }
 
+  handleClick = () => {
+    this.props.onUpdate(-1);
+  }
+
   // updates this component everytime App is updated.
   static getDerivedStateFromProps(props, state) {
     state.active = props.isActive;
@@ -29,7 +33,7 @@ class Project extends Component {
           <div className="Box" style={{gridRow: "span 1", gridColumn: "span 3", padding: "0.5em 1em"}}>
             <div className="Title">{project.name}</div>
             <span className="Settings">
-              <Button variant="outlined" size="small">
+              <Button variant="outlined" size="small" onClick={this.handleClick}>
                 <Settings style={{fontSize: "20px", marginRight: "4px"}} />
                 Settings
               </Button>

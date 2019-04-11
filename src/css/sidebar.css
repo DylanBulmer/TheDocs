@@ -57,8 +57,11 @@
     border-radius: 4px;
 }
 
-.Button:hover, .Button.show {
+.Button:hover {
     background-color: #eee;
-    /*background-color: #17F;
-    color: #fff;*/
+}
+
+.Button.show {
+    background-color: #17F;
+    color: #fff;
 }

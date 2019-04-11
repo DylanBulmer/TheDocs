@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dashboard from './Dashboard';
 import Documents from './Documents';
 import SideBar from './SideBar';
+import { ProjectSettings } from './Settings';
 import '../css/app.css';
 import '../css/markdown.css';
 import Project from './Project';
@@ -100,10 +101,11 @@ class App extends Component {
         {
           this.state.projects.map((project, index) => {
             return (
-              <Project key={"project-"+index} project={project} index={index+3} isActive={this.state.selected === index + 3}></Project>
+              <Project key={"project-"+index} project={project} index={index+3} isActive={this.state.selected === index + 3} onUpdate={this.handleClick}></Project>
             )
           })
         }
+        <ProjectSettings index={-1} isActive={this.state.selected === -1} onUpdate={this.handleClick}/>
       </div>
     );
   }

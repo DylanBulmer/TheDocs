@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Search } from '@material-ui/icons'
-import { Button } from '@material-ui/core'
 import '../css/sidebar.css';
 
 class SideBar extends Component {

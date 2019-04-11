@@ -5,6 +5,7 @@
 
 body {
   background-color: #eee;
+  color: #313539;
 }
 
 body.dark {
@@ -24,4 +25,11 @@ body.dark {
   padding: 1em;
   background-color: #fff;
   box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+}
+
+.FullPage {
+  width: calc(75% - 3em);
+  height: calc(100vh - 4em);
+  vertical-align: middle;
+  display: inline-block;
 }

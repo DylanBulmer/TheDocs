@@ -13,19 +13,29 @@
 
 .Search {
     height: 1em;
-    padding: 7px;
+    padding: 8px;
     width: 300px;
     font-size: 14px;
     vertical-align: middle;
-    border: #eee 1px solid;
+    border: 0;
     outline: 0;
 }
 
 .SearchBtn {
     display: inline-block;
     line-height: 12px;
-    background-color: #eee;
+    background-color: #17F;
     padding: 3px 8px;
     cursor: pointer;
     vertical-align: middle;
+}
+
+.SearchWrapper {
+    height: 30px;
+    float: right;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px #17F solid;
 }

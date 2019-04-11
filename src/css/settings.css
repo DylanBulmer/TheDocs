@@ -1,0 +1,13 @@
+.SettingsTable {
+    width: 90%;
+    margin: auto;
+}
+
+.SettingsTable td {
+    padding: 8px 0;
+    min-width: 200px;
+}
+
+.SettingsTable td:nth-child() {
+    background-color: #eee;
+}
