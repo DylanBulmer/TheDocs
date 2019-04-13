@@ -8,10 +8,6 @@ body {
   color: #313539;
 }
 
-body.dark {
-  background-color: #53535F;
-}
-
 .Title {
   font-size: 28px;
   font-variant: small-caps;

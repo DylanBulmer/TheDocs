@@ -4,6 +4,7 @@ import Documents from './Documents';
 import SideBar from './SideBar';
 import { ProjectSettings } from './Settings';
 import '../css/app.css';
+import '../css/dark.css';
 import '../css/markdown.css';
 import Project from './Project';
 

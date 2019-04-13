@@ -51,7 +51,10 @@ class Result extends Component {
       <div className="DocResult">
         <div>
           <div className="DocTitle">{this.props.title}</div>
-          &nbsp;| Dylan Bulmer
+          &nbsp;| The Docs
+        </div>
+        <div className="DocAuthor">
+          By Dylan Bulmer on 00/00/0000
         </div>
         <div>This is the summary or abstract to this document </div>
       </div>

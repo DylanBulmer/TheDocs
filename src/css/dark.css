@@ -1,0 +1,8 @@
+body.dark {
+    background-color: #303030;
+    color: #fff;
+  }
+  
+  body.dark .Box, body.dark .SideBar {
+    background-color: #212121;
+  }

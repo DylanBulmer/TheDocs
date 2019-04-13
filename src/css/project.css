@@ -25,6 +25,16 @@
     margin-top: -1px
 }
 
+.Settings button {
+    border: 1px solid rgba(33, 150, 243, 0.5);
+    color: #2196f3;
+}
+
+.Settings button:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+    border-color: #2196f3;
+}
+
 .DropBox {
     width: 100%;
     height: calc(100% - 22px);
@@ -34,6 +44,6 @@
     width: calc(100% - 2em);
     padding: 1em;
     margin: 0.5em 0;
-    background-color: #eee;
+    background-color: rgba(33, 150, 243, 0.4);
     border-radius: 4px;
 }

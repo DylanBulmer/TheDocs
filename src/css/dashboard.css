@@ -11,26 +11,15 @@
     vertical-align: middle;
 }
 
-.DocTitle {
-    font-size: 18px;
-    font-weight: bold;
-    display: inline-block;
-}
-
-.DocResult {
-    padding: 0.5em 1em;
-}
-
-.DocResult:hover {
-    background-color: #eee;
-    cursor: pointer;
+.DashHolder {
+    margin-top: 1em;
 }
 
 .Activity {
-    padding: 0.5em 1em;
+    padding: 1em;
 }
 
 .Activity:hover {
-    background-color: #eee;
+    background-color: rgba(33, 150, 243,0.4);
     cursor: pointer;
 }

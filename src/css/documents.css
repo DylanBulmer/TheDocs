@@ -11,6 +11,27 @@
     vertical-align: middle;
 }
 
+.DocTitle {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.DocResult {
+    padding: 1em 2em;
+}
+
+.DocResult:hover {
+    background-color: rgba(33, 150, 243,0.4);
+    cursor: pointer;
+}
+
+.DocAuthor {
+    font-size: 14px;
+    color: #777777;
+    margin-bottom: 8px;
+}
+
 .Search {
     height: 1em;
     padding: 8px;
@@ -19,12 +40,24 @@
     vertical-align: middle;
     border: 0;
     outline: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
+}
+
+
+.SearchWrapper:hover > .SearchBtn {
+    background-color: #2196f3;
+}
+
+.SearchWrapper:hover, .SearchBtn {
+    border-color: #2196f3;
 }
 
 .SearchBtn {
     display: inline-block;
     line-height: 12px;
-    background-color: #17F;
+    background-color: rgba(33, 150, 243, 0.5);
+    color: #fff;
     padding: 3px 8px;
     cursor: pointer;
     vertical-align: middle;
@@ -37,5 +70,6 @@
     vertical-align: middle;
     border-radius: 4px;
     overflow: hidden;
-    border: 1px #17F solid;
+    border: 1px solid rgba(33, 150, 243, 0.5);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }

@@ -9,11 +9,6 @@
     box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
 }
 
-.SideBar.dark {
-    background-color: #12121F;
-    color: #fff;
-}
-
 .NameGroup {
     margin: 8px 0 8px 8px;
     width: calc(100% - 72px);
@@ -58,10 +53,10 @@
 }
 
 .Button:hover {
-    background-color: #eee;
+    background-color: rgba(33, 150, 243, 0.4);
 }
 
 .Button.show {
-    background-color: #17F;
+    background-color: #2196f3;
     color: #fff;
 }
