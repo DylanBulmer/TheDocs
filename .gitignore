@@ -273,3 +273,4 @@ App/package-lock.json
 package.json
 build/
 dist/
+cache/
