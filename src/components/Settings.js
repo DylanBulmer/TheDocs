@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
-import { Button, Input } from '@material-ui/core';
+import { Button, Checkbox, RadioGroup, Radio, FormControlLabel, MuiThemeProvider } from '@material-ui/core';
 import '../css/settings.css';
+import theme from '../css/themes'
 
 class ProjectSettings extends Component {
 
@@ -28,37 +29,35 @@ class ProjectSettings extends Component {
 
   render() {
     return (
-      <div className="FullPage Box" style={{display:this.state.active ? "inline-block" : "none"}}>
-        <h2>Project Settings</h2>
-        <table className="SettingsTable">
-          <tbody>
-            <tr>
-              <td>Project Name:</td>
-              <td><Input /></td>
-            </tr>
-            <tr>
-              <td>Description:</td>
-              <td><textarea></textarea></td>
-            </tr>
-            <tr>
-              <td>Transfer project manager:</td>
-              <td><Button variant="contained" >Transfer</Button></td>
-            </tr>
-            <tr>
-              <td>Add a member:</td>
-              <td><Button variant="contained" >Add</Button></td>
-            </tr>
-            <tr>
-              <td>Leave Project?</td>
-              <td><Button variant="contained" >Leave</Button></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><Button variant="contained" >Save</Button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="FullPage Box" style={{display:this.state.active ? "inline-block" : "none"}}>
+          <h2>Project Settings</h2>
+          <div className="SettingsGrid">
+            <div>Project Name:</div>
+            <div>
+              <div className="InputWrapper">
+                <input placeholder="Project Name" />
+              </div>
+            </div>
+            <div>Description:</div>
+            <div>
+              <div className="InputWrapper">
+                <textarea></textarea>
+              </div>
+            </div>
+            <div>Project Manager:</div>
+            <div>Manage's Name</div>
+            <div>Transfer Manager:</div>
+            <div><Button variant="contained" >Transfer</Button></div>
+            <div>Members:</div>
+            <div><i>List on members and add memeber button</i></div>
+            <div>Leave Project</div>
+            <div><Button variant="contained" >Leave</Button></div>
+            <div></div>
+            <div><Button variant="contained" >Save</Button></div>
+          </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
@@ -66,8 +65,9 @@ class ProjectSettings extends Component {
 class UserSettings extends Component {
 
   state = {
-    active: false
-  }
+    active: false,
+    theme: 'dark'
+  };
 
   constructor (props) {
     super(props);
@@ -81,6 +81,11 @@ class UserSettings extends Component {
 
   }
 
+  handleChange = event => {
+    this.setState({ theme: event.target.value });
+  };
+
+
   static getDerivedStateFromProps(props, state) {
     state.active = props.isActive;
     return null;
@@ -88,12 +93,99 @@ class UserSettings extends Component {
 
   render() {
     return (
-      <div className="FullPage Box" style={{display:this.state.active ? "inline-block" : "none"}}>
-        <h2>User's Settings</h2>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="FullPage Box" style={{display:this.state.active ? "inline-block" : "none"}}>
+          <h2>User's Settings</h2>
+          <div className="SettingsGrid" style={{width: "416px"}}>
+            <div style={{gridColumn: "span 2"}}>
+              <h3>Account Settings:</h3>
+            </div>
+            <div>
+              <div className="InputWrapper">
+                <input placeholder="First Name" />
+              </div>
+            </div>
+            <div>
+              <div className="InputWrapper">
+                <input placeholder="Last Name" />
+              </div>
+            </div>
+            <div style={{gridColumn: "span 2"}}>
+              <div className="InputWrapper" style={{width: "calc(100% - 2px)"}}>
+                <input placeholder="Email" />
+              </div>
+            </div>
+            <div style={{gridColumn: "span 2"}}>
+              <h3>Notifications:</h3>
+            </div>
+            <div>Desktop Notifications:</div>
+            <div>
+              <Checkbox defaultChecked style={{padding: 0, color: "#2196f3"}} />
+            </div>
+            <div>Email Notifications:</div>
+            <div>
+              <Checkbox defaultChecked={false} disabled style={{padding: 0, color: "#2196f3"}} />
+            </div>
+            <div style={{gridColumn: "span 2"}}>
+              <h3>Theme:</h3>
+            </div>
+            <div style={{gridColumn: "span 2", textAlign: "center"}}>
+              <RadioGroup
+                aria-label="theme"
+                name="theme"
+                value={this.state.theme}
+                onChange={this.handleChange}
+                row
+              >
+                <FormControlLabel
+                  value="light"
+                  control={<Radio color="primary" />}
+                  label="Light"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="dark"
+                  control={<Radio color="primary" />}
+                  label="Dark"
+                  labelPlacement="start"
+                />
+                <FormControlLabel
+                  value="custom"
+                  control={<Radio color="primary" />}
+                  label="Custom"
+                  labelPlacement="start"
+                />
+              </RadioGroup>
+            </div>
+            <div style={{gridColumn: "span 2"}}>
+              <h3>Color Scheme:</h3>
+            </div>
+            <div>Button Color:</div>
+            <div>
+              <div className="InputWrapper">
+                <input placeholder="000000" defaultValue="" pattern="[a-fA-F\d]+" />
+              </div>
+            </div>
+            <div>Page Background Color:</div>
+            <div>
+              <div className="InputWrapper">
+                <input placeholder="000000" defaultValue="" pattern="[a-fA-F\d]+" />
+              </div>
+            </div>
+            <div>Content Background Color:</div>
+            <div>
+              <div className="InputWrapper">
+                <input placeholder="000000" defaultValue="" pattern="[a-fA-F\d]+" />
+              </div>
+            </div>
+            <div></div>
+            <div><Button variant="contained" style={{float: "right"}} >Save</Button></div>
+          </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
 
 }
 
-export { ProjectSettings };
+export { ProjectSettings, UserSettings };

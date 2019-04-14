@@ -1,12 +1,12 @@
-.SettingsTable {
-    width: 50%;
-    margin: auto;
+.SettingsGrid {
+    width: 90%;
+    column-gap: 1em;
+    row-gap: 1em;
+    grid-template-columns: calc(50% - 0.5em) calc(50% - 0.5em);
+    display: grid;
+    margin: 2em auto;
 }
 
-.SettingsTable td {
-    padding: 8px 0;
-}
-
-.SettingsTable td:nth-child(2) {
-    text-align: right;
+.SettingsGrid h3 {
+    margin: 1em 0;
 }

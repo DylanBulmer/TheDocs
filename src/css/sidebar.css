@@ -1,17 +1,35 @@
 .SideBar {
-    height: calc(100vh - 4em);
+    height: calc(100vh - 5em - 40px);
     margin: 1em;
     padding: 1em;
     display: inline-block;
     vertical-align: middle;
-    width: calc(25% - 4em);
+    width: calc(300px - 4em);
     background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12);
+    position: relative;
+    padding-top: calc(40px + 2em);
+    overflow: auto;
+}
+
+.Menu {
+    position: absolute;
+    width: calc(100% - 2em);
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    padding: 1em;
+    background-color: rgba(0,0,0,0);
+}
+
+.Menu:hover {
+    background-color: rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .NameGroup {
-    margin: 8px 0 8px 8px;
-    width: calc(100% - 72px);
+    margin-left: 8px;
+    width: calc(100% - 80px);
     line-height: 20px;
     display: inline-block;
     vertical-align: middle;
@@ -22,7 +40,7 @@
     background-color: #eee;
     height: 40px;
     width: 40px;
-    margin: 8px 8px 8px 0;
+    margin-right: 8px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -36,6 +54,11 @@
     margin: 0;
 }
 
+.MenuSettings {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .ButtonGroup {
     width: 100%;
     display: block;
@@ -43,20 +66,10 @@
 }
 
 .Button {
-    line-height: 40px;
-    padding: 0 8px;
     width: calc(90% - 16px);
-    display: block;
-    margin: 5px auto;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.Button:hover {
-    background-color: rgba(33, 150, 243, 0.4);
 }
 
 .Button.show {
-    background-color: #2196f3;
-    color: #fff;
+    background-color: #2196f3 !important;
+    color: #fff !important;
 }

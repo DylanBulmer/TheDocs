@@ -1,5 +1,5 @@
 .Dashboard {
-    width: calc(75% - 1em);
+    width: calc(100% - 300px - 1em);
     height: calc(100vh - 2em);
     margin: 1em;
     margin-left: 0;

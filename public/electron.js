@@ -10,8 +10,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     title: "The Docs",
     darkTheme: true,
-    minWidth: 800,
-    minHeight: 500,
+    minWidth: 1000,
+    minHeight: 600,
     width: 1000,
     height: 600,
     webPreferences: {

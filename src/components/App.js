@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Dashboard from './Dashboard';
 import Documents from './Documents';
 import SideBar from './SideBar';
-import { ProjectSettings } from './Settings';
+import { ProjectSettings, UserSettings } from './Settings';
 import '../css/app.css';
 import '../css/dark.css';
 import '../css/markdown.css';
@@ -21,54 +21,70 @@ class App extends Component {
       {"name": "Website", "items": [
         {
           "type": "todo",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "wip",
-          "text": "Do a thing"
-        },{
-          "type": "todo",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "wip",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
+        },{
+          "type": "wip",
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "completed",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         }]
       },
       {"name": "The Docs", "items": [
         {
-          "type": "todo",
-          "text": "Do a thing"
+          "type": "wip",
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "wip",
-          "text": "Do a thing"
-        },{
-          "type": "todo",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "wip",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "completed",
-          "text": "Do a thing"
-        }]},
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
+        },{
+          "type": "completed",
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
+        }]
+      },
       {"name": "The Map Game", "items": [
         {
           "type": "todo",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "todo",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
+        },{
+          "type": "todo",
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "wip",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         },{
           "type": "wip",
-          "text": "Do a thing"
-        },{
-          "type": "completed",
-          "text": "Do a thing"
+          "text": "Do a thing",
+          "assigned": "Dylan Bulmer"
         }]
       }
     ],
@@ -107,6 +123,7 @@ class App extends Component {
           })
         }
         <ProjectSettings index={-1} isActive={this.state.selected === -1} onUpdate={this.handleClick}/>
+        <UserSettings index={-2} isActive={this.state.selected === -2} />
       </div>
     );
   }

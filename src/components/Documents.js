@@ -25,8 +25,8 @@ class Documents extends Component {
       <div className="Documents" style={{display:this.state.active ? "inline-grid" : "none"}}>
         <div className="Box" style={{padding: "0.5em 1em"}}>
           <div className="Title">Documents</div>
-          <span className="SearchWrapper">
-            <input className="Search" placeholder="Search The Docs" />
+          <span style={{float: "right"}} className="InputWrapper">
+            <input style={{width: "300px", maxWidth:"initial"}} placeholder="Search The Docs" />
             <div className="SearchBtn">
               <Search color="inherit"/>
             </div>

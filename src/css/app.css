@@ -6,6 +6,7 @@
 body {
   background-color: #eee;
   color: #313539;
+  user-select: none;
 }
 
 .Title {
@@ -17,15 +18,72 @@ body {
   vertical-align: middle;
 }
 
+.SubTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: inherit;
+  width: calc(100% - 2em);
+  padding: 1em;
+}
+
 .Box {
   padding: 1em;
   background-color: #fff;
-  box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12)
+  box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12);
+  overflow: auto;
+  position: relative;
 }
 
 .FullPage {
-  width: calc(75% - 3em);
+  width: calc(100% - 300px - 4em);
   height: calc(100vh - 4em);
   vertical-align: middle;
   display: inline-block;
+}
+
+input, textarea {
+    padding: 8px;
+    font-size: 14px;
+    vertical-align: middle;
+    border: 0;
+    outline: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    width: calc(100% - 1em);
+    min-height: 1em;
+}
+
+.InputWrapper {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 198px;
+    border: 1px solid rgba(33, 150, 243, 0.5);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.InputWrapper:hover > .SearchBtn {
+    background-color: #2196f3;
+}
+
+.InputWrapper:hover {
+  border-color: #2196f3;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 4px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16), 0 4px 8px 0 rgba(0, 0, 0, 0.12);
+  transition: 100ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
