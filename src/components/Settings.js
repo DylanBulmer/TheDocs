@@ -83,6 +83,17 @@ class UserSettings extends Component {
 
   handleChange = event => {
     this.setState({ theme: event.target.value });
+    
+    switch (event.target.value) {
+      case "light":
+        if (document.body.classList.contains("dark"))
+          document.body.classList.remove("dark");
+        break;
+      case "dark":
+        if (!document.body.classList.contains("dark"))
+          document.body.classList.add("dark");
+        break;
+    }
   };
 
 
@@ -120,11 +131,11 @@ class UserSettings extends Component {
             </div>
             <div>Desktop Notifications:</div>
             <div>
-              <Checkbox defaultChecked style={{padding: 0, color: "#2196f3"}} />
+              <Checkbox defaultChecked color="primary" />
             </div>
             <div>Email Notifications:</div>
             <div>
-              <Checkbox defaultChecked={false} disabled style={{padding: 0, color: "#2196f3"}} />
+              <Checkbox defaultChecked={false} color="primary" disabled />
             </div>
             <div style={{gridColumn: "span 2"}}>
               <h3>Theme:</h3>
@@ -151,16 +162,16 @@ class UserSettings extends Component {
                 />
                 <FormControlLabel
                   value="custom"
-                  control={<Radio color="primary" />}
+                  control={<Radio color="primary" disabled />}
                   label="Custom"
                   labelPlacement="start"
                 />
               </RadioGroup>
             </div>
             <div style={{gridColumn: "span 2"}}>
-              <h3>Color Scheme:</h3>
+              <h3>Custom Theme: <i>(being developed)</i></h3>
             </div>
-            <div>Button Color:</div>
+            <div>Primary Color:</div>
             <div>
               <div className="InputWrapper">
                 <input placeholder="000000" defaultValue="" pattern="[a-fA-F\d]+" />
@@ -178,8 +189,6 @@ class UserSettings extends Component {
                 <input placeholder="000000" defaultValue="" pattern="[a-fA-F\d]+" />
               </div>
             </div>
-            <div></div>
-            <div><Button variant="contained" style={{float: "right"}} >Save</Button></div>
           </div>
         </div>
       </MuiThemeProvider>

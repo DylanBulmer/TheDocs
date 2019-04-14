@@ -2,14 +2,26 @@ const {app, Tray, Menu, BrowserWindow} = require('electron');
 
 const path = require('path');
 const isDev = require('electron-is-dev');
+const isMac = process.platform === 'darwin';
 
-let mainWindow;
+/**
+ * @namespace windows
+ * @type {BrowserWindow[]}
+ */
+let windows = [];
+
+/**
+ * @namespace tray
+ * @type {Tray}
+ */
+let tray = null;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  let newWindow = new BrowserWindow({
     title: "The Docs",
     darkTheme: true,
+    vibrancy: "dark",
     minWidth: 1000,
     minHeight: 600,
     width: 1000,
@@ -18,23 +30,24 @@ function createWindow () {
       nodeIntegration: false
     },
     show: false,
-    icon: path.join(__dirname, 'image/icon/iconWhite@4x.png'),
-    frame: true
+    icon: path.join(__dirname, 'image/icon/icon@4x.png')
   });
 
-  mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+  newWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
 
   // Open the DevTools.
-  if (isDev) mainWindow.webContents.openDevTools();
+  if (isDev) newWindow.webContents.openDevTools();
 
-  mainWindow.once('ready-to-show', () => {
-    mainWindow.show();
+  newWindow.once('ready-to-show', () => {
+    newWindow.show();
   });
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function () {
-    mainWindow = null
+  newWindow.on('closed', function () {
+    windows.splice(windows.findIndex(element => { element === newWindow; }), 1);
   });
+
+  windows.push(newWindow);
 }
 
 app.on('ready', () => {
@@ -74,9 +87,9 @@ app.on('ready', () => {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit();
+  if (isMac) app.quit();
 });
 
 app.on('activate', function () {
-  if (mainWindow === null) createWindow();
+  if (windows.length === 0) createWindow();
 });

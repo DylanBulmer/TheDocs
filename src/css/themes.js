@@ -1,44 +1,47 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
+const primaryRGB = "33, 150, 243"; // Primary blue color
+
 const theme = createMuiTheme({
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
   },
   palette: {
     primary: {
-      main: "#2196f3"
+      main: "rgb(" + primaryRGB + ")"
     }
   },
   overrides: {
     MuiButton: {
       root: {
-        backgroundColor: "rgba(33, 150, 243, 0)",
+        backgroundColor: "rgba("+primaryRGB+", 0)",
         margin: 0,
         color: "inherit",
         display: "block",
         textAlign: "left",
         "&:hover": {
-          backgroundColor: "rgba(33, 150, 243, 0.4)"
+          backgroundColor: "rgba("+primaryRGB+", 0.4)"
         }
       },
       flat: {
         margin: "5px auto"
       },
       outlined: {
-        border: "1px solid rgba(33, 150, 243, 0.5)",
+        border: "1px solid rgba("+primaryRGB+", 0.5)",
         color: "#2196f3",
         "&:hover": {
-          backgroundColor: "rgba(33, 150, 243, 0.1)",
+          backgroundColor: "rgba("+primaryRGB+", 0.1)",
           borderColor: "#2196f3"
         }
       }
     },
-    MuiTypography: {
-      body2: {
-        color: "inherit"
-      }
-    },
     MuiRadio: {
+      colorPrimary: {
+        color: "rgb("+primaryRGB+")",
+        "&$disabled": {
+          color: "rgba("+primaryRGB+", 0.26)"
+        }
+      },
       root: {
         color: "inherit"
       }
@@ -46,6 +49,29 @@ const theme = createMuiTheme({
     MuiFormGroup: {
       row: {
         display: "inline-block"
+      }
+    },
+    MuiFormControlLabel: {
+      label: {
+        color: "inherit",
+        "&$disabled": {
+          color: "inherit",
+          opacity: "0.38"
+        }
+      }
+    },
+    MuiCheckbox: {
+      colorPrimary: {
+        color: "rgb("+primaryRGB+")",
+        "&$disabled": {
+          color: "rgba("+primaryRGB+", 0.26)"
+        }
+      },
+      root: {
+        padding: 0,
+        "&$checked": {
+          color: "rgb("+primaryRGB+")"
+        }
       }
     }
   },
