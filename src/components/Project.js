@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../css/project.css';
 import { Settings } from '@material-ui/icons';
-import { Button, MuiThemeProvider } from '@material-ui/core'
-import theme from '../css/themes'
+import { Button, Paper } from '@material-ui/core'
 
 class Project extends Component {
 
@@ -30,31 +29,29 @@ class Project extends Component {
   render() {
     let project = this.state.project;
     return (
-      <MuiThemeProvider theme={theme}>
         <div className="Project" style={{display:this.state.active ? "inline-grid" : "none"}}>
-          <div className="Box" style={{gridRow: "span 1", gridColumn: "span 3", padding: "0.5em 1em"}}>
+          <Paper style={{gridRow: "span 1", gridColumn: "span 3", padding: "0.5em 1em"}}>
             <div className="Title">{project.name}</div>
             <span className="Settings">
-              <Button variant="outlined" size="small" onClick={this.handleClick}>
+              <Button variant="outlined" color="primary" size="small" onClick={this.handleClick}>
                 <Settings style={{fontSize: "20px", marginRight: "4px"}} />
                 Settings
               </Button>
             </span>
-          </div>
-          <div className="Box">
+          </Paper>
+          <Paper>
             <h3>Todo:</h3>
             <DropBox projectId={project.name} items={project.items} type="todo" />
-          </div>
-          <div className="Box">
+          </Paper>
+          <Paper>
             <h3>In Progress:</h3>
             <DropBox projectId={project.name} items={project.items} type="wip" />
-          </div>
-          <div className="Box">
+          </Paper>
+          <Paper>
             <h3>Completed:</h3>
             <DropBox projectId={project.name} items={project.items} type="completed" />
-          </div>
+          </Paper>
         </div>
-      </MuiThemeProvider>
     );
   }
 }

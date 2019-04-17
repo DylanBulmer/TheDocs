@@ -1,15 +1,11 @@
 .SideBar {
     height: calc(100vh - 5em - 40px);
     margin: 1em;
-    padding: 1em;
     display: inline-block;
     vertical-align: middle;
     width: calc(300px - 4em);
     background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,.16), 0 4px 8px 0 rgba(0,0,0,.12);
     position: relative;
-    padding-top: calc(40px + 2em);
-    overflow: auto;
 }
 
 .Menu {
@@ -69,7 +65,6 @@
     width: calc(90% - 16px);
 }
 
-.Button.show {
-    background-color: #2196f3 !important;
-    color: #fff !important;
+button.show {
+    background-color: rgb(23, 105, 170) !important;
 }

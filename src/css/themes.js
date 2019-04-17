@@ -1,81 +1,178 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const primaryRGB = "33, 150, 243"; // Primary blue color
+class Theme {
 
-const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-  },
-  palette: {
-    primary: {
-      main: "rgb(" + primaryRGB + ")"
-    }
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        backgroundColor: "rgba("+primaryRGB+", 0)",
-        margin: 0,
-        color: "inherit",
-        display: "block",
-        textAlign: "left",
-        "&:hover": {
-          backgroundColor: "rgba("+primaryRGB+", 0.4)"
+  constructor (type, custom) {
+
+    this.type = type || "dark";
+
+    this.theme = {};
+
+    this.setPalette(this.type);
+
+    this.theme.typography = {
+      useNextVariants: true
+    };
+    this.theme.overrides = {
+      MuiButton: {
+        contained: {
+          width: "90%",
+          margin: "10px auto",
+          display: "block"
         }
       },
-      flat: {
-        margin: "5px auto"
-      },
-      outlined: {
-        border: "1px solid rgba("+primaryRGB+", 0.5)",
-        color: "#2196f3",
-        "&:hover": {
-          backgroundColor: "rgba("+primaryRGB+", 0.1)",
-          borderColor: "#2196f3"
-        }
-      }
-    },
-    MuiRadio: {
-      colorPrimary: {
-        color: "rgb("+primaryRGB+")",
-        "&$disabled": {
-          color: "rgba("+primaryRGB+", 0.26)"
+      MuiPaper: {
+        root: {
+          padding: "1em",
+          overflow: "auto"
         }
       },
-      root: {
-        color: "inherit"
-      }
-    },
-    MuiFormGroup: {
-      row: {
-        display: "inline-block"
-      }
-    },
-    MuiFormControlLabel: {
-      label: {
-        color: "inherit",
-        "&$disabled": {
+      MuiFormGroup: {
+        row: {
+          display: "inline-block"
+        }
+      },
+      MuiFormControlLabel: {
+        label: {
           color: "inherit",
-          opacity: "0.38"
-        }
-      }
-    },
-    MuiCheckbox: {
-      colorPrimary: {
-        color: "rgb("+primaryRGB+")",
-        "&$disabled": {
-          color: "rgba("+primaryRGB+", 0.26)"
+          "&$disabled": {
+            color: "inherit",
+            opacity: "0.38"
+          }
         }
       },
-      root: {
-        padding: 0,
-        "&$checked": {
-          color: "rgb("+primaryRGB+")"
+      MuiRadio: {
+        colorPrimary: {
+          color: this.theme.palette.primary.main,
+          "&$disabled": {
+            color: this.theme.palette.primary.main,
+            opacity: 0.38
+          }
+        }
+      },
+      MuiCheckbox: {
+        colorPrimary: {
+          color: this.theme.palette.primary.main,
+          "&$disabled": {
+            color: this.theme.palette.primary.main,
+            opacity: 0.38
+          }
+        },
+        root: {
+          padding: 0
+        }
+      },
+      MuiFormLabel: {
+        root: {
+          color: "inherit",
+          "&$focused": {
+            color: this.theme.palette.primary.main
+          }
+        }
+      },
+      MuiInputBase: {
+        root: {
+          color: "inherit"
+        }
+      },
+      MuiFilledInput: {
+        underline: {
+          "&:after": {
+            borderBottom: "2px solid " + this.theme.palette.primary.main
+          }
+        }
+      },
+      MuiTypography: {
+        colorTextSecondary: {
+          color: "inherit"
         }
       }
+    };
+    
+  }
+
+  setPalette(type) {
+    switch (type) {
+      case "dark":
+        this.theme.palette = this.getDark();
+        break;
+      case "light":
+        this.theme.palette = this.getLight();
+        break;
+      case "custom":
+      default:
+        this.theme.palette = this.getDark();
+        break;
     }
-  },
+  }
 
-});
+  getTheme() {
+    return createMuiTheme(this.theme);
+  }
 
-export default theme;
+  getDark() {
+    return {
+      "common": {
+          "black":"#313539",
+          "white":"#fff"
+      },
+      "background": {
+          "paper": "rgb(33, 33, 33)",
+          "default":"rgb(48, 48, 48)",
+          "search": "#FFFFFF"
+      },
+      "primary": {
+          "light":"rgb(77, 171, 245)",
+          "main":"rgb(33, 150, 243)",
+          "dark":"rgb(23, 105, 170)",
+          "contrastText":"#fff"
+      },
+      "error": {
+          "light":"#e57373",
+          "main":"#f44336",
+          "dark":"#d32f2f",
+          "contrastText":"#fff"
+      },
+      "text": {
+          "primary":"rgba(0, 0, 0, 0.87)",
+          "secondary":"rgba(0, 0, 0, 0.54)",
+          "disabled":"rgba(0, 0, 0, 0.38)",
+          "hint":"rgba(0, 0, 0, 0.38)"
+      }
+    }
+  }
+
+  getLight() {
+    return {
+      "common": {
+          "black":"#313539",
+          "white":"#fff"
+      },
+      "background": {
+          "paper": "rgb(255, 255, 255)",
+          "default":"#EEEEEE",
+          "search": "#000000"
+      },
+      "primary": {
+          "light":"rgb(77, 171, 245)",
+          "main":"rgb(33, 150, 243)",
+          "dark":"rgb(23, 105, 170)",
+          "contrastText":"#fff"
+      },
+      "error": {
+          "light":"#e57373",
+          "main":"#f44336",
+          "dark":"#d32f2f",
+          "contrastText":"#fff"
+      },
+      "text": {
+          "primary":"rgba(0, 0, 0, 0.87)",
+          "secondary":"rgba(0, 0, 0, 0.54)",
+          "disabled":"rgba(0, 0, 0, 0.38)",
+          "hint":"rgba(0, 0, 0, 0.38)"
+      }
+    }
+  }
+}
+
+export default Theme;

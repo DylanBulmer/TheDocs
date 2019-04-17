@@ -7,10 +7,14 @@ import '../css/app.css';
 import '../css/dark.css';
 import '../css/markdown.css';
 import Project from './Project';
+import Theme from '../css/themes';
+import { MuiThemeProvider } from '@material-ui/core';
 
 class App extends Component {
 
   state = {
+    themeClass: new Theme('dark'),
+    theme: null,
     user: {
       name: "Dylan Bulmer",
       status: "Workin' Hard",
@@ -97,6 +101,11 @@ class App extends Component {
     selectedProject: 0
   };
 
+  constructor (props) {
+    super();
+    this.state.theme = this.state.themeClass.getTheme();
+  }
+
   handleClick = (index) => {
 
     if (index > 2) {
@@ -109,21 +118,54 @@ class App extends Component {
     }
   }
 
+  setTheme = (type, custom) => {
+    switch (type) {
+      case "light":
+        if (document.body.classList.contains("dark")) {
+          document.body.classList.remove("dark");
+          this.state.themeClass.setPalette("light");
+          this.setState({theme: this.state.themeClass.getTheme()});
+        }
+        break;
+      case "dark":
+      case "custom":
+      default:
+        if (!document.body.classList.contains("dark")) {
+          document.body.classList.add("dark");
+          this.state.themeClass.setPalette("dark");
+          this.setState({theme: this.state.themeClass.getTheme()});
+        }
+        break;
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <SideBar user={this.state.user} selected={this.state.selected} projects={this.state.projects} onUpdate={this.handleClick} />
-        <Dashboard index={0} isActive={this.state.selected === 0} activity={this.state.activity} />
-        <Documents index={2} isActive={this.state.selected === 2} />
-        {
-          this.state.projects.map((project, index) => {
-            return (
-              <Project key={"project-"+index} project={project} index={index+3} isActive={this.state.selected === index + 3} onUpdate={this.handleClick}></Project>
-            )
-          })
-        }
-        <ProjectSettings index={-1} isActive={this.state.selected === -1} onUpdate={this.handleClick}/>
-        <UserSettings index={-2} isActive={this.state.selected === -2} />
+        <MuiThemeProvider theme={this.state.theme}>
+          <SideBar user={this.state.user} selected={this.state.selected} projects={this.state.projects} onUpdate={this.handleClick} />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={this.state.theme}>
+          <Dashboard index={0} isActive={this.state.selected === 0} activity={this.state.activity} />
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={this.state.theme}>
+          <Documents index={2} isActive={this.state.selected === 2} />
+        </MuiThemeProvider>        
+        <MuiThemeProvider theme={this.state.theme}>
+          {
+            this.state.projects.map((project, index) => {
+              return (
+                <Project key={"project-"+index} project={project} index={index+3} isActive={this.state.selected === index + 3} onUpdate={this.handleClick}></Project>
+              )
+            })
+          }
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={this.state.theme}>
+          <ProjectSettings index={-1} isActive={this.state.selected === -1} onUpdate={this.handleClick}/>
+        </MuiThemeProvider>
+        <MuiThemeProvider theme={this.state.theme}>
+          <UserSettings index={-2} isActive={this.state.selected === -2} setTheme={this.setTheme} />
+        </MuiThemeProvider>
       </div>
     );
   }

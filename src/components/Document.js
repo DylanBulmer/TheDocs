@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../css/documents.css';
+import { Search } from '@material-ui/icons';
+import '../css/document.css';
 import { Paper } from '@material-ui/core';
-import SearchBar from './SearchBar';
 
-class Documents extends Component {
+class Document extends Component {
 
   state = {
     active: false
@@ -23,19 +23,11 @@ class Documents extends Component {
 
   render() {
     return (
-        <div className="Documents" style={{display:this.state.active ? "inline-grid" : "none"}}>
-          <Paper style={{padding: "0.5em 1em"}}>
+        <Paper className="Document" style={{display:this.state.active ? "inline-grid" : "none"}}>
+          <div style={{padding: "0.5em 1em"}}>
             <div className="Title">Documents</div>
-            <SearchBar />
-          </Paper>
-          <Paper style={{padding:"0", overflow: "auto"}}>
-            {
-              [0,1,2,3,4,5,6,7,8,9].map((id) => {
-                return (<Result key={id} title={"Document " + id}></Result>)
-              })
-            }
-          </Paper>
-        </div>
+          </div>
+        </Paper>
     );
   }
 }
@@ -59,4 +51,4 @@ class Result extends Component {
 
 }
 
-export default Documents;
+export default Document;
