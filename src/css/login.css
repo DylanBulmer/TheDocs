@@ -1,0 +1,15 @@
+.Login {
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  position: absolute !important;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.small {
+  margin-left: unset !important;
+  margin-right: unset !important;
+  margin-top: 8px !important;
+  margin-bottom: 4px !important;
+  width: unset !important;
+}

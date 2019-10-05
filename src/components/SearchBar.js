@@ -64,6 +64,7 @@ function SearchBar(props) {
           root: classes.inputRoot,
           input: classes.inputInput,
         }}
+        type="search"
       />
     </div>
   );
