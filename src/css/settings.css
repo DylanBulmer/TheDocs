@@ -10,3 +10,14 @@
 .SettingsGrid h3 {
     margin: 1em 0;
 }
+
+.SettingsPageGrid {
+    width: calc(100% - 300px - 1em);
+    height: calc(100vh - 2em);
+    margin: 1em;
+    margin-left: 0;
+    display: inline-grid;
+    column-gap: 1em;
+    grid-template-columns: 2fr 1fr;
+    vertical-align: middle;
+}

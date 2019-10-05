@@ -53,7 +53,7 @@ function createWindow () {
 app.on('ready', () => {
   app.setAppUserModelId('com.github.dylanbulmer.thedocs');
 
-  tray = new Tray(path.join(__dirname, 'image/icon/icon@4x.png'));
+  tray = new Tray(path.join(__dirname, 'image/icon/iconWhite@4x.png'));
   const contextMenu = Menu.buildFromTemplate([
       {
           label: 'The Docs 2.0',

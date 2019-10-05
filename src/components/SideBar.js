@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Search, Settings } from '@material-ui/icons';
-import { Button, Paper } from '@material-ui/core'
+import { Button, Paper } from '@material-ui/core';
+import Avatar from './Avatar';
 import '../css/sidebar.css';
 
 class SideBar extends Component {
@@ -27,7 +28,7 @@ class SideBar extends Component {
     return (
       <Paper className="SideBar" style={{paddingTop: "calc(40px + 2em)"}}>
         <div className="Menu" onClick={this.openSettings}>
-          <img className="Avatar" alt=""></img>
+          <Avatar user={this.props.user} />
           <span className="NameGroup">
             <p className="Name">{this.props.user.name}</p>
             <p className="Name Status">{this.props.user.status}</p>

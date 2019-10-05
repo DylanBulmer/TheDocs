@@ -85,6 +85,20 @@ class Theme {
       MuiTypography: {
         colorTextSecondary: {
           color: "inherit"
+        },
+        body1:{
+          color: "inherit"
+        },
+        body2:{
+          color: "inherit"
+        },
+        root: {
+          color: "inherit"
+        }
+      },
+      MuiIconButton: {
+        root: {
+          color: "inherit"
         }
       }
     };
@@ -114,11 +128,12 @@ class Theme {
     return {
       "common": {
           "black":"#313539",
-          "white":"#fff"
+          "white":"#fff",
+          "main":"#fff"
       },
       "background": {
-          "paper": "rgb(33, 33, 33)",
-          "default":"rgb(48, 48, 48)",
+          "paper": "#1f2229",
+          "default":"#282c34",
           "search": "#FFFFFF"
       },
       "primary": {
@@ -146,7 +161,8 @@ class Theme {
     return {
       "common": {
           "black":"#313539",
-          "white":"#fff"
+          "white":"#fff",
+          "main":"#313539"
       },
       "background": {
           "paper": "rgb(255, 255, 255)",
